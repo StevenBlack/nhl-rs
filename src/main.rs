@@ -1,13 +1,15 @@
 use std::{fmt, fs};
-
 use serde::{Deserialize, Serialize};
 
+// constant values
 const STANDINGS_URL: &str = "https://api-web.nhle.com/v1/standings/now";
-const LOCAL_DATA: bool = true;
+const LOCAL_DATA: bool = false;
 const TEAM_NAME_WIDTH: usize = 15;
 const GP_WIDTH: usize = 2;
 const PLUS_MINUS_WIDTH: usize = 3;
 const PANEL_WIDTH: usize = 30;
+
+// data structures
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Root {
