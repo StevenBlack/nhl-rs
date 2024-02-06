@@ -1,13 +1,12 @@
 # nhl-rs
 
-
-## Resources
-
-* New API docs: https://gitlab.com/dword4/nhlapi/-/blob/master/new-api.md
+NHL stats as I like 'em.
 
 ## Usage and sample output
 
-The `nhl-rs` executable is a simple command-line tool that fetches the current NHL standings and displays them in a tabular format. The output is divided into the four divisions, two conferences, and the full league. The teams are sorted by wins minus losses, and the display is games played, wins minus losses, and the last ten games in the format `W-L-OT`.
+The `nhl-rs` executable is a simple command-line tool that fetches the current NHL standings and displays them in a tabular format.
+
+The output is segmented into the four divisions, two conferences, and the full league. The teams are sorted by wins minus losses, and the display is games played, wins minus losses, and the last ten games in the format `W-L-OT`.
 
 ```bash
 $ nhl-rs                                                                                                23:18:23
@@ -136,3 +135,8 @@ $ nhl-rs                                                                        
 31. Sharks          51 -18   5-3-2
 32. Blackhawks      50 -20   2-8-0
 ```
+
+## Resources
+
+* New API docs: <https://gitlab.com/dword4/nhlapi/-/blob/master/new-api.md>
+* Transform tools, JSON to Rust Serde: <https://transform.tools/json-to-rust-serde>
