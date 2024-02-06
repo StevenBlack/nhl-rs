@@ -10,10 +10,10 @@
 The `nhl-rs` executable is a simple command-line tool that fetches the current NHL standings and displays them in a tabular format. The output is divided into the four divisions, two conferences, and the full league. The teams are sorted by wins minus losses, and the display is games played, wins minus losses, and the last ten games in the format `W-L-OT`.
 
 ```bash
-$ nhl-rs
+$ nhl-rs                                                                                                23:18:23
 
 ===================================
-        Atlantic conference
+         Atlantic division
 ===================================
  1. Bruins          49  22   7-1-2
  2. Panthers        49  17   6-2-2
@@ -25,7 +25,7 @@ $ nhl-rs
  8. Senators        47  -5   6-2-2
 
 ===================================
-      Metropolitan conference
+       Metropolitan division
 ===================================
  1. Rangers         50  15   5-4-1
  2. Hurricanes      48  13   7-2-1
@@ -37,7 +37,7 @@ $ nhl-rs
  8. Blue Jackets    50  -8   3-5-2
 
 ===================================
-        Central conference
+         Central division
 ===================================
  1. Jets            47  18   6-3-1
  2. Avalanche       50  18   7-2-1
@@ -49,7 +49,7 @@ $ nhl-rs
  8. Blackhawks      50 -20   2-8-0
 
 ===================================
-        Pacific conference
+         Pacific division
 ===================================
  1. Canucks         49  22   8-0-2
  2. Oilers          45  14   10-0-0
