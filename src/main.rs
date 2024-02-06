@@ -3,11 +3,11 @@ use std::{fmt, fs};
 use serde::{Deserialize, Serialize};
 
 const STANDINGS_URL: &str = "https://api-web.nhle.com/v1/standings/now";
-const LOCAL_DATA: bool = false;
+const LOCAL_DATA: bool = true;
 const TEAM_NAME_WIDTH: usize = 15;
 const GP_WIDTH: usize = 2;
 const PLUS_MINUS_WIDTH: usize = 3;
-const PANEL_WIDTH: usize = 35;
+const PANEL_WIDTH: usize = 30;
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Root {
@@ -116,13 +116,11 @@ pub struct Standing {
 impl fmt::Display for Standing {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         // Customize so only `x` and `y` are denoted.
-        write!(f, "{} {:>GP_WIDTH$} {:>PLUS_MINUS_WIDTH$}   {}-{}-{}",
+        write!(f, "{} {:>GP_WIDTH$} {:>PLUS_MINUS_WIDTH$} {:>PLUS_MINUS_WIDTH$}",
         self.team_common_name,
         self.games_played,
         self.wins - self.losses,
-        self.l10wins,
-        self.l10losses,
-        self.l10ot_losses,
+        self.l10wins - self.l10losses,
     )
     }
 }
@@ -191,10 +189,14 @@ fn main() {
         ("Western", "Pacific"),
     ];
     let mut root = getdata();
-    let mut idx = 1;
+    let mut idx;
 
     // sort the standings just the way I like it
-    root.standings.sort_unstable_by_key(|item| (-(item.wins - item.losses), item.games_played));
+    root.standings.sort_unstable_by_key(|item| (
+        -(item.wins - item.losses),
+        item.games_played,
+        -item.regulation_wins
+    ));
 
     // iterate our data in various ways
     for division in &divisions {
@@ -234,4 +236,5 @@ fn header(title: &str) {
     println!("{}", "=".repeat(PANEL_WIDTH));
     println!("{:^PANEL_WIDTH$}", title);
     println!("{}", "=".repeat(PANEL_WIDTH));
+    println!("{:>22} {} {}", "GP", "+/-", "L10");
 }
