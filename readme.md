@@ -9,7 +9,7 @@ The `nhl-rs` executable is a simple command-line tool that fetches the current N
 The output is segmented into the four divisions, two conferences, and the full league. The teams are sorted by wins minus losses, and the display is games played, wins minus losses, and the last ten games in the format `W-L-OT`.
 
 ```bash
-$ nhl-rs                                                                                                23:18:23
+$ nhl-rs
 
 ===================================
          Atlantic division
