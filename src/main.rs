@@ -1,9 +1,13 @@
+use std::fs;
+
 use serde::{Deserialize, Serialize};
+
+const STANDINGS_URL: &str = "https://api-web.nhle.com/v1/standings/now";
+const LOCAL_DATA: bool = true;
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Root {
-    pub wild_card_indicator: bool,
     pub standings: Vec<Standing>,
 }
 
@@ -132,6 +136,32 @@ pub struct TeamCommonName {
 pub struct TeamAbbrev {
     pub default: String,
 }
+
+pub fn read_json_from_file () -> Root {
+    let path = "./sample.json";
+    let data = fs::read_to_string(path).expect("Unable to read JSON file");
+    let obj: Root = serde_json::from_str(&data).expect("Unable to parse JSON");
+    obj
+}
+
+pub fn read_json_from_api () -> Root {
+    let response = reqwest::blocking::get(STANDINGS_URL).unwrap();
+    let data = response.text().unwrap();
+    let obj: Root = serde_json::from_str(&data).expect("Unable to parse JSON");
+    obj
+}
+
+fn getdata() -> Root {
+    if LOCAL_DATA {
+        read_json_from_file()
+    } else {
+        read_json_from_api()
+    }
+}
+
 fn main() {
-    println!("Hello, world!");
+    let root = getdata();
+    for standing in root.standings {
+        println!("{:?}", standing.team_name.default);
+    }
 }
