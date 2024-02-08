@@ -146,4 +146,5 @@ $ nhl-rs
 ## Resources
 
 * New API docs: <https://gitlab.com/dword4/nhlapi/-/blob/master/new-api.md>
+* Great docs: <https://github.com/Zmalski/NHL-API-Reference>
 * Transform tools, JSON to Rust Serde: <https://transform.tools/json-to-rust-serde>
