@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 
 // constant values
 const STANDINGS_URL: &str = "https://api-web.nhle.com/v1/standings/now";
-const LOCAL_DATA: bool = false;
+const LOCAL_DATA: bool = true;
 const TEAM_NAME_WIDTH: usize = 15;
 const GP_WIDTH: usize = 2;
 const PLUS_MINUS_WIDTH: usize = 3;
