@@ -1,0 +1,149 @@
+{
+  "previousStartDate": "2024-02-01",
+  "nextStartDate": "2024-02-15",
+  "calendarUrl": "https://nhl.calreplyapp.com/maple-leafs",
+  "clubTimezone": "America/Toronto",
+  "clubUTCOffset": "-05:00",
+  "games": [
+    {
+      "id": 2023020812,
+      "season": 20232024,
+      "gameType": 2,
+      "gameDate": "2024-02-10",
+      "venue": {
+        "default": "Canadian Tire Centre",
+        "fr": "Centre Canadian Tire"
+      },
+      "neutralSite": false,
+      "startTimeUTC": "2024-02-11T00:00:00Z",
+      "easternUTCOffset": "-05:00",
+      "venueUTCOffset": "-05:00",
+      "venueTimezone": "US/Eastern",
+      "gameState": "FUT",
+      "gameScheduleState": "OK",
+      "tvBroadcasts": [
+        {
+          "id": 4,
+          "market": "N",
+          "countryCode": "CA",
+          "network": "CBC",
+          "sequenceNumber": 24
+        },
+        {
+          "id": 281,
+          "market": "N",
+          "countryCode": "CA",
+          "network": "TVAS",
+          "sequenceNumber": 31
+        },
+        {
+          "id": 287,
+          "market": "N",
+          "countryCode": "CA",
+          "network": "SNE",
+          "sequenceNumber": 26
+        },
+        {
+          "id": 288,
+          "market": "N",
+          "countryCode": "CA",
+          "network": "SNO",
+          "sequenceNumber": 27
+        },
+        {
+          "id": 290,
+          "market": "N",
+          "countryCode": "CA",
+          "network": "SNP",
+          "sequenceNumber": 29
+        }
+      ],
+      "awayTeam": {
+        "id": 10,
+        "placeName": {
+          "default": "Toronto"
+        },
+        "abbrev": "TOR",
+        "logo": "https://assets.nhle.com/logos/nhl/svg/TOR_light.svg",
+        "darkLogo": "https://assets.nhle.com/logos/nhl/svg/TOR_dark.svg",
+        "awaySplitSquad": false,
+        "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/TOR/20232024/TOR-radio.m3u8"
+      },
+      "homeTeam": {
+        "id": 9,
+        "placeName": {
+          "default": "Ottawa"
+        },
+        "abbrev": "OTT",
+        "logo": "https://assets.nhle.com/logos/nhl/svg/OTT_light.svg",
+        "darkLogo": "https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg",
+        "homeSplitSquad": false,
+        "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/OTT/20232024/OTT-radio.m3u8",
+        "hotelLink": "https://www.brookstreethotel.com/promotions/ctc?utm_source=#x3D;sens&utm_medium=banner&utm_content=calendar",
+        "hotelDesc": "STAY AT BROOKSTREET HOTEL AND SPA"
+      },
+      "periodDescriptor": {},
+      "ticketsLink": "https://www.nhl.com/senators/tickets/",
+      "gameCenterLink": "/gamecenter/tor-vs-ott/2024/02/10/2023020812"
+    },
+    {
+      "id": 2023020827,
+      "season": 20232024,
+      "gameType": 2,
+      "gameDate": "2024-02-13",
+      "venue": {
+        "default": "Scotiabank Arena"
+      },
+      "neutralSite": false,
+      "startTimeUTC": "2024-02-14T00:00:00Z",
+      "easternUTCOffset": "-05:00",
+      "venueUTCOffset": "-05:00",
+      "venueTimezone": "America/Toronto",
+      "gameState": "FUT",
+      "gameScheduleState": "OK",
+      "tvBroadcasts": [
+        {
+          "id": 293,
+          "market": "H",
+          "countryCode": "CA",
+          "network": "TSN4",
+          "sequenceNumber": 89
+        },
+        {
+          "id": 357,
+          "market": "A",
+          "countryCode": "US",
+          "network": "BSMW",
+          "sequenceNumber": 95
+        }
+      ],
+      "awayTeam": {
+        "id": 19,
+        "placeName": {
+          "default": "St Louis"
+        },
+        "abbrev": "STL",
+        "logo": "https://assets.nhle.com/logos/nhl/svg/STL_light.svg",
+        "darkLogo": "https://assets.nhle.com/logos/nhl/svg/STL_dark.svg",
+        "awaySplitSquad": false,
+        "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/STL/20232024/STL-radio.m3u8",
+        "hotelLink": "https://www.stlouisunionstation.com/hotel-packages",
+        "hotelDesc": "Stay at Hilton"
+      },
+      "homeTeam": {
+        "id": 10,
+        "placeName": {
+          "default": "Toronto"
+        },
+        "abbrev": "TOR",
+        "logo": "https://assets.nhle.com/logos/nhl/svg/TOR_light.svg",
+        "darkLogo": "https://assets.nhle.com/logos/nhl/svg/TOR_dark.svg",
+        "homeSplitSquad": false,
+        "radioLink": "https://d2igy0yla8zi0u.cloudfront.net/TOR/20232024/TOR-radio.m3u8"
+      },
+      "periodDescriptor": {},
+      "ticketsLink": "https://www.nhl.com/mapleleafs/tickets/",
+      "gameCenterLink": "/gamecenter/stl-vs-tor/2024/02/13/2023020827"
+    }
+  ]
+}

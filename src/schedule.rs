@@ -1,0 +1,241 @@
+use std::{fs};
+use serde::{Deserialize, Serialize};
+
+// constant values
+const SCHEDULE_URL: &str = "https://api-web.nhle.com/v1/schedule/now";
+const SCHEDULE_FILE: &str = "./sample_schedule.json";
+
+// schedule-related data structures
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ScheduleRoot {
+    pub next_start_date: String,
+    pub previous_start_date: String,
+    pub game_week: Vec<GameWeek>,
+    pub pre_season_start_date: String,
+    pub regular_season_start_date: String,
+    pub regular_season_end_date: String,
+    pub playoff_end_date: String,
+    pub number_of_games: i64,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct GameWeek {
+    pub date: String,
+    pub day_abbrev: String,
+    pub number_of_games: i64,
+    pub games: Vec<Game>,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct Game {
+    pub id: i64,
+    pub season: i64,
+    pub game_type: i64,
+    pub venue: Venue,
+    pub neutral_site: bool,
+    #[serde(rename = "startTimeUTC")]
+    pub start_time_utc: String,
+    #[serde(rename = "easternUTCOffset")]
+    pub eastern_utcoffset: String,
+    #[serde(rename = "venueUTCOffset")]
+    pub venue_utcoffset: String,
+    pub venue_timezone: String,
+    pub game_state: String,
+    pub game_schedule_state: String,
+    pub tv_broadcasts: Vec<TvBroadcast>,
+    pub away_team: AwayTeam,
+    pub home_team: HomeTeam,
+    pub period_descriptor: PeriodDescriptor,
+    pub game_outcome: Option<GameOutcome>,
+    pub winning_goalie: Option<WinningGoalie>,
+    pub winning_goal_scorer: Option<WinningGoalScorer>,
+    pub three_min_recap: Option<String>,
+    pub three_min_recap_fr: Option<String>,
+    pub game_center_link: String,
+    pub tickets_link: Option<String>,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct Venue {
+    pub default: String,
+    pub fr: Option<String>,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct TvBroadcast {
+    pub id: i64,
+    pub market: String,
+    pub country_code: String,
+    pub network: String,
+    pub sequence_number: i64,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct PlaceName {
+    pub default: String,
+    pub fr: Option<String>,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct AwayTeam {
+    pub id: i64,
+    pub place_name: PlaceName,
+    pub abbrev: String,
+    pub logo: String,
+    pub dark_logo: String,
+    pub away_split_squad: bool,
+    pub score: Option<i64>,
+    pub radio_link: Option<String>,
+    pub odds: Option<Vec<Odd>>,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct Odd {
+    pub provider_id: i64,
+    pub value: String,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct HomeTeam {
+    pub id: i64,
+    pub place_name: PlaceName2,
+    pub abbrev: String,
+    pub logo: String,
+    pub dark_logo: String,
+    pub home_split_squad: bool,
+    pub score: Option<i64>,
+    pub radio_link: Option<String>,
+    pub odds: Option<Vec<Odd2>>,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct PlaceName2 {
+    pub default: String,
+    pub fr: Option<String>,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct Odd2 {
+    pub provider_id: i64,
+    pub value: String,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct PeriodDescriptor {
+    pub number: Option<i64>,
+    pub period_type: Option<String>,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct GameOutcome {
+    pub last_period_type: String,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct WinningGoalie {
+    pub player_id: i64,
+    pub first_initial: FirstInitial,
+    pub last_name: LastName,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct FirstInitial {
+    pub default: String,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct LastName {
+    pub default: String,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct WinningGoalScorer {
+    pub player_id: i64,
+    pub first_initial: FirstInitial2,
+    pub last_name: LastName2,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct FirstInitial2 {
+    pub default: String,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct LastName2 {
+    pub default: String,
+}
+
+
+pub fn read_json_from_file () -> ScheduleRoot {
+    let path = SCHEDULE_FILE;
+    let data = fs::read_to_string(path).expect("Unable to read schedule JSON file");
+    let obj: ScheduleRoot = serde_json::from_str(&data).expect("Unable to parse schedule JSON");
+    obj
+}
+
+pub fn read_json_from_api() -> ScheduleRoot {
+    let response = reqwest::blocking::get(SCHEDULE_URL).unwrap();
+    let data = response.text().unwrap();
+    let obj: ScheduleRoot = serde_json::from_str(&data).expect("Unable to parse schedule JSON");
+    obj
+}
+
+fn get_data() -> ScheduleRoot {
+    if crate::LOCAL_DATA {
+        read_json_from_file()
+    } else {
+        read_json_from_api()
+    }
+}
+
+pub fn schedule() {
+    let root = get_data();
+    for date in root.game_week {
+        schedule_header( date.date.as_str(), date.day_abbrev.as_str());
+        for game in date.games {
+            if game.game_state == "FUT" {
+                println!(
+                    "{} at {}",
+                    game.away_team.place_name.default,
+                    game.home_team.place_name.default
+                );
+                continue;
+            }
+            println!("{} {} - {} {}",
+                game.away_team.place_name.default,
+                game.away_team.score.unwrap(),
+                game.home_team.score.unwrap(),
+                game.home_team.place_name.default
+            );
+        }
+    }
+}
+
+fn schedule_header(title: &str, day: &str) {
+    let width = crate::PANEL_WIDTH;
+    println!();
+    println!("{}", "=".repeat(width));
+    let together = format!("{title} ({day})");
+    println!("{:^width$}", together);
+    println!("{}", "=".repeat(width));
+}
