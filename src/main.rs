@@ -21,8 +21,8 @@ fn main() {
     let args = Args::parse();
 
     if args.schedule {
-        schedule::schedule();
+        schedule::schedule(args);
         return;
     }
-    standings::standings();
+    standings::standings(args);
 }

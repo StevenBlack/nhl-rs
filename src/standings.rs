@@ -188,7 +188,7 @@ fn get_data() -> StandingsRoot {
     }
 }
 
-pub fn standings() {
+pub fn standings(_args: crate::Args) {
     // standings;
     // some basic groupings
     let conferences = vec!["Eastern", "Western"];

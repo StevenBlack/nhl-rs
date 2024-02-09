@@ -1,10 +1,14 @@
-use std::{fs};
+use itertools::Itertools;
+use std::fs;
 use serde::{Deserialize, Serialize};
+use chrono::prelude::*;
+use chrono::{DateTime, NaiveDate, NaiveDateTime, NaiveTime};
+use chrono::format::ParseError;
 
 // constant values
 const SCHEDULE_URL: &str = "https://api-web.nhle.com/v1/schedule/now";
 const SCHEDULE_FILE: &str = "./sample_schedule.json";
-
+const PANEL_WIDTH: usize = 55;
 // schedule-related data structures
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -208,31 +212,60 @@ fn get_data() -> ScheduleRoot {
     }
 }
 
-pub fn schedule() {
+pub fn schedule(_args: crate::Args) {
     let root = get_data();
+    let east_timezone = FixedOffset::west_opt(5 * 3600).unwrap();
     for date in root.game_week {
         schedule_header( date.date.as_str(), date.day_abbrev.as_str());
         for game in date.games {
             if game.game_state == "FUT" {
-                println!(
+                print!(
                     "{} at {}",
                     game.away_team.place_name.default,
                     game.home_team.place_name.default
                 );
+
+                let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
+                dt = dt.with_timezone(&east_timezone);
+                print!("  {} ", dt.format("%H:%M").to_string());
+
+                if game.tv_broadcasts.len() > 0 {
+                    let mut networks = Vec::new();
+                    for broadcast in game.tv_broadcasts {
+                        networks.push(broadcast.network);
+                    }
+                    // print!("  ({})", networks.join(", "));
+                    let networks: Vec<String> = networks.into_iter().unique().collect();
+                    print!("  ({})", networks.join(", "))
+                }
+                println!();
                 continue;
             }
-            println!("{} {} - {} {}",
+            print!("{} {} - {} {}",
                 game.away_team.place_name.default,
-                game.away_team.score.unwrap(),
-                game.home_team.score.unwrap(),
+                game.away_team.score.unwrap_or(0),
+                game.home_team.score.unwrap_or(0),
                 game.home_team.place_name.default
             );
+
+            let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
+            dt = dt.with_timezone(&east_timezone);
+            print!("  {} ", dt.format("%H:%M").to_string());
+
+            if game.tv_broadcasts.len() > 0 {
+                let mut networks = Vec::new();
+                for broadcast in game.tv_broadcasts {
+                    networks.push(broadcast.network);
+                }
+                print!("  ({})", networks.join(", "));
+            }
+            println!();
         }
     }
 }
 
 fn schedule_header(title: &str, day: &str) {
-    let width = crate::PANEL_WIDTH;
+    let width = PANEL_WIDTH;
     println!();
     println!("{}", "=".repeat(width));
     let together = format!("{title} ({day})");
