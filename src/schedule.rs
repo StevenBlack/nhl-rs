@@ -2,8 +2,7 @@ use itertools::Itertools;
 use std::fs;
 use serde::{Deserialize, Serialize};
 use chrono::prelude::*;
-use chrono::{DateTime, NaiveDate, NaiveDateTime, NaiveTime};
-use chrono::format::ParseError;
+use chrono::DateTime;
 
 // constant values
 const SCHEDULE_URL: &str = "https://api-web.nhle.com/v1/schedule/now";
