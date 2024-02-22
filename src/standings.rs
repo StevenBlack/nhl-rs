@@ -185,7 +185,14 @@ impl CustomDisplay for Playoffmatchups {
     fn custom_display(&self) -> String {
         let mut result = String::new();
         for matchup in self {
-            result.push_str(&format!("{} vs {}\n", matchup.away.place_name, matchup.home.place_name));
+            let (home, away) = (&matchup.home, &matchup.away);
+            result.push_str(&format!("{} ({}) vs {} ({})\n",
+                away.place_name.default.trim(),
+                away.wins - away.losses,
+                home.place_name.default.trim(),
+                home.wins - home.losses,
+            )
+        );
         }
         result
     }
@@ -278,8 +285,11 @@ pub fn standings(args: crate::Args) {
                 -item.regulation_wins
             ));
 
+            let lastwc = wildcards[1].wins - wildcards[1].losses;
+
             // now we can add the wildcards to the playoff matchups
             playoffmatchups.push(Playoffmatchup { home: firsts.remove(0), away: wildcards.remove(1) });
+
             playoffmatchups.push(Playoffmatchup { home: firsts.remove(0), away: wildcards.remove(0) });
 
             playoffmatchups.sort_unstable_by_key(|item| (
@@ -289,6 +299,16 @@ pub fn standings(args: crate::Args) {
             ));
 
             println!("{}", playoffmatchups.custom_display());
+
+            // print teams within 3 of the final wildcard
+            print!("Outside looking-in: ");
+            for wc in wildcards {
+                if wc.wins - wc.losses >= lastwc -3 {
+                    print!("{} ({}) ", wc.team_abbrev.default.trim(), wc.wins - wc.losses);
+                }
+            }
+            println!();println!();
+
             idx = idx + 2;
         }
         return;
@@ -337,7 +357,7 @@ fn standings_header(title: &str) {
 }
 
 fn playoff_header() {
-    let panel_width = crate::PANEL_WIDTH;
+    let panel_width = 35;
     println!();
     println!("{}", "=".repeat(panel_width));
     println!("{:^panel_width$}", "Playoff Picture");
