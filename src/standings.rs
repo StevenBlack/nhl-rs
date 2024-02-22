@@ -282,6 +282,12 @@ pub fn standings(args: crate::Args) {
             playoffmatchups.push(Playoffmatchup { home: firsts.remove(0), away: wildcards.remove(1) });
             playoffmatchups.push(Playoffmatchup { home: firsts.remove(0), away: wildcards.remove(0) });
 
+            playoffmatchups.sort_unstable_by_key(|item| (
+             -(item.home.wins - item.home.losses),
+             item.home.games_played,
+             -item.home.regulation_wins
+            ));
+
             println!("{}", playoffmatchups.custom_display());
             idx = idx + 2;
         }
