@@ -168,7 +168,30 @@ pub struct TeamAbbrev {
     pub default: String,
 }
 
-pub fn read_json_from_file (_args: &crate::Args) -> StandingsRoot {
+// playoff structures
+#[derive(Debug)]
+struct Playoffmatchup {
+    home: Standing,
+    away: Standing,
+}
+
+type Playoffmatchups = Vec<Playoffmatchup>;
+
+trait CustomDisplay {
+    fn custom_display(&self) -> String;
+}
+
+impl CustomDisplay for Playoffmatchups {
+    fn custom_display(&self) -> String {
+        let mut result = String::new();
+        for matchup in self {
+            result.push_str(&format!("{} vs {}\n", matchup.away.place_name, matchup.home.place_name));
+        }
+        result
+    }
+}
+
+pub fn read_json_from_file(_args: &crate::Args) -> StandingsRoot {
     let path = STANDINGS_FILE;
     let data = fs::read_to_string(path).expect("Unable to read standings JSON file");
     let obj: StandingsRoot = serde_json::from_str(&data).expect("Unable to parse standings JSON");
@@ -214,22 +237,57 @@ pub fn standings(args: crate::Args) {
         -item.regulation_wins
     ));
 
+    // display the playoffs picture
     if args.playoffs {
-        struct playoffmatchup {
-            home: Standing,
-            away: Standing,
-        }
-        let mut playoffmatchups: Vec<playoffmatchup> = Vec::new();
 
+        playoff_header();
 
-        let (conf1, conf2): (Vec<_>, Vec<_>) = root.standings
+        let (conf1, conf2): (Vec<Standing>, Vec<Standing>) = root.standings
             .into_iter()
             .partition(|s| s.conference_name == conferences[0]);
 
-        println!("{:?}", conf1);
-        println!("{:?}", conf2);
+        let mut idx = 0;
+        for conf in [conf1, conf2] {
+            let mut playoffmatchups: Vec<Playoffmatchup> = Vec::new();
+            let (div1, div2): (Vec<Standing>, Vec<Standing>) = conf
+                .into_iter()
+                .partition(|s| s.division_name == divisions[idx].1);
+
+            let mut firsts: Vec<Standing> = vec![];
+            let mut wildcards: Vec<Standing> = vec![];
+
+            for mut div in [div1, div2] {
+                // division winners
+                firsts.push(div.remove(0));
+                // next 2
+                playoffmatchups.push(Playoffmatchup { home: div.remove(0), away: div.remove(0) });
+                // wildcards bin
+                wildcards.extend(div);
+            }
+            // now sort the firsts
+            firsts.sort_unstable_by_key(|item| (
+                -(item.wins - item.losses),
+                item.games_played,
+                -item.regulation_wins
+            ));
+
+            // now sort the wildcards again
+            wildcards.sort_unstable_by_key(|item| (
+                -(item.wins - item.losses),
+                item.games_played,
+                -item.regulation_wins
+            ));
+
+            // now we can add the wildcards to the playoff matchups
+            playoffmatchups.push(Playoffmatchup { home: firsts.remove(0), away: wildcards.remove(1) });
+            playoffmatchups.push(Playoffmatchup { home: firsts.remove(0), away: wildcards.remove(0) });
+
+            println!("{}", playoffmatchups.custom_display());
+            idx = idx + 2;
+        }
         return;
     }
+
     // iterate our data in various ways
     for division in &divisions {
         standings_header(format!("{} division", division.1).as_str());
@@ -270,4 +328,12 @@ fn standings_header(title: &str) {
     println!("{:^panel_width$}", title);
     println!("{}", "=".repeat(panel_width));
     println!("{:>19} {} {}", "GP", "+/-", "L10");
+}
+
+fn playoff_header() {
+    let panel_width = crate::PANEL_WIDTH;
+    println!();
+    println!("{}", "=".repeat(panel_width));
+    println!("{:^panel_width$}", "Playoff Picture");
+    println!("{}", "=".repeat(panel_width));
 }

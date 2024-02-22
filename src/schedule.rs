@@ -189,7 +189,7 @@ pub struct LastName2 {
 }
 
 
-pub fn read_json_from_file(args: crate::Args) -> ScheduleRoot {
+pub fn read_json_from_file(_args: crate::Args) -> ScheduleRoot {
     let path = SCHEDULE_FILE;
     let data = fs::read_to_string(path).expect("Unable to read schedule JSON file");
     let obj: ScheduleRoot = serde_json::from_str(&data).expect("Unable to parse schedule JSON");
