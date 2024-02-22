@@ -187,7 +187,7 @@ pub fn read_json_from_api (args: &crate::Args) -> StandingsRoot {
 }
 
 fn get_data(args: &crate::Args) -> StandingsRoot {
-    if crate::LOCAL_DATA || args.local {
+    if args.local {
         read_json_from_file(args)
     } else {
         read_json_from_api(args)

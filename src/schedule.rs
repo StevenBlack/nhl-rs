@@ -208,7 +208,7 @@ pub fn read_json_from_api(args: crate::Args) -> ScheduleRoot {
 }
 
 fn get_data(args: crate::Args) -> ScheduleRoot {
-    if crate::LOCAL_DATA {
+    if args.local {
         read_json_from_file(args)
     } else {
         read_json_from_api(args)

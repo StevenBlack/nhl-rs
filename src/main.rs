@@ -19,7 +19,6 @@ struct Args {
 }
 
 // constant values
-const LOCAL_DATA: bool = false;
 const TEAM_NAME_WIDTH: usize = 15;
 const PLACE_NAME_WIDTH: usize = 12;
 const GP_WIDTH: usize = 2;
