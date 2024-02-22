@@ -189,30 +189,34 @@ pub struct LastName2 {
 }
 
 
-pub fn read_json_from_file () -> ScheduleRoot {
+pub fn read_json_from_file(args: crate::Args) -> ScheduleRoot {
     let path = SCHEDULE_FILE;
     let data = fs::read_to_string(path).expect("Unable to read schedule JSON file");
     let obj: ScheduleRoot = serde_json::from_str(&data).expect("Unable to parse schedule JSON");
     obj
 }
 
-pub fn read_json_from_api() -> ScheduleRoot {
+pub fn read_json_from_api(args: crate::Args) -> ScheduleRoot {
     let response = reqwest::blocking::get(SCHEDULE_URL).unwrap();
     let data = response.text().unwrap();
     let obj: ScheduleRoot = serde_json::from_str(&data).expect("Unable to parse schedule JSON");
+    if args.save {
+        println!("Writing to file.");
+        fs::write(SCHEDULE_FILE, data).expect("Unable to write schedule JSON file");
+    }
     obj
 }
 
-fn get_data() -> ScheduleRoot {
+fn get_data(args: crate::Args) -> ScheduleRoot {
     if crate::LOCAL_DATA {
-        read_json_from_file()
+        read_json_from_file(args)
     } else {
-        read_json_from_api()
+        read_json_from_api(args)
     }
 }
 
-pub fn schedule(_args: crate::Args) {
-    let root = get_data();
+pub fn schedule(args: crate::Args) {
+    let root = get_data(args);
     let east_timezone = FixedOffset::west_opt(5 * 3600).unwrap();
     for date in root.game_week {
         schedule_header( date.date.as_str(), date.day_abbrev.as_str());

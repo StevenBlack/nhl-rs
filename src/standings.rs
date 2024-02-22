@@ -9,8 +9,10 @@ const STANDINGS_FILE: &str = "./sample_standings.json";
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct StandingsRoot {
-    pub standings: Vec<Standing>,
+    pub standings: Standings,
 }
+
+type Standings = Vec<Standing>;
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -166,29 +168,33 @@ pub struct TeamAbbrev {
     pub default: String,
 }
 
-pub fn read_json_from_file () -> StandingsRoot {
+pub fn read_json_from_file (_args: &crate::Args) -> StandingsRoot {
     let path = STANDINGS_FILE;
     let data = fs::read_to_string(path).expect("Unable to read standings JSON file");
     let obj: StandingsRoot = serde_json::from_str(&data).expect("Unable to parse standings JSON");
     obj
 }
 
-pub fn read_json_from_api () -> StandingsRoot {
+pub fn read_json_from_api (args: &crate::Args) -> StandingsRoot {
     let response = reqwest::blocking::get(STANDINGS_URL).unwrap();
     let data = response.text().unwrap();
     let obj: StandingsRoot = serde_json::from_str(&data).expect("Unable to parse standings JSON");
+    if args.save {
+        println!("Writing to file.");
+        fs::write(STANDINGS_FILE, data).expect("Unable to write standings JSON file");
+    }
     obj
 }
 
-fn get_data() -> StandingsRoot {
-    if crate::LOCAL_DATA {
-        read_json_from_file()
+fn get_data(args: &crate::Args) -> StandingsRoot {
+    if crate::LOCAL_DATA || args.local {
+        read_json_from_file(args)
     } else {
-        read_json_from_api()
+        read_json_from_api(args)
     }
 }
 
-pub fn standings(_args: crate::Args) {
+pub fn standings(args: crate::Args) {
     // standings;
     // some basic groupings
     let conferences = vec!["Eastern", "Western"];
@@ -198,7 +204,7 @@ pub fn standings(_args: crate::Args) {
         ("Western", "Central"),
         ("Western", "Pacific"),
     ];
-    let mut root = get_data();
+    let mut root = get_data(&args);
     let mut idx;
 
     // sort the standings just the way I like it
@@ -208,6 +214,22 @@ pub fn standings(_args: crate::Args) {
         -item.regulation_wins
     ));
 
+    if args.playoffs {
+        struct playoffmatchup {
+            home: Standing,
+            away: Standing,
+        }
+        let mut playoffmatchups: Vec<playoffmatchup> = Vec::new();
+
+
+        let (conf1, conf2): (Vec<_>, Vec<_>) = root.standings
+            .into_iter()
+            .partition(|s| s.conference_name == conferences[0]);
+
+        println!("{:?}", conf1);
+        println!("{:?}", conf2);
+        return;
+    }
     // iterate our data in various ways
     for division in &divisions {
         standings_header(format!("{} division", division.1).as_str());
