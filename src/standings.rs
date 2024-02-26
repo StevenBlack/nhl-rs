@@ -119,11 +119,11 @@ impl fmt::Display for Standing {
         let gp_width = crate::GP_WIDTH;
         let plus_minus_width = crate::PLUS_MINUS_WIDTH;
         write!(f, "{} {:>gp_width$} {:>plus_minus_width$} {:>plus_minus_width$}",
-        self.place_name,
-        self.games_played,
-        self.wins - self.losses,
-        self.l10wins - self.l10losses,
-    )
+            self.place_name,
+            self.games_played,
+            self.wins - self.losses,
+            self.l10wins - self.l10losses,
+        )
     }
 }
 
