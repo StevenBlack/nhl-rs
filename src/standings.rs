@@ -171,6 +171,7 @@ pub struct TeamAbbrev {
 // playoff structures
 #[derive(Debug)]
 struct Playoffmatchup {
+    lbl: String,
     home: Standing,
     away: Standing,
 }
@@ -185,8 +186,9 @@ impl CustomDisplay for Playoffmatchups {
     fn custom_display(&self) -> String {
         let mut result = String::new();
         for matchup in self {
-            let (home, away) = (&matchup.home, &matchup.away);
-            result.push_str(&format!("{} ({}) vs {} ({})\n",
+            let (lbl, home, away) = (&matchup.lbl, &matchup.home, &matchup.away);
+            result.push_str(&format!("{} {} ({}) vs {} ({})\n",
+                lbl,
                 away.place_name.default.trim(),
                 away.wins - away.losses,
                 home.place_name.default.trim(),
@@ -267,7 +269,7 @@ pub fn standings(args: crate::Args) {
                 // division winners
                 firsts.push(div.remove(0));
                 // next 2
-                playoffmatchups.push(Playoffmatchup { home: div.remove(0), away: div.remove(0) });
+                playoffmatchups.push(Playoffmatchup { lbl: "[3-2]".to_string(), home: div.remove(0), away: div.remove(0) });
                 // wildcards bin
                 wildcards.extend(div);
             }
@@ -288,9 +290,9 @@ pub fn standings(args: crate::Args) {
             let lastwc = wildcards[1].wins - wildcards[1].losses;
 
             // now we can add the wildcards to the playoff matchups
-            playoffmatchups.push(Playoffmatchup { home: firsts.remove(0), away: wildcards.remove(1) });
+            playoffmatchups.push(Playoffmatchup { lbl: "[8-w]".to_string(), home: firsts.remove(0), away: wildcards.remove(1) });
 
-            playoffmatchups.push(Playoffmatchup { home: firsts.remove(0), away: wildcards.remove(0) });
+            playoffmatchups.push(Playoffmatchup { lbl: "[7-w]".to_string(), home: firsts.remove(0), away: wildcards.remove(0) });
 
             playoffmatchups.sort_unstable_by_key(|item| (
              -(item.home.wins - item.home.losses),
@@ -301,9 +303,13 @@ pub fn standings(args: crate::Args) {
             println!("{}", playoffmatchups.custom_display());
 
             // print teams within 3 of the final wildcard
-            print!("Outside looking-in: ");
+            let mut outsiders = false;
             for wc in wildcards {
                 if wc.wins - wc.losses >= lastwc -3 {
+                    if ! outsiders {
+                        print!("Outside looking-in: ");
+                        outsiders = true;
+                    }
                     print!("{} ({}) ", wc.team_abbrev.default.trim(), wc.wins - wc.losses);
                 }
             }
