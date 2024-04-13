@@ -13,8 +13,8 @@ const PANEL_WIDTH: usize = 55;
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ScheduleRoot {
-    pub next_start_date: String,
-    pub previous_start_date: String,
+    // pub next_start_date: String,
+    // pub previous_start_date: String,
     pub game_week: Vec<GameWeek>,
     pub pre_season_start_date: String,
     pub regular_season_start_date: String,
