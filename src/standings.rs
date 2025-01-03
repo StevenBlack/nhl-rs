@@ -200,6 +200,45 @@ impl CustomDisplay for Playoffmatchups {
     }
 }
 
+struct Cumulator {
+    wl: i32,
+    l10: i32,
+    games: i32,
+    points: i32,
+}
+
+impl Default for Cumulator {
+    fn default() -> Self {
+        Cumulator { wl: 0, l10: 0, games: 0, points: 0 }
+    }
+}
+
+impl fmt::Display for Cumulator {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{:>19}{:4}{:4} {:.3}",
+            "👉🏻",
+            self.wl,
+            self.l10,
+            self.points as f64 / ((self.games as f64) * 2.),
+        )
+    }
+
+}
+
+impl Cumulator {
+    fn new() -> Self {
+        Cumulator { wl: 0, l10: 0, games: 0, points: 0 }
+    }
+
+    fn absorb(&mut self, s: &&Standing) -> () {
+        self.wl = self.wl + s.wins - s.losses;
+        self.l10 = self.l10 + s.l10wins - s.l10losses;
+        self.games = self.games + s.games_played;
+        self.points = self.points + s.points;
+        ()
+    }
+}
+
 pub fn read_json_from_file(_args: &crate::Args) -> StandingsRoot {
     let path = STANDINGS_FILE;
     let data = fs::read_to_string(path).expect("Unable to read standings JSON file");
@@ -322,35 +361,44 @@ pub fn standings(args: crate::Args) {
 
     // iterate our data in various ways
     for division in &divisions {
+        let mut cumulator = Cumulator::new();
         standings_header(format!("{} division", division.1).as_str());
         idx = 1;
         for standing in &root.standings {
             if standing.division_name != division.1.to_string() {
                 continue;
             }
+            cumulator.absorb(&standing);
             println!("{:>2}. {}", idx, standing);
             idx = idx + 1;
         }
+        println!("{}", cumulator);
     }
 
     for conference in &conferences {
+        let mut cumulator = Cumulator::new();
         standings_header(format!("{} conference", conference).as_str());
         idx = 1;
         for standing in &root.standings {
             if standing.conference_name != conference.to_string() {
                 continue;
             }
+            cumulator.absorb(&standing);
             println!("{:>2}. {}", idx, standing);
             idx = idx + 1;
         }
+        println!("{}", cumulator);
     }
 
     standings_header("Full league");
+    let mut cumulator = Cumulator::new();
     idx = 1;
     for standing in &root.standings {
+        cumulator.absorb(&standing);
         println!("{:>2}. {}", idx, standing);
         idx = idx + 1;
     }
+    println!("{}", cumulator);
 }
 
 fn standings_header(title: &str) {
