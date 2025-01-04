@@ -7,7 +7,8 @@ NHL stats as I like 'em.
 The `nhl-rs` executable is a simple command-line tool that fetches the current NHL standings or schedule, and displays them in a tabular format.
 
 ```bash
- nhl-rs -h
+$ nhl-rs -h
+
 Usage: nhl-rs [OPTIONS]
 
 Options:
