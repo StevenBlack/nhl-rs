@@ -124,7 +124,7 @@ impl fmt::Display for Standing {
             self.games_played,
             self.wins - self.losses,
             self.l10wins - self.l10losses,
-            self.home_goal_differential
+            self.goal_differential
         )
     }
 }
@@ -226,7 +226,6 @@ impl fmt::Display for Cumulator {
             self.points as f64 / ((self.games as f64) * 2.),
         )
     }
-
 }
 
 impl Cumulator {
