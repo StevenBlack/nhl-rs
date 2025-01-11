@@ -4,6 +4,13 @@ use serde::{Deserialize, Serialize};
 // constant values
 const STANDINGS_URL: &str = "https://api-web.nhle.com/v1/standings/now";
 const STANDINGS_FILE: &str = "./sample_standings.json";
+static CONFERENCES: &[&str] = &["Eastern", "Western"];
+static DIVISIONS: &[(&str, &str)] = &[
+        ("Eastern", "Atlantic"),
+        ("Eastern", "Metropolitan"),
+        ("Western", "Central"),
+        ("Western", "Pacific"),
+    ];
 
 // standings data structures
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -270,17 +277,8 @@ fn get_data(args: &crate::Args) -> StandingsRoot {
 }
 
 pub fn standings(args: crate::Args) {
-    // standings;
-    // some basic groupings
-    let conferences = vec!["Eastern", "Western"];
-    let divisions = vec![
-        ("Eastern", "Atlantic"),
-        ("Eastern", "Metropolitan"),
-        ("Western", "Central"),
-        ("Western", "Pacific"),
-    ];
     let mut root = get_data(&args);
-    let mut idx;
+
 
     // sort the standings just the way I like it
     root.standings.sort_unstable_by_key(|item| (
@@ -289,21 +287,20 @@ pub fn standings(args: crate::Args) {
         -item.regulation_wins
     ));
 
-    // display the playoffs picture
     if args.playoffs {
-
+        // display the playoffs picture and bail
         playoff_header();
 
         let (conf1, conf2): (Vec<Standing>, Vec<Standing>) = root.standings
             .into_iter()
-            .partition(|s| s.conference_name == conferences[0]);
+            .partition(|s| s.conference_name == CONFERENCES[0]);
 
         let mut idx = 0;
         for conf in [conf1, conf2] {
             let mut playoffmatchups: Vec<Playoffmatchup> = Vec::new();
             let (div1, div2): (Vec<Standing>, Vec<Standing>) = conf
                 .into_iter()
-                .partition(|s| s.division_name == divisions[idx].1);
+                .partition(|s| s.division_name == DIVISIONS[idx].1);
 
             let mut firsts: Vec<Standing> = vec![];
             let mut wildcards: Vec<Standing> = vec![];
@@ -363,46 +360,56 @@ pub fn standings(args: crate::Args) {
         return;
     }
 
+    fn bydivision(r: &StandingsRoot) {
+        for division in DIVISIONS {
+            let mut cumulator = Cumulator::new();
+            standings_header(format!("{} division", division.1).as_str());
+            let mut idx = 1;
+            for standing in &r.standings {
+                if standing.division_name != division.1.to_string() {
+                    continue;
+                }
+                cumulator.absorb(&standing);
+                println!("{:>2}. {}", idx, standing);
+                idx = idx + 1;
+            }
+            println!("{}", cumulator);
+        }
+    }
+
+    fn byconference(r: &StandingsRoot) {
+        for conference in CONFERENCES {
+            let mut cumulator = Cumulator::new();
+            standings_header(format!("{} conference", conference).as_str());
+            let mut idx = 1;
+            for standing in &r.standings {
+                if standing.conference_name != conference.to_string() {
+                    continue;
+                }
+                cumulator.absorb(&standing);
+                println!("{:>2}. {}", idx, standing);
+                idx = idx + 1;
+            }
+            println!("{}", cumulator);
+        }
+    }
+
+    fn fullleague(r: &StandingsRoot) {
+        standings_header("Full league");
+        let mut cumulator = Cumulator::new();
+        let mut idx = 1;
+        for standing in &r.standings {
+            cumulator.absorb(&standing);
+            println!("{:>2}. {}", idx, standing);
+            idx = idx + 1;
+        }
+        println!("{}", cumulator);
+    }
+
     // iterate our data in various ways
-    for division in &divisions {
-        let mut cumulator = Cumulator::new();
-        standings_header(format!("{} division", division.1).as_str());
-        idx = 1;
-        for standing in &root.standings {
-            if standing.division_name != division.1.to_string() {
-                continue;
-            }
-            cumulator.absorb(&standing);
-            println!("{:>2}. {}", idx, standing);
-            idx = idx + 1;
-        }
-        println!("{}", cumulator);
-    }
-
-    for conference in &conferences {
-        let mut cumulator = Cumulator::new();
-        standings_header(format!("{} conference", conference).as_str());
-        idx = 1;
-        for standing in &root.standings {
-            if standing.conference_name != conference.to_string() {
-                continue;
-            }
-            cumulator.absorb(&standing);
-            println!("{:>2}. {}", idx, standing);
-            idx = idx + 1;
-        }
-        println!("{}", cumulator);
-    }
-
-    standings_header("Full league");
-    let mut cumulator = Cumulator::new();
-    idx = 1;
-    for standing in &root.standings {
-        cumulator.absorb(&standing);
-        println!("{:>2}. {}", idx, standing);
-        idx = idx + 1;
-    }
-    println!("{}", cumulator);
+    bydivision(&root);
+    byconference(&root);
+    fullleague(&root);
 }
 
 fn standings_header(title: &str) {
