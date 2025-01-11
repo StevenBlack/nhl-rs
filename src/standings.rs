@@ -367,6 +367,24 @@ pub fn standings(args: crate::Args) {
         return;
     }
 
+    if args.division {
+        bydivision(&root);
+    }
+
+    if args.conference {
+        byconference(&root);
+    }
+
+    if args.full {
+        fullleague(&root);
+    }
+
+    // bail if playoffs or standings were specified
+    if args.playoffs || args.division || args.conference || args.full {
+        return;
+    }
+
+
     fn bydivision(r: &StandingsRoot) {
         for division in DIVISIONS {
             let mut cumulator = Cumulator::new();

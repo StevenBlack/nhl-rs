@@ -14,6 +14,19 @@ struct Args {
     #[arg(short, long)]
     schedule: bool,
 
+    /// display just division standings
+    #[arg(short, long)]
+    division: bool,
+
+    /// display just conference standings
+    #[arg(short, long)]
+    conference: bool,
+
+    /// display just the full league standings
+    #[arg(short, long)]
+    full: bool,
+
+
     /// Save sample data to file
     #[arg(long)]
     save: bool,
