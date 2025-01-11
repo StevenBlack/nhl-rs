@@ -4,6 +4,13 @@ use serde::{Deserialize, Serialize};
 // constant values
 const STANDINGS_URL: &str = "https://api-web.nhle.com/v1/standings/now";
 const STANDINGS_FILE: &str = "./sample_standings.json";
+const TEAM_NAME_WIDTH: usize = 15;
+const PLACE_NAME_WIDTH: usize = 12;
+const GP_WIDTH: usize = 2;
+const PLUS_MINUS_WIDTH: usize = 3;
+const GOAL_DIFFERENTIAL_WIDTH: usize = 3;
+const PANEL_WIDTH: usize = 31;
+
 static CONFERENCES: &[&str] = &["Eastern", "Western"];
 static DIVISIONS: &[(&str, &str)] = &[
         ("Eastern", "Atlantic"),
@@ -123,9 +130,9 @@ pub struct Standing {
 impl fmt::Display for Standing {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         // Customize so only `x` and `y` are denoted.
-        let gp_width = crate::GP_WIDTH;
-        let plus_minus_width = crate::PLUS_MINUS_WIDTH;
-        let goal_differential_width = crate::GOAL_DIFFERENTIAL_WIDTH;
+        let gp_width = GP_WIDTH;
+        let plus_minus_width = PLUS_MINUS_WIDTH;
+        let goal_differential_width = GOAL_DIFFERENTIAL_WIDTH;
         write!(f, "{} {:>gp_width$} {:>plus_minus_width$} {:>plus_minus_width$} {:>goal_differential_width$}",
             self.place_name,
             self.games_played,
@@ -138,14 +145,14 @@ impl fmt::Display for Standing {
 
 impl fmt::Display for TeamCommonName {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let team_name_width = crate::TEAM_NAME_WIDTH;
+        let team_name_width = TEAM_NAME_WIDTH;
         write!(f, "{:<team_name_width$}", self.default)
     }
 }
 
 impl fmt::Display for PlaceName {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let place_name_width = crate::PLACE_NAME_WIDTH;
+        let place_name_width = PLACE_NAME_WIDTH;
         write!(f, "{:<place_name_width$}", self.default)
     }
 }
@@ -413,7 +420,7 @@ pub fn standings(args: crate::Args) {
 }
 
 fn standings_header(title: &str) {
-    let panel_width = crate::PANEL_WIDTH;
+    let panel_width = PANEL_WIDTH;
     println!();
     println!("{}", "=".repeat(panel_width));
     println!("{:^panel_width$}", title);

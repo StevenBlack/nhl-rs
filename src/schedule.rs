@@ -8,8 +8,8 @@ use chrono::DateTime;
 const SCHEDULE_URL: &str = "https://api-web.nhle.com/v1/schedule/now";
 const SCHEDULE_FILE: &str = "./sample_schedule.json";
 const PANEL_WIDTH: usize = 55;
-// schedule-related data structures
 
+// schedule-related data structures
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ScheduleRoot {

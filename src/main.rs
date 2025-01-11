@@ -19,14 +19,6 @@ struct Args {
     save: bool,
 }
 
-// constant values
-const TEAM_NAME_WIDTH: usize = 15;
-const PLACE_NAME_WIDTH: usize = 12;
-const GP_WIDTH: usize = 2;
-const PLUS_MINUS_WIDTH: usize = 3;
-const GOAL_DIFFERENTIAL_WIDTH: usize = 3;
-const PANEL_WIDTH: usize = 31;
-
 mod schedule;
 mod standings;
 
