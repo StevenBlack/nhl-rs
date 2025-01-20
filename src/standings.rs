@@ -379,11 +379,14 @@ pub fn standings(args: crate::Args) {
         fullleague(&root);
     }
 
-    // bail if playoffs or standings were specified
-    if args.playoffs || args.division || args.conference || args.full {
-        return;
+    if args.l10 {
+        last10(&root);
     }
 
+    // bail if playoffs or standings were specified
+    if args.playoffs || args.division || args.conference || args.full || args.l10 {
+        return;
+    }
 
     fn bydivision(r: &StandingsRoot) {
         for division in DIVISIONS {
@@ -431,10 +434,31 @@ pub fn standings(args: crate::Args) {
         println!("{}", cumulator);
     }
 
+    fn last10(r: &StandingsRoot) {
+        // sort the standings by the last 10 games
+        let mut st = r.standings.clone();
+        st.sort_unstable_by_key(|item| (
+            -(item.l10wins - item.l10losses),
+            -(item.wins - item.losses),
+            item.games_played,
+            -item.regulation_wins
+        ));
+        standings_header("Full league (10 games)");
+        let mut cumulator = Cumulator::new();
+        let mut idx = 1;
+        for standing in &st {
+            cumulator.absorb(&standing);
+            println!("{:>2}. {}", idx, standing);
+            idx = idx + 1;
+        }
+        println!("{}", cumulator);
+    }
+
     // iterate our data in various ways
     bydivision(&root);
     byconference(&root);
     fullleague(&root);
+    last10(&root);
 }
 
 fn standings_header(title: &str) {

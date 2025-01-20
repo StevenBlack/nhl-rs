@@ -26,6 +26,9 @@ struct Args {
     #[arg(short, long)]
     full: bool,
 
+    /// display full league standings by last 10 games
+    #[arg(long)]
+    l10: bool,
 
     /// Save sample data to file
     #[arg(long)]
