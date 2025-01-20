@@ -1,15 +1,15 @@
-# nhl-rs
+# nhl
 
-NHL stats as I like 'em.
+National Hockey League (NHL) stats as I like 'em.
 
 ## Usage and sample output
 
-The `nhl-rs` executable is a simple command-line tool that fetches the current NHL standings or schedule, and displays them in a table format.
+The `nhl` executable is a simple command-line tool that fetches the current NHL standings or schedule, and displays them in a table format.
 
 ```bash
-$ nhl-rs -h
+$ nhl -h
 
-Usage: nhl-rs [OPTIONS]
+Usage: nhl [OPTIONS]
 
 Options:
   -l, --local       use local data
@@ -26,7 +26,7 @@ Options:
 The output is segmented into the four divisions, two conferences, and the full league. The teams are sorted by wins minus losses, and the display is games played, wins minus losses, and the last ten games' wins minus losses.
 
 ```bash
-$ nhl-rs
+$ nhl
 
 ===============================
        Atlantic division
