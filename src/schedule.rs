@@ -224,8 +224,8 @@ pub fn schedule(args: crate::Args) {
             if game.game_state == "FUT" {
                 print!(
                     "{} at {}",
-                    game.away_team.place_name.default,
-                    game.home_team.place_name.default
+                    game.away_team.abbrev,
+                    game.home_team.abbrev
                 );
 
                 let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
@@ -245,10 +245,10 @@ pub fn schedule(args: crate::Args) {
                 continue;
             }
             print!("{} {} - {} {}",
-                game.away_team.place_name.default,
+                game.away_team.abbrev,
                 game.away_team.score.unwrap_or(0),
                 game.home_team.score.unwrap_or(0),
-                game.home_team.place_name.default
+                game.home_team.abbrev
             );
 
             let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
