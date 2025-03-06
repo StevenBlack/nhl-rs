@@ -447,7 +447,7 @@ pub fn standings(args: crate::Args) {
             item.games_played,
             -item.regulation_wins
         ));
-        standings_header("Full league (10 games)");
+        standings_header("Full league (last 10 games)");
         let mut cumulator = Cumulator::new();
         let mut idx = 1;
         for standing in &st {
