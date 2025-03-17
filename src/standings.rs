@@ -9,7 +9,7 @@ const PLACE_NAME_WIDTH: usize = 12;
 const GP_WIDTH: usize = 2;
 const PLUS_MINUS_WIDTH: usize = 3;
 const GOAL_DIFFERENTIAL_WIDTH: usize = 3;
-const PANEL_WIDTH: usize = 35;
+const PANEL_WIDTH: usize = 39;
 
 static CONFERENCES: &[&str] = &["Eastern", "Western"];
 static DIVISIONS: &[(&str, &str)] = &[
@@ -133,11 +133,12 @@ impl fmt::Display for Standing {
         let gp_width = GP_WIDTH;
         let plus_minus_width = PLUS_MINUS_WIDTH;
         let goal_differential_width = GOAL_DIFFERENTIAL_WIDTH;
-        write!(f, "{} {:>gp_width$} {:>plus_minus_width$} {:>plus_minus_width$} {:>goal_differential_width$} {:>goal_differential_width$}",
+        write!(f, "{} {:>gp_width$} {:>plus_minus_width$} {:>plus_minus_width$}  {:>gp_width$} {:>goal_differential_width$} {:>goal_differential_width$}",
             self.place_name,
             self.games_played,
             self.wins - self.losses,
             self.l10wins - self.l10losses,
+            self.regulation_wins,
             self.goal_differential,
             self.l10goal_differential
         )
@@ -219,6 +220,7 @@ impl CustomDisplay for Playoffmatchups {
 
 struct Cumulator {
     wl: i32,
+    rw: i32,
     l10: i32,
     games: i32,
     points: i32,
@@ -228,16 +230,17 @@ struct Cumulator {
 
 impl Default for Cumulator {
     fn default() -> Self {
-        Cumulator { wl: 0, l10: 0, games: 0, points: 0, goal_diff: 0, goal_diff_10: 0 }
+        Cumulator { wl: 0, rw: 0, l10: 0, games: 0, points: 0, goal_diff: 0, goal_diff_10: 0 }
     }
 }
 
 impl fmt::Display for Cumulator {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{:>19}{:4}{:4} {:3} {:3} {:.3}",
+        write!(f, "{:>19}{:4}{:4} {:3} {:3} {:3} {:.3}",
             "👉🏻",
             self.wl,
             self.l10,
+            self.rw,
             self.goal_diff,
             self.goal_diff_10,
             self.points as f64 / ((self.games as f64) * 2.),
@@ -247,12 +250,13 @@ impl fmt::Display for Cumulator {
 
 impl Cumulator {
     fn new() -> Self {
-        Cumulator { wl: 0, l10: 0, games: 0, points: 0, goal_diff: 0, goal_diff_10: 0  }
+        Cumulator { wl: 0, l10: 0, rw: 0, games: 0, points: 0, goal_diff: 0, goal_diff_10: 0  }
     }
 
     fn absorb(&mut self, s: &&Standing) -> () {
         self.wl = self.wl + s.wins - s.losses;
         self.l10 = self.l10 + s.l10wins - s.l10losses;
+        self.rw = self.rw + s.regulation_wins;
         self.games = self.games + s.games_played;
         self.points = self.points + s.points;
         self.goal_diff = self.goal_diff + s.goal_differential;
@@ -471,7 +475,7 @@ fn standings_header(title: &str) {
     println!("{}", "=".repeat(panel_width));
     println!("{:^panel_width$}", title);
     println!("{}", "=".repeat(panel_width));
-    println!("{:>19} {} {}  {} {}", "GP", "+/-", "L10", "GD", "L10");
+    println!("{:>19} {} {}  {}  {} {}", "GP", "+/-", "L10", "RW", "GD", "L10");
 }
 
 fn playoff_header() {
