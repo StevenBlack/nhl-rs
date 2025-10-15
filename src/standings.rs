@@ -1,5 +1,5 @@
-use std::{fmt, fs};
 use serde::{Deserialize, Serialize};
+use std::{fmt, fs};
 
 // constant values
 const STANDINGS_URL: &str = "https://api-web.nhle.com/v1/standings/now";
@@ -13,11 +13,11 @@ const PANEL_WIDTH: usize = 39;
 
 static CONFERENCES: &[&str] = &["Eastern", "Western"];
 static DIVISIONS: &[(&str, &str)] = &[
-        ("Eastern", "Atlantic"),
-        ("Eastern", "Metropolitan"),
-        ("Western", "Central"),
-        ("Western", "Pacific"),
-    ];
+    ("Eastern", "Atlantic"),
+    ("Eastern", "Metropolitan"),
+    ("Western", "Central"),
+    ("Western", "Pacific"),
+];
 
 // standings data structures
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -133,7 +133,9 @@ impl fmt::Display for Standing {
         let gp_width = GP_WIDTH;
         let plus_minus_width = PLUS_MINUS_WIDTH;
         let goal_differential_width = GOAL_DIFFERENTIAL_WIDTH;
-        write!(f, "{} {:>gp_width$} {:>plus_minus_width$} {:>plus_minus_width$}  {:>gp_width$} {:>goal_differential_width$} {:>goal_differential_width$}",
+        write!(
+            f,
+            "{} {:>gp_width$} {:>plus_minus_width$} {:>plus_minus_width$}  {:>gp_width$} {:>goal_differential_width$} {:>goal_differential_width$}",
             self.place_name,
             self.games_played,
             self.wins - self.losses,
@@ -205,14 +207,14 @@ impl CustomDisplay for Playoffmatchups {
         let mut result = String::new();
         for matchup in self {
             let (lbl, home, away) = (&matchup.lbl, &matchup.home, &matchup.away);
-            result.push_str(&format!("{} {} ({}) vs {} ({})\n",
+            result.push_str(&format!(
+                "{} {} ({}) vs {} ({})\n",
                 lbl,
                 away.place_name.default.trim(),
                 away.wins - away.losses,
                 home.place_name.default.trim(),
                 home.wins - home.losses,
-            )
-        );
+            ));
         }
         result
     }
@@ -230,13 +232,23 @@ struct Cumulator {
 
 impl Default for Cumulator {
     fn default() -> Self {
-        Cumulator { wl: 0, rw: 0, l10: 0, games: 0, points: 0, goal_diff: 0, goal_diff_10: 0 }
+        Cumulator {
+            wl: 0,
+            rw: 0,
+            l10: 0,
+            games: 0,
+            points: 0,
+            goal_diff: 0,
+            goal_diff_10: 0,
+        }
     }
 }
 
 impl fmt::Display for Cumulator {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{:>19}{:4}{:4} {:3} {:3} {:3} {:.3}",
+        write!(
+            f,
+            "{:>19}{:4}{:4} {:3} {:3} {:3} {:.3}",
             "👉🏻",
             self.wl,
             self.l10,
@@ -250,7 +262,15 @@ impl fmt::Display for Cumulator {
 
 impl Cumulator {
     fn new() -> Self {
-        Cumulator { wl: 0, l10: 0, rw: 0, games: 0, points: 0, goal_diff: 0, goal_diff_10: 0  }
+        Cumulator {
+            wl: 0,
+            l10: 0,
+            rw: 0,
+            games: 0,
+            points: 0,
+            goal_diff: 0,
+            goal_diff_10: 0,
+        }
     }
 
     fn absorb(&mut self, s: &&Standing) -> () {
@@ -272,7 +292,7 @@ pub fn read_json_from_file(_args: &crate::Args) -> StandingsRoot {
     obj
 }
 
-pub fn read_json_from_api (args: &crate::Args) -> StandingsRoot {
+pub fn read_json_from_api(args: &crate::Args) -> StandingsRoot {
     let response = reqwest::blocking::get(STANDINGS_URL).unwrap();
     let data = response.text().unwrap();
     let obj: StandingsRoot = serde_json::from_str(&data).expect("Unable to parse standings JSON");
@@ -294,19 +314,21 @@ fn get_data(args: &crate::Args) -> StandingsRoot {
 pub fn standings(args: crate::Args) {
     let mut root = get_data(&args);
 
-
     // sort the standings just the way I like it
-    root.standings.sort_unstable_by_key(|item| (
-        -(item.wins - item.losses),
-        item.games_played,
-        -item.regulation_wins
-    ));
+    root.standings.sort_unstable_by_key(|item| {
+        (
+            -(item.wins - item.losses),
+            item.games_played,
+            -item.regulation_wins,
+        )
+    });
 
     if args.playoffs {
         // display the playoffs picture and bail
         playoff_header();
 
-        let (conf1, conf2): (Vec<Standing>, Vec<Standing>) = root.standings
+        let (conf1, conf2): (Vec<Standing>, Vec<Standing>) = root
+            .standings
             .into_iter()
             .partition(|s| s.conference_name == CONFERENCES[0]);
 
@@ -324,51 +346,74 @@ pub fn standings(args: crate::Args) {
                 // division winners
                 firsts.push(div.remove(0));
                 // next 2
-                playoffmatchups.push(Playoffmatchup { lbl: "[3-2]".to_string(), home: div.remove(0), away: div.remove(0) });
+                playoffmatchups.push(Playoffmatchup {
+                    lbl: "[3-2]".to_string(),
+                    home: div.remove(0),
+                    away: div.remove(0),
+                });
                 // wildcards bin
                 wildcards.extend(div);
             }
             // now sort the firsts
-            firsts.sort_unstable_by_key(|item| (
-                -(item.wins - item.losses),
-                item.games_played,
-                -item.regulation_wins
-            ));
+            firsts.sort_unstable_by_key(|item| {
+                (
+                    -(item.wins - item.losses),
+                    item.games_played,
+                    -item.regulation_wins,
+                )
+            });
 
             // now sort the wildcards again
-            wildcards.sort_unstable_by_key(|item| (
-                -(item.wins - item.losses),
-                item.games_played,
-                -item.regulation_wins
-            ));
+            wildcards.sort_unstable_by_key(|item| {
+                (
+                    -(item.wins - item.losses),
+                    item.games_played,
+                    -item.regulation_wins,
+                )
+            });
 
             let lastwc = wildcards[1].wins - wildcards[1].losses;
 
             // now we can add the wildcards to the playoff matchups
-            playoffmatchups.push(Playoffmatchup { lbl: "[8-w]".to_string(), home: firsts.remove(0), away: wildcards.remove(1) });
+            playoffmatchups.push(Playoffmatchup {
+                lbl: "[8-w]".to_string(),
+                home: firsts.remove(0),
+                away: wildcards.remove(1),
+            });
 
-            playoffmatchups.push(Playoffmatchup { lbl: "[7-w]".to_string(), home: firsts.remove(0), away: wildcards.remove(0) });
+            playoffmatchups.push(Playoffmatchup {
+                lbl: "[7-w]".to_string(),
+                home: firsts.remove(0),
+                away: wildcards.remove(0),
+            });
 
-            playoffmatchups.sort_unstable_by_key(|item| (
-             -(item.home.wins - item.home.losses),
-             item.home.games_played,
-             -item.home.regulation_wins
-            ));
+            playoffmatchups.sort_unstable_by_key(|item| {
+                (
+                    -(item.home.wins - item.home.losses),
+                    item.home.games_played,
+                    -item.home.regulation_wins,
+                )
+            });
 
             println!("{}", playoffmatchups.custom_display());
 
             // print teams within 3 of the final wildcard
             let mut outsiders = false;
             for wc in wildcards {
-                if wc.wins - wc.losses >= lastwc -3 {
-                    if ! outsiders {
+                if wc.wins - wc.losses >= lastwc - 3 {
+                    if !outsiders {
                         print!("Outside looking-in: ");
                         outsiders = true;
                     }
-                    print!("{} ({}) ", wc.team_abbrev.default.trim(), wc.wins - wc.losses);
+                    print!(
+                        "{} ({}) ",
+                        wc.team_abbrev.default.trim(),
+                        wc.wins - wc.losses
+                    );
                 }
             }
-            println!();println!();
+            println!();
+            println!();
 
             idx = idx + 2;
         }
@@ -445,12 +490,14 @@ pub fn standings(args: crate::Args) {
     fn last10(r: &StandingsRoot) {
         // sort the standings by the last 10 games
         let mut st = r.standings.clone();
-        st.sort_unstable_by_key(|item| (
-            -(item.l10wins - item.l10losses),
-            -(item.wins - item.losses),
-            item.games_played,
-            -item.regulation_wins
-        ));
+        st.sort_unstable_by_key(|item| {
+            (
+                -(item.l10wins - item.l10losses),
+                -(item.wins - item.losses),
+                item.games_played,
+                -item.regulation_wins,
+            )
+        });
         standings_header("Full league (last 10 games)");
         let mut cumulator = Cumulator::new();
         let mut idx = 1;
@@ -475,7 +522,10 @@ fn standings_header(title: &str) {
     println!("{}", "=".repeat(panel_width));
     println!("{:^panel_width$}", title);
     println!("{}", "=".repeat(panel_width));
-    println!("{:>19} {} {}  {}  {} {}", "GP", "+/-", "L10", "RW", "GD", "L10");
+    println!(
+        "{:>19} {} {}  {}  {} {}",
+        "GP", "+/-", "L10", "RW", "GD", "L10"
+    );
 }
 
 fn playoff_header() {

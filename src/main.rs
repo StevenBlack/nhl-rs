@@ -1,5 +1,5 @@
 use clap::Parser;
-#[derive(Parser,Debug)]
+#[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
     /// use local data

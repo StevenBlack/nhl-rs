@@ -1,8 +1,8 @@
-use itertools::Itertools;
-use std::fs;
-use serde::{Deserialize, Serialize};
-use chrono::prelude::*;
 use chrono::DateTime;
+use chrono::prelude::*;
+use itertools::Itertools;
+use serde::{Deserialize, Serialize};
+use std::fs;
 
 // constant values
 const SCHEDULE_URL: &str = "https://api-web.nhle.com/v1/schedule/now";
@@ -188,7 +188,6 @@ pub struct LastName2 {
     pub default: String,
 }
 
-
 pub fn read_json_from_file(_args: crate::Args) -> ScheduleRoot {
     let path = SCHEDULE_FILE;
     let data = fs::read_to_string(path).expect("Unable to read schedule JSON file");
@@ -219,14 +218,10 @@ pub fn schedule(args: crate::Args) {
     let root = get_data(args);
     let east_timezone = FixedOffset::west_opt(5 * 3600).unwrap();
     for date in root.game_week {
-        schedule_header( date.date.as_str(), date.day_abbrev.as_str());
+        schedule_header(date.date.as_str(), date.day_abbrev.as_str());
         for game in date.games {
             if game.game_state == "FUT" {
-                print!(
-                    "{} at {}",
-                    game.away_team.abbrev,
-                    game.home_team.abbrev
-                );
+                print!("{} at {}", game.away_team.abbrev, game.home_team.abbrev);
 
                 let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
                 dt = dt.with_timezone(&east_timezone);
@@ -244,7 +239,8 @@ pub fn schedule(args: crate::Args) {
                 println!();
                 continue;
             }
-            print!("{} {} - {} {}",
+            print!(
+                "{} {} - {} {}",
                 game.away_team.abbrev,
                 game.away_team.score.unwrap_or(0),
                 game.home_team.score.unwrap_or(0),
