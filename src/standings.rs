@@ -320,6 +320,7 @@ pub fn standings(args: crate::Args) {
             -(item.wins - item.losses),
             item.games_played,
             -item.regulation_wins,
+            -item.goal_differential,
         )
     });
 
