@@ -208,7 +208,7 @@ impl CustomDisplay for Playoffmatchups {
         for matchup in self {
             let (lbl, home, away) = (&matchup.lbl, &matchup.home, &matchup.away);
             result.push_str(&format!(
-                "{} {} ({}) vs {} ({})\n",
+                "{} {} ({}) at {} ({})\n",
                 lbl,
                 away.place_name.default.trim(),
                 away.wins - away.losses,
