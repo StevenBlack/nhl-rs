@@ -28,181 +28,182 @@ The output is segmented into the four divisions, two conferences, and the full l
 ```bash
 $ nhl
 
-=======================================
-           Atlantic division
-=======================================
-                 GP +/- L10  RW  GD L10
- 1. Florida      68  17   4  35  37  11
- 2. Tampa Bay    66  15   3  33  55   8
- 3. Toronto      66  15   1  31  13  -3
- 4. Ottawa       66  11   5  27   8   6
- 5. Montréal     66   5   6  23 -19  12
- 6. Detroit      67   3  -4  24 -17  -6
- 7. Boston       68   0  -3  23 -34  -8
- 8. Buffalo      65  -7  -3  21 -24 -16
-                 👉🏻  59   9 217  19   4 0.555
 
 =======================================
-         Metropolitan division
+           Atlantic division           
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Washington   67  29   2  37  69   4
- 2. Carolina     67  19   6  36  39  12
- 3. New Jersey   68  10   0  32  27  -4
- 4. Columbus     66   4   0  23  -4  -2
- 5. NY Rangers   68   4   0  30   0   3
- 6. NY Islanders 66   2   1  24 -17  -6
- 7. Pittsburgh   69  -3   1  19 -48  -4
- 8. Philadelphia 68  -4  -3  17 -40 -13
-                 👉🏻  61   7 218  26 -10 0.557
+ 1. Montréal     11   5   6   4   7  10
+ 2. Detroit      10   4   4   6   4   4
+ 3. Buffalo      10   0   0   4  -1  -1
+ 4. Tampa Bay    10   0   0   3  -1  -1
+ 5. Florida      11   0  -1   5  -4  -5
+ 6. Ottawa       11   0  -1   4  -3  -4
+ 7. Toronto      11   0  -1   3  -4  -7
+ 8. Boston       12  -2  -4   4  -5  -8
+                 👉🏻   7   3  33  -7 -12 0.541
 
 =======================================
-           Central division
+         Metropolitan division         
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Winnipeg     68  30   3  38  81  11
- 2. Dallas       66  21   3  35  51   6
- 3. Colorado     68  17   7  35  31  20
- 4. Minnesota    67  12  -3  29 -10 -15
- 5. St. Louis    68   5   5  24   0  16
- 6. Utah         67   4   4  22  -8   6
- 7. Nashville    66  -8   1  21 -43  -4
- 8. Chicago      67 -18  -2  17 -55  -6
-                 👉🏻  63  18 221  47  34 0.559
+ 1. New Jersey   10   6   6   7   9   9
+ 2. Pittsburgh   11   5   4   7  10   7
+ 3. Carolina      9   3   3   3   6   6
+ 4. Philadelphia  9   2   2   2   3   3
+ 5. Washington   10   2   2   5   5   5
+ 6. Columbus     10   2   2   4   4   4
+ 7. NY Islanders  9   0   0   4  -1  -1
+ 8. NY Rangers   11  -1   0   4  -2   1
+                 👉🏻  19  19  36  34  34 0.620
 
 =======================================
-           Pacific division
+           Central division            
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Vegas        67  19   2  36  38   6
- 2. Los Angeles  65  16   2  31  16  -4
- 3. Edmonton     67  15   0  28  20  -3
- 4. Calgary      65   6   1  24 -21  -4
- 5. Vancouver    67   6   0  24 -18  -4
- 6. Anaheim      67  -2  -2  21 -32  -3
- 7. Seattle      68  -5  -1  23 -18  -5
- 8. San Jose     68 -23  -2  13 -77  -8
-                 👉🏻  32   0 200 -92 -25 0.530
+ 1. Colorado     11   5   4   6  11   8
+ 2. Utah         11   5   6   6  10  11
+ 3. Winnipeg     10   4   4   6   9   9
+ 4. Dallas       10   3   3   5  -1  -1
+ 5. Chicago      10   2   2   4   7   7
+ 6. Nashville    11  -1  -2   3  -9 -10
+ 7. Minnesota    11  -2  -3   2 -12 -17
+ 8. St. Louis    10  -3  -3   3 -15 -15
+                 👉🏻  13  11  35   0  -8 0.577
 
 =======================================
-          Eastern conference
+           Pacific division            
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Washington   67  29   2  37  69   4
- 2. Carolina     67  19   6  36  39  12
- 3. Florida      68  17   4  35  37  11
- 4. Tampa Bay    66  15   3  33  55   8
- 5. Toronto      66  15   1  31  13  -3
- 6. Ottawa       66  11   5  27   8   6
- 7. New Jersey   68  10   0  32  27  -4
- 8. Montréal     66   5   6  23 -19  12
- 9. Columbus     66   4   0  23  -4  -2
-10. NY Rangers   68   4   0  30   0   3
-11. Detroit      67   3  -4  24 -17  -6
-12. NY Islanders 66   2   1  24 -17  -6
-13. Boston       68   0  -3  23 -34  -8
-14. Pittsburgh   69  -3   1  19 -48  -4
-15. Philadelphia 68  -4  -3  17 -40 -13
-16. Buffalo      65  -7  -3  21 -24 -16
-                 👉🏻 120  16 435  45  -6 0.556
+ 1. Vegas        10   5   5   5   9   9
+ 2. Seattle      10   3   3   3  -1  -1
+ 3. Anaheim       9   2   2   3   1   1
+ 4. Los Angeles  11   2   3   2  -3   0
+ 5. Edmonton     11   1   1   4   0   1
+ 6. Vancouver    11  -1  -2   3  -4  -8
+ 7. San Jose     10  -4  -4   0 -14 -14
+ 8. Calgary      11  -6  -7   1 -15 -16
+                 👉🏻   2   1  21 -27 -28 0.512
 
 =======================================
-          Western conference
+          Eastern conference           
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Winnipeg     68  30   3  38  81  11
- 2. Dallas       66  21   3  35  51   6
- 3. Vegas        67  19   2  36  38   6
- 4. Colorado     68  17   7  35  31  20
- 5. Los Angeles  65  16   2  31  16  -4
- 6. Edmonton     67  15   0  28  20  -3
- 7. Minnesota    67  12  -3  29 -10 -15
- 8. Calgary      65   6   1  24 -21  -4
- 9. Vancouver    67   6   0  24 -18  -4
-10. St. Louis    68   5   5  24   0  16
-11. Utah         67   4   4  22  -8   6
-12. Anaheim      67  -2  -2  21 -32  -3
-13. Seattle      68  -5  -1  23 -18  -5
-14. Nashville    66  -8   1  21 -43  -4
-15. Chicago      67 -18  -2  17 -55  -6
-16. San Jose     68 -23  -2  13 -77  -8
-                 👉🏻  95  18 421 -45   9 0.544
+ 1. New Jersey   10   6   6   7   9   9
+ 2. Pittsburgh   11   5   4   7  10   7
+ 3. Montréal     11   5   6   4   7  10
+ 4. Detroit      10   4   4   6   4   4
+ 5. Carolina      9   3   3   3   6   6
+ 6. Philadelphia  9   2   2   2   3   3
+ 7. Washington   10   2   2   5   5   5
+ 8. Columbus     10   2   2   4   4   4
+ 9. NY Islanders  9   0   0   4  -1  -1
+10. Buffalo      10   0   0   4  -1  -1
+11. Tampa Bay    10   0   0   3  -1  -1
+12. Florida      11   0  -1   5  -4  -5
+13. Ottawa       11   0  -1   4  -3  -4
+14. Toronto      11   0  -1   3  -4  -7
+15. NY Rangers   11  -1   0   4  -2   1
+16. Boston       12  -2  -4   4  -5  -8
+                 👉🏻  26  22  69  27  22 0.579
 
 =======================================
-              Full league
+          Western conference           
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Winnipeg     68  30   3  38  81  11
- 2. Washington   67  29   2  37  69   4
- 3. Dallas       66  21   3  35  51   6
- 4. Carolina     67  19   6  36  39  12
- 5. Vegas        67  19   2  36  38   6
- 6. Colorado     68  17   7  35  31  20
- 7. Florida      68  17   4  35  37  11
- 8. Los Angeles  65  16   2  31  16  -4
- 9. Tampa Bay    66  15   3  33  55   8
-10. Toronto      66  15   1  31  13  -3
-11. Edmonton     67  15   0  28  20  -3
-12. Minnesota    67  12  -3  29 -10 -15
-13. Ottawa       66  11   5  27   8   6
-14. New Jersey   68  10   0  32  27  -4
-15. Calgary      65   6   1  24 -21  -4
-16. Vancouver    67   6   0  24 -18  -4
-17. Montréal     66   5   6  23 -19  12
-18. St. Louis    68   5   5  24   0  16
-19. Columbus     66   4   0  23  -4  -2
-20. Utah         67   4   4  22  -8   6
-21. NY Rangers   68   4   0  30   0   3
-22. Detroit      67   3  -4  24 -17  -6
-23. NY Islanders 66   2   1  24 -17  -6
-24. Boston       68   0  -3  23 -34  -8
-25. Anaheim      67  -2  -2  21 -32  -3
-26. Pittsburgh   69  -3   1  19 -48  -4
-27. Philadelphia 68  -4  -3  17 -40 -13
-28. Seattle      68  -5  -1  23 -18  -5
-29. Buffalo      65  -7  -3  21 -24 -16
-30. Nashville    66  -8   1  21 -43  -4
-31. Chicago      67 -18  -2  17 -55  -6
-32. San Jose     68 -23  -2  13 -77  -8
-                 👉🏻 215  34 856   0   3 0.550
+ 1. Vegas        10   5   5   5   9   9
+ 2. Colorado     11   5   4   6  11   8
+ 3. Utah         11   5   6   6  10  11
+ 4. Winnipeg     10   4   4   6   9   9
+ 5. Dallas       10   3   3   5  -1  -1
+ 6. Seattle      10   3   3   3  -1  -1
+ 7. Anaheim       9   2   2   3   1   1
+ 8. Chicago      10   2   2   4   7   7
+ 9. Los Angeles  11   2   3   2  -3   0
+10. Edmonton     11   1   1   4   0   1
+11. Vancouver    11  -1  -2   3  -4  -8
+12. Nashville    11  -1  -2   3  -9 -10
+13. Minnesota    11  -2  -3   2 -12 -17
+14. St. Louis    10  -3  -3   3 -15 -15
+15. San Jose     10  -4  -4   0 -14 -14
+16. Calgary      11  -6  -7   1 -15 -16
+                 👉🏻  15  12  56 -27 -36 0.545
 
 =======================================
-      Full league (last 10 games)
+              Full league              
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Colorado     68  17   7  35  31  20
- 2. Carolina     67  19   6  36  39  12
- 3. Montréal     66   5   6  23 -19  12
- 4. Ottawa       66  11   5  27   8   6
- 5. St. Louis    68   5   5  24   0  16
- 6. Florida      68  17   4  35  37  11
- 7. Utah         67   4   4  22  -8   6
- 8. Winnipeg     68  30   3  38  81  11
- 9. Dallas       66  21   3  35  51   6
-10. Tampa Bay    66  15   3  33  55   8
-11. Washington   67  29   2  37  69   4
-12. Vegas        67  19   2  36  38   6
-13. Los Angeles  65  16   2  31  16  -4
-14. Toronto      66  15   1  31  13  -3
-15. Calgary      65   6   1  24 -21  -4
-16. NY Islanders 66   2   1  24 -17  -6
-17. Pittsburgh   69  -3   1  19 -48  -4
-18. Nashville    66  -8   1  21 -43  -4
-19. Edmonton     67  15   0  28  20  -3
-20. New Jersey   68  10   0  32  27  -4
-21. Vancouver    67   6   0  24 -18  -4
-22. Columbus     66   4   0  23  -4  -2
-23. NY Rangers   68   4   0  30   0   3
-24. Seattle      68  -5  -1  23 -18  -5
-25. Anaheim      67  -2  -2  21 -32  -3
-26. Chicago      67 -18  -2  17 -55  -6
-27. San Jose     68 -23  -2  13 -77  -8
-28. Minnesota    67  12  -3  29 -10 -15
-29. Boston       68   0  -3  23 -34  -8
-30. Philadelphia 68  -4  -3  17 -40 -13
-31. Buffalo      65  -7  -3  21 -24 -16
-32. Detroit      67   3  -4  24 -17  -6
-                 👉🏻 215  34 856   0   3 0.550
+ 1. New Jersey   10   6   6   7   9   9
+ 2. Vegas        10   5   5   5   9   9
+ 3. Pittsburgh   11   5   4   7  10   7
+ 4. Colorado     11   5   4   6  11   8
+ 5. Utah         11   5   6   6  10  11
+ 6. Montréal     11   5   6   4   7  10
+ 7. Winnipeg     10   4   4   6   9   9
+ 8. Detroit      10   4   4   6   4   4
+ 9. Carolina      9   3   3   3   6   6
+10. Dallas       10   3   3   5  -1  -1
+11. Seattle      10   3   3   3  -1  -1
+12. Anaheim       9   2   2   3   1   1
+13. Philadelphia  9   2   2   2   3   3
+14. Washington   10   2   2   5   5   5
+15. Chicago      10   2   2   4   7   7
+16. Columbus     10   2   2   4   4   4
+17. Los Angeles  11   2   3   2  -3   0
+18. Edmonton     11   1   1   4   0   1
+19. NY Islanders  9   0   0   4  -1  -1
+20. Buffalo      10   0   0   4  -1  -1
+21. Tampa Bay    10   0   0   3  -1  -1
+22. Florida      11   0  -1   5  -4  -5
+23. Ottawa       11   0  -1   4  -3  -4
+24. Toronto      11   0  -1   3  -4  -7
+25. NY Rangers   11  -1   0   4  -2   1
+26. Vancouver    11  -1  -2   3  -4  -8
+27. Nashville    11  -1  -2   3  -9 -10
+28. Minnesota    11  -2  -3   2 -12 -17
+29. Boston       12  -2  -4   4  -5  -8
+30. St. Louis    10  -3  -3   3 -15 -15
+31. San Jose     10  -4  -4   0 -14 -14
+32. Calgary      11  -6  -7   1 -15 -16
+                 👉🏻  41  34 125   0 -14 0.562
+
+=======================================
+      Full league (last 10 games)      
+=======================================
+                 GP +/- L10  RW  GD L10
+ 1. New Jersey   10   6   6   7   9   9
+ 2. Utah         11   5   6   6  10  11
+ 3. Montréal     11   5   6   4   7  10
+ 4. Vegas        10   5   5   5   9   9
+ 5. Pittsburgh   11   5   4   7  10   7
+ 6. Colorado     11   5   4   6  11   8
+ 7. Winnipeg     10   4   4   6   9   9
+ 8. Detroit      10   4   4   6   4   4
+ 9. Carolina      9   3   3   3   6   6
+10. Dallas       10   3   3   5  -1  -1
+11. Seattle      10   3   3   3  -1  -1
+12. Los Angeles  11   2   3   2  -3   0
+13. Anaheim       9   2   2   3   1   1
+14. Philadelphia  9   2   2   2   3   3
+15. Washington   10   2   2   5   5   5
+16. Chicago      10   2   2   4   7   7
+17. Columbus     10   2   2   4   4   4
+18. Edmonton     11   1   1   4   0   1
+19. NY Islanders  9   0   0   4  -1  -1
+20. Buffalo      10   0   0   4  -1  -1
+21. Tampa Bay    10   0   0   3  -1  -1
+22. NY Rangers   11  -1   0   4  -2   1
+23. Florida      11   0  -1   5  -4  -5
+24. Ottawa       11   0  -1   4  -3  -4
+25. Toronto      11   0  -1   3  -4  -7
+26. Vancouver    11  -1  -2   3  -4  -8
+27. Nashville    11  -1  -2   3  -9 -10
+28. Minnesota    11  -2  -3   2 -12 -17
+29. St. Louis    10  -3  -3   3 -15 -15
+30. Boston       12  -2  -4   4  -5  -8
+31. San Jose     10  -4  -4   0 -14 -14
+32. Calgary      11  -6  -7   1 -15 -16
+                 👉🏻  41  34 125   0 -14 0.562
                  
 ```
 
