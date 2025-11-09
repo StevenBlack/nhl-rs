@@ -10,9 +10,17 @@ struct Args {
     #[arg(short, long)]
     playoffs: bool,
 
-    /// display the proximate schedule
+    /// display the league proximate schedule
     #[arg(short, long)]
     schedule: bool,
+
+    /// display a team's proximate schedule
+    #[arg(long)]
+    ts: bool,
+
+    ///The default team for team schedule is the user's favorite team
+    #[arg(short, long, default_value = "MTL")]
+    team: Option<String>,
 
     /// display just division standings
     #[arg(short, long)]
@@ -37,12 +45,17 @@ struct Args {
 
 mod schedule;
 mod standings;
+mod team_schedule;
 
 fn main() {
     let args = Args::parse();
 
     if args.schedule {
         schedule::schedule(args);
+        return;
+    }
+    if args.ts {
+        team_schedule::schedule(args);
         return;
     }
     standings::standings(args);

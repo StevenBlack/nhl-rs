@@ -1,4 +1,4 @@
-/target
+target
 release
 mrelease
-/Cargo.lock
+Cargo.lock
