@@ -2,3 +2,4 @@ target
 release
 mrelease
 Cargo.lock
+/.idea
