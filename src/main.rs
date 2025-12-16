@@ -10,7 +10,7 @@ struct Args {
     #[arg(short, long)]
     schedule: bool,
 
-    ///The default team for team schedule is the user's favorite team
+    /// used with --schedule to display just one team's full schedule
     #[arg(short, long)]
     team: Option<String>,
 
