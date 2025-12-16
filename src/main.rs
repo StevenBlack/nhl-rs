@@ -45,17 +45,12 @@ struct Args {
 
 mod schedule;
 mod standings;
-mod team_schedule;
 
 fn main() {
     let args = Args::parse();
 
     if args.schedule {
         schedule::schedule(args);
-        return;
-    }
-    if args.ts {
-        team_schedule::schedule(args);
         return;
     }
     standings::standings(args);
