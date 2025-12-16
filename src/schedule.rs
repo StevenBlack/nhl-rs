@@ -320,6 +320,7 @@ pub fn team_schedule(args: crate::Args) {
         let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
         dt = dt.with_timezone(&east_timezone);
         print!("{:>2} {}  ", game_number,dt.format("%a %b %e %Y").to_string());
+        // Future game
         if game.game_state == "FUT" {
             print!("{} at {}", game.away_team.abbrev, game.home_team.abbrev);
             print!("  {} ", dt.format("%H:%M").to_string());
@@ -331,6 +332,22 @@ pub fn team_schedule(args: crate::Args) {
                 // print!("  ({})", networks.join(", "));
                 let networks: Vec<String> = networks.into_iter().unique().collect();
                 print!("  ({})", networks.join(", "))
+            }
+            println!();
+            continue;
+        }
+        // Pre game
+        if game.game_state == "PRE" {
+            print!("{} at {}  ", game.away_team.abbrev, game.home_team.abbrev);
+            print!("{} ", dt.format("%H:%M").to_string());
+            if game.tv_broadcasts.len() > 0 {
+                let mut networks = Vec::new();
+                for broadcast in game.tv_broadcasts {
+                    networks.push(broadcast.network);
+                }
+                // print!("  ({})", networks.join(", "));
+                let networks: Vec<String> = networks.into_iter().unique().collect();
+                print!("  ({}) Pre game", networks.join(", "))
             }
             println!();
             continue;
