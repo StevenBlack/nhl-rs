@@ -1,9 +1,8 @@
 use serde::{Deserialize, Serialize};
-use std::{fmt, fs};
+use std::{fmt};
 
 // constant values
 const STANDINGS_URL: &str = "https://api-web.nhle.com/v1/standings/now";
-const STANDINGS_FILE: &str = "./sample_standings.json";
 const TEAM_NAME_WIDTH: usize = 15;
 const PLACE_NAME_WIDTH: usize = 12;
 const GP_WIDTH: usize = 2;
@@ -285,34 +284,19 @@ impl Cumulator {
     }
 }
 
-pub fn read_json_from_file(_args: &crate::Args) -> StandingsRoot {
-    let path = STANDINGS_FILE;
-    let data = fs::read_to_string(path).expect("Unable to read standings JSON file");
-    let obj: StandingsRoot = serde_json::from_str(&data).expect("Unable to parse standings JSON");
-    obj
-}
-
-pub fn read_json_from_api(args: &crate::Args) -> StandingsRoot {
+pub fn read_json_from_api() -> StandingsRoot {
     let response = reqwest::blocking::get(STANDINGS_URL).unwrap();
     let data = response.text().unwrap();
     let obj: StandingsRoot = serde_json::from_str(&data).expect("Unable to parse standings JSON");
-    if args.save {
-        println!("Writing to file.");
-        fs::write(STANDINGS_FILE, data).expect("Unable to write standings JSON file");
-    }
     obj
 }
 
-fn get_data(args: &crate::Args) -> StandingsRoot {
-    if args.local {
-        read_json_from_file(args)
-    } else {
-        read_json_from_api(args)
-    }
+fn get_data() -> StandingsRoot {
+    read_json_from_api()
 }
 
 pub fn standings(args: crate::Args) {
-    let mut root = get_data(&args);
+    let mut root = get_data();
 
     // sort the standings just the way I like it
     root.standings.sort_unstable_by_key(|item| {
