@@ -10,12 +10,8 @@ struct Args {
     #[arg(short, long)]
     schedule: bool,
 
-    /// display a team's proximate schedule
-    #[arg(long)]
-    ts: bool,
-
     ///The default team for team schedule is the user's favorite team
-    #[arg(short, long, default_value = "MTL")]
+    #[arg(short, long)]
     team: Option<String>,
 
     /// display just division standings
@@ -42,6 +38,10 @@ fn main() {
     let args = Args::parse();
 
     if args.schedule {
+        if args.team.is_some() {
+            schedule::team_schedule(args);
+            return;
+        }
         schedule::schedule(args);
         return;
     }
