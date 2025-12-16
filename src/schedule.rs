@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 
 // constant values
 const SCHEDULE_URL: &str = "https://api-web.nhle.com/v1/schedule/now";
-const TEAM_SCHEDULE_URL: &str = "https://api-web.nhle.com/v1/club-schedule-season/MTL/20252026";
+const TEAM_SCHEDULE_URL: &str = "https://api-web.nhle.com/v1/club-schedule-season/TTT/20252026";
 const PANEL_WIDTH: usize = 55;
 
 // schedule-related data structures
@@ -206,7 +206,7 @@ pub fn read_json_from_api() -> ScheduleRoot {
 }
 
 pub fn read_team_json_from_api(args: crate::Args) -> TeamScheduleRoot {
-    let response = reqwest::blocking::get(TEAM_SCHEDULE_URL).unwrap();
+    let response = reqwest::blocking::get(TEAM_SCHEDULE_URL.replace("TTT", &args.team.clone().unwrap())).unwrap();
     let data = response.text().unwrap();
     let obj: TeamScheduleRoot = serde_json::from_str(&data).expect("Unable to parse team schedule JSON");
     obj
@@ -217,10 +217,11 @@ fn get_data() -> ScheduleRoot {
 }
 
 fn get_team_data(args: crate::Args) -> TeamScheduleRoot {
+
     read_team_json_from_api(args)
 }
 
-pub fn schedule(args: crate::Args) {
+pub fn schedule() {
     let root = get_data();
     let east_timezone = FixedOffset::west_opt(5 * 3600).unwrap();
     for date in root.game_week {
@@ -279,16 +280,30 @@ fn schedule_header(title: &str, day: &str) {
 }
 
 pub fn team_schedule(args: crate::Args) {
+    let team = match &args.team {
+        Some(t) => t.trim().to_uppercase(),
+        None => { eprintln!("No team supplied"); return; }
+    };
+    let valid_teams = [
+        "FLA","TBL","TOR","OTT","MTL","DET","BOS","BUF",
+        "WSH","CAR","NJD","CBJ","NYR","NYI","PIT","PHI",
+        "WPG","DAL","COL","MIN","STL","CHI","NSH","ARI",
+        "VGK","LAK","EDM","CGY","VAN","ANA","SEA","SJS",
+        "UTA"
+    ];
+    if !valid_teams.contains(&team.as_str()) {
+        eprintln!("Invalid team code '{}'. Expected one of: {}", team, valid_teams.join(", "));
+        return;
+    }
     let root = get_team_data(args);
     let east_timezone = FixedOffset::west_opt(5 * 3600).unwrap();
     for game in root.games {
+        let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
+        dt = dt.with_timezone(&east_timezone);
+        print!("{} ", dt.format("%a %b %e %Y").to_string());
         if game.game_state == "FUT" {
             print!("{} at {}", game.away_team.abbrev, game.home_team.abbrev);
-
-            let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
-            dt = dt.with_timezone(&east_timezone);
             print!("  {} ", dt.format("%H:%M").to_string());
-
             if game.tv_broadcasts.len() > 0 {
                 let mut networks = Vec::new();
                 for broadcast in game.tv_broadcasts {
@@ -308,18 +323,6 @@ pub fn team_schedule(args: crate::Args) {
             game.home_team.score.unwrap_or(0),
             game.home_team.abbrev
         );
-
-        let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
-        dt = dt.with_timezone(&east_timezone);
-        print!("  {} ", dt.format("%H:%M").to_string());
-
-        if game.tv_broadcasts.len() > 0 {
-            let mut networks = Vec::new();
-            for broadcast in game.tv_broadcasts {
-                networks.push(broadcast.network);
-            }
-            print!("  ({})", networks.join(", "));
-        }
         println!();
     }
 }

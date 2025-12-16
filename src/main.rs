@@ -42,7 +42,7 @@ fn main() {
             schedule::team_schedule(args);
             return;
         }
-        schedule::schedule(args);
+        schedule::schedule();
         return;
     }
     standings::standings(args);
