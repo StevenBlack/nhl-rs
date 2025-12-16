@@ -281,6 +281,18 @@ fn schedule_header(title: &str, day: &str) {
     println!("{}", "=".repeat(width));
 }
 
+// Add ANSI constants and a small helper to color the leading team's abbrev.
+const ANSI_BOLD: &str = "\x1b[1m";
+const ANSI_RESET: &str = "\x1b[0m";
+
+fn color_abbrev(abbrev: &str, score: i64, opponent_score: i64) -> String {
+    if score > opponent_score {
+        format!("{}{}{}", ANSI_BOLD, abbrev, ANSI_RESET)
+    } else {
+        abbrev.to_string()
+    }
+}
+
 pub fn team_schedule(args: crate::Args) {
     let team = match &args.team {
         Some(t) => t.trim().to_uppercase(),
@@ -336,13 +348,17 @@ pub fn team_schedule(args: crate::Args) {
                 continue;
             }
         };
+        let away_score = game.away_team.score.unwrap_or(0);
+        let home_score = game.home_team.score.unwrap_or(0);
+        let away_abbrev = color_abbrev(&game.away_team.abbrev, away_score, home_score);
+        let home_abbrev = color_abbrev(&game.home_team.abbrev, home_score, away_score);
         print!(
-            "{}  {} - {} {} {}",
-            game.away_team.abbrev,
-            game.away_team.score.unwrap_or(0),
-            game.home_team.score.unwrap_or(0),
-            game.home_team.abbrev,
-            game_outcome,
+            "{} {} - {} {} {}",
+            away_abbrev,
+            away_score,
+            home_score,
+            home_abbrev,
+            game_outcome
         );
         println!();
     }
