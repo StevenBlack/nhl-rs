@@ -1,3 +1,5 @@
+use std::u8;
+
 use chrono::DateTime;
 use chrono::prelude::*;
 use itertools::Itertools;
@@ -297,10 +299,15 @@ pub fn team_schedule(args: crate::Args) {
     }
     let root = get_team_data(args);
     let east_timezone = FixedOffset::west_opt(5 * 3600).unwrap();
+    let mut game_number: u8 = 0;
     for game in root.games {
+        if game.game_type == 1 {
+            continue; // skip pre-season games
+        }
+        game_number += 1;
         let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
         dt = dt.with_timezone(&east_timezone);
-        print!("{} ", dt.format("%a %b %e %Y").to_string());
+        print!("{:>2} {}  ", game_number,dt.format("%a %b %e %Y").to_string());
         if game.game_state == "FUT" {
             print!("{} at {}", game.away_team.abbrev, game.home_team.abbrev);
             print!("  {} ", dt.format("%H:%M").to_string());
@@ -316,12 +323,26 @@ pub fn team_schedule(args: crate::Args) {
             println!();
             continue;
         }
+        let game_outcome = match &game.game_outcome {
+            Some(outcome) => {
+                if outcome.last_period_type == "OT" || outcome.last_period_type == "SO" {
+                    format!("({})", outcome.last_period_type)
+                } else {
+                    "  ".to_string()
+                }
+            },
+            None => {
+                eprintln!("No game outcome for completed game");
+                continue;
+            }
+        };
         print!(
-            "{} {} - {} {}",
+            "{}  {} - {} {} {}",
             game.away_team.abbrev,
             game.away_team.score.unwrap_or(0),
             game.home_team.score.unwrap_or(0),
-            game.home_team.abbrev
+            game.home_team.abbrev,
+            game_outcome,
         );
         println!();
     }
