@@ -247,8 +247,9 @@ impl fmt::Display for Cumulator {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(
             f,
-            "{:>19}{:4}{:4} {:3} {:3} {:3} {:.3}",
+            "{:>15}{:4}{:4}{:4} {:3} {:3} {:3} {:.3}",
             "👉🏻",
+            self.games,
             self.wl,
             self.l10,
             self.rw,
