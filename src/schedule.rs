@@ -231,7 +231,9 @@ pub fn schedule() {
         for game in date.games {
             if game.game_state == "FUT" {
                 print!("{} at {}", game.away_team.abbrev, game.home_team.abbrev);
-
+                if game.neutral_site {
+                    print!(" ✨");
+                }
                 let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
                 dt = dt.with_timezone(&east_timezone);
                 print!("  {} ", dt.format("%H:%M").to_string());
@@ -329,9 +331,11 @@ pub fn team_schedule(args: crate::Args) {
                 for broadcast in game.tv_broadcasts {
                     networks.push(broadcast.network);
                 }
-                // print!("  ({})", networks.join(", "));
+                if game.neutral_site {
+                    print!(" ✨");
+                }
                 let networks: Vec<String> = networks.into_iter().unique().collect();
-                print!("  ({})", networks.join(", "))
+                print!(" ({})", networks.join(", "))
             }
             println!();
             continue;
@@ -345,7 +349,9 @@ pub fn team_schedule(args: crate::Args) {
                 for broadcast in game.tv_broadcasts {
                     networks.push(broadcast.network);
                 }
-                // print!("  ({})", networks.join(", "));
+                if game.neutral_site {
+                    print!(" ✨");
+                }
                 let networks: Vec<String> = networks.into_iter().unique().collect();
                 print!("  ({}) Pre game", networks.join(", "))
             }
@@ -366,7 +372,9 @@ pub fn team_schedule(args: crate::Args) {
                 for broadcast in game.tv_broadcasts {
                     networks.push(broadcast.network);
                 }
-                // print!("  ({})", networks.join(", "));
+                if game.neutral_site {
+                    print!(" ✨");
+                }
                 let networks: Vec<String> = networks.into_iter().unique().collect();
                 print!("(In progress) ({})", networks.join(", "))
             }
@@ -382,8 +390,9 @@ pub fn team_schedule(args: crate::Args) {
                 }
             },
             None => {
-                eprintln!("No game outcome for completed game");
-                continue;
+                // eprintln!("No game outcome for completed game");
+                // continue;
+                "  ".to_string()
             }
         };
         let away_score = game.away_team.score.unwrap_or(0);
@@ -398,6 +407,9 @@ pub fn team_schedule(args: crate::Args) {
             home_abbrev,
             game_outcome
         );
+        if game.neutral_site {
+            print!(" ✨");
+        }
         println!();
     }
 }
