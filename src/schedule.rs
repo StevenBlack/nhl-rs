@@ -352,6 +352,27 @@ pub fn team_schedule(args: crate::Args) {
             println!();
             continue;
         }
+        if game.game_state == "LIVE" {
+            print!(
+              "{} {} - {} {}",
+              game.away_team.abbrev,
+              game.away_team.score.unwrap_or(0),
+              game.home_team.score.unwrap_or(0),
+              game.home_team.abbrev,
+            );
+            print!("  {} ", dt.format("%H:%M").to_string());
+            if game.tv_broadcasts.len() > 0 {
+                let mut networks = Vec::new();
+                for broadcast in game.tv_broadcasts {
+                    networks.push(broadcast.network);
+                }
+                // print!("  ({})", networks.join(", "));
+                let networks: Vec<String> = networks.into_iter().unique().collect();
+                print!("(In progress) ({})", networks.join(", "))
+            }
+            println!();
+            continue;
+        }
         let game_outcome = match &game.game_outcome {
             Some(outcome) => {
                 if outcome.last_period_type == "OT" || outcome.last_period_type == "SO" {
