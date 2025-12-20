@@ -226,14 +226,42 @@ fn get_team_data(args: crate::Args) -> TeamScheduleRoot {
 pub fn schedule() {
     let root = get_data();
     let east_timezone = FixedOffset::west_opt(5 * 3600).unwrap();
+    schedule_header("Upcoming league-wide schedule");
     for date in root.game_week {
-        schedule_header(date.date.as_str(), date.day_abbrev.as_str());
-        for game in date.games {
-            if game.game_state == "FUT" {
-                print!("{} at {}", game.away_team.abbrev, game.home_team.abbrev);
-                if game.neutral_site {
-                    print!(" ✨");
+        schedule_day_header(date.date.as_str(), date.day_abbrev.as_str());
+        if date.games.len() == 0 {
+            println!("No games");
+        } else {
+            for game in date.games {
+                if game.game_state == "FUT" {
+                    print!("{} at {}", game.away_team.abbrev, game.home_team.abbrev);
+                    if game.neutral_site {
+                        print!(" ✨");
+                    }
+                    let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
+                    dt = dt.with_timezone(&east_timezone);
+                    print!("  {} ", dt.format("%H:%M").to_string());
+
+                    if game.tv_broadcasts.len() > 0 {
+                        let mut networks = Vec::new();
+                        for broadcast in game.tv_broadcasts {
+                            networks.push(broadcast.network);
+                        }
+                        // print!("  ({})", networks.join(", "));
+                        let networks: Vec<String> = networks.into_iter().unique().collect();
+                        print!("  ({})", networks.join(", "))
+                    }
+                    println!();
+                    continue;
                 }
+                print!(
+                    "{} {} - {} {}",
+                    game.away_team.abbrev,
+                    game.away_team.score.unwrap_or(0),
+                    game.home_team.score.unwrap_or(0),
+                    game.home_team.abbrev
+                );
+
                 let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
                 dt = dt.with_timezone(&east_timezone);
                 print!("  {} ", dt.format("%H:%M").to_string());
@@ -243,41 +271,27 @@ pub fn schedule() {
                     for broadcast in game.tv_broadcasts {
                         networks.push(broadcast.network);
                     }
-                    // print!("  ({})", networks.join(", "));
-                    let networks: Vec<String> = networks.into_iter().unique().collect();
-                    print!("  ({})", networks.join(", "))
+                    print!("  ({})", networks.join(", "));
                 }
                 println!();
-                continue;
             }
-            print!(
-                "{} {} - {} {}",
-                game.away_team.abbrev,
-                game.away_team.score.unwrap_or(0),
-                game.home_team.score.unwrap_or(0),
-                game.home_team.abbrev
-            );
-
-            let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
-            dt = dt.with_timezone(&east_timezone);
-            print!("  {} ", dt.format("%H:%M").to_string());
-
-            if game.tv_broadcasts.len() > 0 {
-                let mut networks = Vec::new();
-                for broadcast in game.tv_broadcasts {
-                    networks.push(broadcast.network);
-                }
-                print!("  ({})", networks.join(", "));
-            }
-            println!();
         }
     }
 }
 
-fn schedule_header(title: &str, day: &str) {
+fn schedule_header(title: &str) {
     let width = PANEL_WIDTH;
     println!();
     println!("{}", "=".repeat(width));
+    let together = format!("{title}");
+    println!("{:^width$}", together);
+    println!("{}", "=".repeat(width));
+}
+
+fn schedule_day_header(title: &str, day: &str) {
+    let width = PANEL_WIDTH - 10;
+    println!();
+    // println!("{}", "=".repeat(width));
     let together = format!("{title} ({day})");
     println!("{:^width$}", together);
     println!("{}", "=".repeat(width));
@@ -314,6 +328,7 @@ pub fn team_schedule(args: crate::Args) {
     let root = get_team_data(args);
     let east_timezone = FixedOffset::west_opt(5 * 3600).unwrap();
     let mut game_number: u8 = 0;
+    schedule_header(format!("{} season schedule", &team).as_str());
     for game in root.games {
         if game.game_type == 1 {
             continue; // skip pre-season games
