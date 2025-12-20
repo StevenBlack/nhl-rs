@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# export NO_COLOR=1
+# export CLICOLOR=0
+# export LC_ALL=C
+
+README="readme.md"
+BIN="./target/release/nhl"
+
+render() {
+  local cmd_display="$1"
+  shift
+  local out
+  out="$(
+    NO_COLOR=1 CLICOLOR=0 CLICOLOR_FORCE=0 FORCE_COLOR=0 TERM=dumb LC_ALL=C \
+    "$@" 2>&1 | perl -pe 's/\e\[[0-9;]*[[:alpha:]]//g' || true
+  )"
+  cat <<EOF
+\`\`\`text
+$ ${cmd_display}
+
+${out}
+\`\`\`
+EOF
+}
+
+replace_block() {
+  local name="$1"
+  local content="$2"
+  BLOCK_NAME="$name" BLOCK_CONTENT="$content" perl -0777 -i -pe '
+    my $name = $ENV{"BLOCK_NAME"};
+    my $content = $ENV{"BLOCK_CONTENT"};
+    s/(<!--\s*BEGIN:\Q$name\E\s*-->)(.*?)(<!--\s*END:\Q$name\E\s*-->)/$1\n\n$content\n\n$3/sg
+      or die "Could not find markers for $name\n";
+  ' "$README"
+}
+
+# Each entry: block_name<TAB>display_string<TAB>command... (split by a delimiter)
+# We’ll use | as a delimiter so args with spaces are manageable if you quote carefully.
+BLOCKS=(
+  $'version|'"$BIN"' -V|'"$BIN"'|-V'
+  $'help|'"$BIN"' -h|'"$BIN"'|-h'
+  $'vanilla|'"$BIN"' |'"$BIN"'|'
+  $'division|'"$BIN"' -d|'"$BIN"'|-d'
+  $'conference|'"$BIN"' -c|'"$BIN"'|-c'
+  $'full|'"$BIN"' -f|'"$BIN"'|-f'
+  $'last10|'"$BIN"' --l10|'"$BIN"'|--l10'
+  $'schedule|'"$BIN"' -s|'"$BIN"'|-s'
+  $'teamschedule|'"$BIN"' -s -t MTL|'"$BIN"'|-s|-t|MTL'
+)
+
+for entry in "${BLOCKS[@]}"; do
+  IFS='|' read -r block display first rest <<<"$entry" || true
+
+  # Re-split the command portion safely:
+  IFS='|' read -r -a argv <<<"${entry#*|*|}"  # everything after first two fields
+  # argv now looks like: ("./target/release/mycli" "--help") etc.
+
+  content="$(render "$display" "${argv[@]}")"
+  replace_block "$block" "$content"
+done
+
+echo "Updated $README"

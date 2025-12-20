@@ -7,7 +7,9 @@ The `nhl` executable is a simple command-line tool that fetches the current NHL 
 
 ## Usage
 
-### `version`
+### `version` with `-V` or `--version`
+
+Here's the latest version:
 
 <!-- BEGIN:version -->
 
@@ -19,7 +21,7 @@ nhl 0.2.6
 
 <!-- END:version -->
 
-### `help`
+### `help` with `-h` or `--help`
 <!-- BEGIN:help -->
 
 ```text
@@ -472,8 +474,8 @@ $ ./target/release/nhl -s
 =======================================================
 CAR 3 - 4 FLA  19:00   (TVAS, FDSNSO, SCRIPPS)
 VAN 4 - 1 NYI  19:00   (NHLN, SN, MSGSN)
-WPG 1 - 2 COL  21:00   (TVAS, TSN3, ALT, KTVD)
-NJD 1 - 1 UTA  21:00   (Utah16, MSGSN2)
+WPG 2 - 3 COL  21:00   (TVAS, TSN3, ALT, KTVD)
+NJD 2 - 1 UTA  21:00   (Utah16, MSGSN2)
 DAL 4 - 1 ANA  22:00   (SN, Victory+, Victory+, KCOP-13)
 
 =======================================================
@@ -551,40 +553,40 @@ Shows the full schedule for a particular team. The is specified by its common 3-
 ```text
 $ ./target/release/nhl -s -t MTL
 
- 1 Wed Oct  8 2025  MTL 2 - 5 TOR
- 2 Thu Oct  9 2025  MTL 5 - 1 DET
- 3 Sat Oct 11 2025  MTL 3 - 2 CHI
+ 1 Wed Oct  8 2025  MTL 2 - 5 TOR   
+ 2 Thu Oct  9 2025  MTL 5 - 1 DET   
+ 3 Sat Oct 11 2025  MTL 3 - 2 CHI   
  4 Tue Oct 14 2025  SEA 4 - 5 MTL (OT)
  5 Thu Oct 16 2025  NSH 2 - 3 MTL (OT)
- 6 Sat Oct 18 2025  NYR 4 - 3 MTL
- 7 Mon Oct 20 2025  BUF 2 - 4 MTL
+ 6 Sat Oct 18 2025  NYR 4 - 3 MTL   
+ 7 Mon Oct 20 2025  BUF 2 - 4 MTL   
  8 Wed Oct 22 2025  MTL 2 - 1 CGY (OT)
- 9 Thu Oct 23 2025  MTL 5 - 6 EDM
-10 Sat Oct 25 2025  MTL 4 - 3 VAN
+ 9 Thu Oct 23 2025  MTL 5 - 6 EDM   
+10 Sat Oct 25 2025  MTL 4 - 3 VAN   
 11 Tue Oct 28 2025  MTL 4 - 3 SEA (OT)
 12 Sat Nov  1 2025  OTT 3 - 4 MTL (OT)
 13 Tue Nov  4 2025  PHI 5 - 4 MTL (SO)
 14 Thu Nov  6 2025  MTL 3 - 4 NJD (OT)
-15 Sat Nov  8 2025  UTA 2 - 6 MTL
-16 Tue Nov 11 2025  LAK 5 - 1 MTL
-17 Thu Nov 13 2025  DAL 7 - 0 MTL
-18 Sat Nov 15 2025  BOS 3 - 2 MTL
+15 Sat Nov  8 2025  UTA 2 - 6 MTL   
+16 Tue Nov 11 2025  LAK 5 - 1 MTL   
+17 Thu Nov 13 2025  DAL 7 - 0 MTL   
+18 Sat Nov 15 2025  BOS 3 - 2 MTL   
 19 Mon Nov 17 2025  MTL 3 - 4 CBJ (SO)
-20 Thu Nov 20 2025  WSH 8 - 4 MTL
-21 Sat Nov 22 2025  TOR 2 - 5 MTL
-22 Wed Nov 26 2025  MTL 4 - 3 UTA
-23 Fri Nov 28 2025  MTL 4 - 1 VGK
-24 Sat Nov 29 2025  MTL 2 - 7 COL
-25 Tue Dec  2 2025  OTT 5 - 2 MTL
+20 Thu Nov 20 2025  WSH 8 - 4 MTL   
+21 Sat Nov 22 2025  TOR 2 - 5 MTL   
+22 Wed Nov 26 2025  MTL 4 - 3 UTA   
+23 Fri Nov 28 2025  MTL 4 - 1 VGK   
+24 Sat Nov 29 2025  MTL 2 - 7 COL   
+25 Tue Dec  2 2025  OTT 5 - 2 MTL   
 26 Wed Dec  3 2025  WPG 2 - 3 MTL (SO)
 27 Sat Dec  6 2025  MTL 2 - 1 TOR (SO)
-28 Sun Dec  7 2025  STL 4 - 3 MTL
-29 Tue Dec  9 2025  TBL 6 - 1 MTL
-30 Thu Dec 11 2025  MTL 4 - 2 PIT
+28 Sun Dec  7 2025  STL 4 - 3 MTL   
+29 Tue Dec  9 2025  TBL 6 - 1 MTL   
+30 Thu Dec 11 2025  MTL 4 - 2 PIT   
 31 Sat Dec 13 2025  MTL 4 - 5 NYR (OT)
-32 Sun Dec 14 2025  EDM 1 - 4 MTL
-33 Tue Dec 16 2025  PHI 4 - 1 MTL
-34 Thu Dec 18 2025  CHI 1 - 4 MTL
+32 Sun Dec 14 2025  EDM 1 - 4 MTL   
+33 Tue Dec 16 2025  PHI 4 - 1 MTL   
+34 Thu Dec 18 2025  CHI 1 - 4 MTL   
 35 Sat Dec 20 2025  PIT at MTL  19:00  (CITY, SNE, TVAS, SN-PIT)
 36 Sun Dec 21 2025  MTL at PIT  19:00  (TSN2, RDS, SN-PIT)
 37 Tue Dec 23 2025  MTL at BOS  19:00  (TSN2, RDS, NESN)
@@ -636,7 +638,6 @@ $ ./target/release/nhl -s -t MTL
 ```
 
 <!-- END:teamschedule -->
-
 
 ----
 
