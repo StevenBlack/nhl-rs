@@ -16,7 +16,7 @@ Here's the latest version:
 ```text
 $ ./target/release/nhl -V
 
-nhl 0.2.7
+nhl 0.2.8
 ```
 
 <!-- END:version -->
@@ -470,17 +470,19 @@ $ ./target/release/nhl -s
 
 
 =======================================================
-                   2025-12-19 (FRI)                    
+             Upcoming league-wide schedule             
 =======================================================
+
+              2025-12-19 (FRI)               
+=============================================
 CAR 3 - 4 FLA  19:00   (TVAS, FDSNSO, SCRIPPS)
 VAN 4 - 1 NYI  19:00   (NHLN, SN, MSGSN)
 WPG 2 - 3 COL  21:00   (TVAS, TSN3, ALT, KTVD)
 NJD 2 - 1 UTA  21:00   (Utah16, MSGSN2)
 DAL 8 - 2 ANA  22:00   (SN, Victory+, Victory+, KCOP-13)
 
-=======================================================
-                   2025-12-20 (SAT)                    
-=======================================================
+              2025-12-20 (SAT)               
+=============================================
 PHI at NYR  12:30   (NBCSP, MSG)
 DET at WSH  12:30   (SN, NHLN, FDSNDET, MNMT)
 CHI at OTT  15:00   (TVAS, TSN5, CHSN)
@@ -495,9 +497,8 @@ VGK at CGY  22:00   (CBC, CITY, SN, SCRIPPS)
 CBJ at ANA  22:00   (FDSNOH, Victory+, KCOP-13)
 SEA at SJS  22:00   (KHN/Prime, NBCSCA, KONG)
 
-=======================================================
-                   2025-12-21 (SUN)                    
-=======================================================
+              2025-12-21 (SUN)               
+=============================================
 WSH at DET  13:00   (NHLN, TVAS, FDSNDET, MNMT)
 COL at MIN  18:00   (FDSNNO, ALT, FDSNWIX)
 OTT at BOS  19:00   (TSN5, RDSI, NESN)
@@ -508,17 +509,15 @@ TOR at DAL  19:00   (SNO, NHLN, Victory+)
 WPG at UTA  19:00   (TSN3, Utah16)
 VGK at EDM  20:00   (SN, SN1, SCRIPPS)
 
-=======================================================
-                   2025-12-22 (MON)                    
-=======================================================
+              2025-12-22 (MON)               
+=============================================
 STL at TBL  19:00   (TVAS, FDSNMW, The Spot)
 VAN at PHI  19:30   (NHLN, Prime, TVAS2, NBCSP)
 SEA at ANA  22:00   (TVAS, KHN/Prime, KING 5, Victory+, KONG, KCOP-13)
 CBJ at LAK  22:00   (TVAS2, FDSNOH, FDSNW)
 
-=======================================================
-                   2025-12-23 (TUE)                    
-=======================================================
+              2025-12-23 (TUE)               
+=============================================
 PIT at TOR  16:00   (TNT, truTV, HBO MAX, SNO)
 DAL at DET  18:30   (TNT, truTV, HBO MAX, Victory+)
 NYR at WSH  19:00   (SN, MSG 2, MNMT2)
@@ -533,13 +532,13 @@ CGY at EDM  21:00   (SNW, SN360)
 SJS at VGK  22:00   (NBCSCA, SCRIPPS)
 SEA at LAK  22:00   (FDSNW, KHN/Prime, KONG)
 
-=======================================================
-                   2025-12-24 (WED)                    
-=======================================================
+              2025-12-24 (WED)               
+=============================================
+No games
 
-=======================================================
-                   2025-12-25 (THU)                    
-=======================================================
+              2025-12-25 (THU)               
+=============================================
+No games
 ```
 
 <!-- END:schedule -->
@@ -553,6 +552,10 @@ Shows the full schedule for a particular team. The is specified by its common 3-
 ```text
 $ ./target/release/nhl -s -t MTL
 
+
+=======================================================
+                  MTL season schedule                  
+=======================================================
  1 Wed Oct  8 2025  MTL 2 - 5 TOR   
  2 Thu Oct  9 2025  MTL 5 - 1 DET   
  3 Sat Oct 11 2025  MTL 3 - 2 CHI   
