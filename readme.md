@@ -16,7 +16,7 @@ Here's the latest version:
 ```text
 $ ./target/release/nhl -V
 
-nhl 0.2.6
+nhl 0.2.7
 ```
 
 <!-- END:version -->
@@ -476,7 +476,7 @@ CAR 3 - 4 FLA  19:00   (TVAS, FDSNSO, SCRIPPS)
 VAN 4 - 1 NYI  19:00   (NHLN, SN, MSGSN)
 WPG 2 - 3 COL  21:00   (TVAS, TSN3, ALT, KTVD)
 NJD 2 - 1 UTA  21:00   (Utah16, MSGSN2)
-DAL 4 - 1 ANA  22:00   (SN, Victory+, Victory+, KCOP-13)
+DAL 5 - 1 ANA  22:00   (SN, Victory+, Victory+, KCOP-13)
 
 =======================================================
                    2025-12-20 (SAT)                    
@@ -639,6 +639,35 @@ $ ./target/release/nhl -s -t MTL
 
 <!-- END:teamschedule -->
 
+## Playoff matchups with `--playoffs` or `-p`
+
+Displays the current playoff matchups.
+
+<!-- BEGIN:playoffs -->
+
+```text
+$ ./target/release/nhl -p
+
+
+===================================
+          Playoff Picture          
+===================================
+[8-w] Tampa Bay (5) at Carolina (13)
+[3-2] Philadelphia (7) at Washington (8)
+[7-w] NY Islanders (6) at Florida (6)
+[3-2] Detroit (6) at Montréal (6)
+
+Outside looking-in: NJD (5) BOS (5) PIT (4) OTT (3) TOR (2) NYR (2) 
+
+[8-w] San Jose (2) at Colorado (22)
+[3-2] Minnesota (12) at Dallas (16)
+[7-w] Edmonton (5) at Vegas (10)
+[3-2] Los Angeles (5) at Anaheim (8)
+
+Outside looking-in: UTA (1) WPG (-1) 
+```
+
+<!-- END:playoffs -->
 ----
 
 ## Resources

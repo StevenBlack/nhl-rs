@@ -48,6 +48,7 @@ BLOCKS=(
   $'last10|'"$BIN"' --l10|'"$BIN"'|--l10'
   $'schedule|'"$BIN"' -s|'"$BIN"'|-s'
   $'teamschedule|'"$BIN"' -s -t MTL|'"$BIN"'|-s|-t|MTL'
+  $'playoffs|'"$BIN"' -p|'"$BIN"'|-p'
 )
 
 for entry in "${BLOCKS[@]}"; do
