@@ -7,7 +7,7 @@ The `nhl` executable is a simple command-line tool that fetches the current NHL 
 
 ## Usage
 
-### `version` with `-V` or `--version`
+### Version information with `-V` or `--version`
 
 Here's the latest version:
 
@@ -21,7 +21,7 @@ nhl 0.2.6
 
 <!-- END:version -->
 
-### `help` with `-h` or `--help`
+### Help information with `-h` or `--help`
 <!-- BEGIN:help -->
 
 ```text
@@ -238,7 +238,7 @@ $ ./target/release/nhl
 
 <!-- END:vanilla -->
 
-### Division standings - `--division` or `-d`
+### Division standings with `--division` or `-d`
 
 <!-- BEGIN:division -->
 
@@ -305,7 +305,7 @@ $ ./target/release/nhl -d
 
 <!-- END:division -->
 
-### Conference standings - `--conference` or `-c`
+### Conference standings with `--conference` or `-c`
 
 <!-- BEGIN:conference -->
 
@@ -459,7 +459,7 @@ $ ./target/release/nhl --l10
 
 <!-- END:last10 -->
 
-## Schedule - `--schedule` or `-s`
+## Current schedule segment (7-days) with `--schedule` or `-s`
 
 By default, shows the next 7 days of NHL games, including today, and broadcast networks.
 
@@ -544,7 +544,7 @@ SEA at LAK  22:00   (FDSNW, KHN/Prime, KONG)
 
 <!-- END:schedule -->
 
-## Schedule for a particular team - (`--schedule` or `-s`) and (`--team <TEAM>` or `-t <TEAM>`)
+## Schedule for a particular team with (`--schedule` or `-s`) and (`--team <TEAM>` or `-t <TEAM>`)
 
 Shows the full schedule for a particular team. The is specified by its common 3-letter code, e.g., "BOS", "NYR", "STL", etc.
 
