@@ -319,7 +319,10 @@ pub fn standings(args: crate::Args) {
             .partition(|s| s.conference_name == CONFERENCES[0]);
 
         let mut idx = 0;
+        let mut conf_count = 0;
         for conf in [conf1, conf2] {
+            println!("{} Conference:\n", CONFERENCES[conf_count]);
+            conf_count += 1;
             let mut playoffmatchups: Vec<Playoffmatchup> = Vec::new();
             let (div1, div2): (Vec<Standing>, Vec<Standing>) = conf
                 .into_iter()
@@ -518,6 +521,6 @@ fn playoff_header() {
     let panel_width = 35;
     println!();
     println!("{}", "=".repeat(panel_width));
-    println!("{:^panel_width$}", "Playoff Picture");
+    println!("{:^panel_width$}", "Playoff Matchups");
     println!("{}", "=".repeat(panel_width));
 }
