@@ -2,8 +2,9 @@
 
 National Hockey League (NHL) stats as I like 'em.
 
-`nhl` a CLI that fetches the current NHL standings or 
-schedule, and displays them in a table format in the command window.
+`nhl` is a command line utility that fetches the current NHL standings 
+schedule, or current playoff matchups, and displays them in a table format 
+in the command window.
 
 ## Motivation
 
@@ -493,8 +494,8 @@ $ nhl -s
 
               2025-12-22 (MON)               
 =============================================
-STL 1 - 3 TBL  19:00   (TVAS, FDSNMW, The Spot)
-VAN 0 - 0 PHI  19:30   (NHLN, Prime, TVAS2, NBCSP)
+STL 1 - 4 TBL  19:00   (TVAS, FDSNMW, The Spot)
+VAN 0 - 1 PHI  19:30   (NHLN, Prime, TVAS2, NBCSP)
 SEA at ANA  22:00   (TVAS, KHN/Prime, KING 5, Victory+, KONG, KCOP-13)
 CBJ at LAK  22:00   (TVAS2, FDSNOH, FDSNW)
 
