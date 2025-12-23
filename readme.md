@@ -24,6 +24,19 @@ and win percentage is never clear how many games separate two
 teams. With *wins minus losses*, the number of games separating
 teams is abundantly clear.
 
+## Quick start
+
+```text
+nhl            # NHL standings, 5 different ways
+nhl -d         # NHL standings by division
+nhl -c.        # NHL standings by conference
+nhl -f.        # NHL league standings
+nhl -l10.      # NHL league standings by last 10 games
+nhl -p.        # NHL playoff matchups
+nhl -s         # NHL schedule, next 7 days
+nhl -s -t MTL  # Full schedule and results for team
+```
+
 ## Usage
 
 ### Version information with `-V` or `--version`
