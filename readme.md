@@ -29,12 +29,12 @@ teams is unambiguous.
 ```text
 nhl            # NHL standings, 5 different ways
 nhl -d         # NHL standings by division
-nhl -c.        # NHL standings by conference
-nhl -f.        # NHL league standings
-nhl -l10.      # NHL league standings by last 10 games
-nhl -p.        # NHL playoff matchups
-nhl -s         # NHL schedule, next 7 days
-nhl -s -t MTL  # Full schedule and results for team
+nhl -c         # NHL standings by conference
+nhl -f         # NHL league standings
+nhl -l10       # NHL league standings by last 10 games
+nhl -p         # NHL playoff matchups
+nhl -s         # NHL schedule, including broadcasters, next 7 days
+nhl -s -t MTL  # Full schedule including broadcasters and results for one team 
 ```
 
 ## Usage
