@@ -7,6 +7,7 @@ set -euo pipefail
 
 README="readme.md"
 BIN="./target/release/nhl"
+DOCBIN="nhl"
 
 render() {
   local cmd_display="$1"
@@ -39,16 +40,16 @@ replace_block() {
 # Each entry: block_name<TAB>display_string<TAB>command... (split by a delimiter)
 # We’ll use | as a delimiter so args with spaces are manageable if you quote carefully.
 BLOCKS=(
-  $'version|'"$BIN"' -V|'"$BIN"'|-V'
-  $'help|'"$BIN"' -h|'"$BIN"'|-h'
-  $'vanilla|'"$BIN"' |'"$BIN"'|'
-  $'division|'"$BIN"' -d|'"$BIN"'|-d'
-  $'conference|'"$BIN"' -c|'"$BIN"'|-c'
-  $'full|'"$BIN"' -f|'"$BIN"'|-f'
-  $'last10|'"$BIN"' --l10|'"$BIN"'|--l10'
-  $'schedule|'"$BIN"' -s|'"$BIN"'|-s'
-  $'teamschedule|'"$BIN"' -s -t MTL|'"$BIN"'|-s|-t|MTL'
-  $'playoffs|'"$BIN"' -p|'"$BIN"'|-p'
+  $'version|'"$DOCBIN"' -V|'"$BIN"'|-V'
+  $'help|'"$DOCBIN"' -h|'"$BIN"'|-h'
+  $'vanilla|'"$DOCBIN"' |'"$BIN"'|'
+  $'division|'"$DOCBIN"' -d|'"$BIN"'|-d'
+  $'conference|'"$DOCBIN"' -c|'"$BIN"'|-c'
+  $'full|'"$DOCBIN"' -f|'"$BIN"'|-f'
+  $'last10|'"$DOCBIN"' --l10|'"$BIN"'|--l10'
+  $'schedule|'"$DOCBIN"' -s|'"$BIN"'|-s'
+  $'teamschedule|'"$DOCBIN"' -s -t MTL|'"$BIN"'|-s|-t|MTL'
+  $'playoffs|'"$DOCBIN"' -p|'"$BIN"'|-p'
 )
 
 for entry in "${BLOCKS[@]}"; do
