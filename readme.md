@@ -74,6 +74,13 @@ Options:
 ```
 
 <!-- END:help -->
+
+## Standings
+
+All standings are assembled from results from the following call to the NHL api:
+
+* https://api-web.nhle.com/v1/standings/now
+
 ### Default output of `nhl` is standings, sliced and diced
 
 The default output is **standings** segmented segmented in different ways
@@ -510,7 +517,7 @@ $ nhl --l10
 
 Playoff matchups are derived from the current standings on a ***wins minus losses** basis.
 
-Playoff matchups are followed by a list of proximate teams "on the outside, looking in."
+Playoff matchups are followed by a list of proximate teams that are "on the outside, looking-in."
 
 <!-- BEGIN:playoffs -->
 
@@ -552,6 +559,9 @@ The current schedule uses the following call to the NHL api:
 
 Shows the next 7 days of NHL games (including today), strat times, and broadcast networks.
 
+The output shows scores of games currently in progress, and scores of games very
+recently completed.
+
 <!-- BEGIN:schedule -->
 
 ```text
@@ -565,12 +575,12 @@ $ nhl -s
               2025-12-23 (TUE)               
 =============================================
 PIT 3 - 6 TOR  16:00   (TNT, truTV, HBO MAX, SNO)
-DAL 3 - 2 DET  18:30   (TNT, truTV, HBO MAX, Victory+)
-NYR 2 - 3 WSH  19:00   (SN, MSG 2, MNMT2)
+DAL 3 - 3 DET  18:30   (TNT, truTV, HBO MAX, Victory+)
+NYR 4 - 3 WSH  19:00   (SN, MSG 2, MNMT2)
 MTL 2 - 2 BOS  19:00   (TSN2, RDS, NESN)
 BUF 2 - 2 OTT  19:00   (RDS2, TSN5, MSG-B)
 NJD 1 - 1 NYI  19:00   (MSGSN2, MSGSN)
-FLA 1 - 2 CAR  19:00   (FDSNSO, SCRIPPS)
+FLA 4 - 2 CAR  19:00   (FDSNSO, SCRIPPS)
 NSH 2 - 2 MIN  20:00   (ESPN+, HULU)
 PHI 0 - 0 CHI  21:00   (TNT, truTV, HBO MAX)
 UTA 0 - 0 COL  21:00   (Utah16, ALT)
