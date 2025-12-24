@@ -74,7 +74,7 @@ Options:
 ```
 
 <!-- END:help -->
-### Default output - standings sliced and diced
+### Default output of `nhl` is standings, sliced and diced
 
 The default output is **standings** segmented segmented in different ways
 
@@ -85,9 +85,9 @@ The default output is **standings** segmented segmented in different ways
 
 Standings order are determined by
 
-* wins minus losses, 
-* games played, and 
-* regulation wins.
+* wins minus losses (descending), 
+* games played (ascending), and 
+* regulation wins (descending).
 
 The standings groups show
 
@@ -101,6 +101,7 @@ The standings groups show
 Below each standings group is a tally of the columns in the group.
 
 <!-- BEGIN:vanilla -->
+
 ```text
 $ nhl 
 
@@ -116,8 +117,8 @@ $ nhl
  5. Ottawa       35   5   2  13   7  12
  6. Boston       37   4   1  14   0   3
  7. Buffalo      35   3   4  12  -6   4
- 8. Toronto      35   0   0  11  -9  -5
-             👉🏻 286  39  18 111   6  33 0.568
+ 8. Toronto      36   1   0  12  -6  -5
+             👉🏻 287  40  18 112   9  33 0.570
 
 =======================================
          Metropolitan division         
@@ -128,10 +129,10 @@ $ nhl
  3. Washington   36   7   1  18  18  -1
  4. NY Islanders 36   6   3  13   2   3
  5. New Jersey   36   5  -2  13  -6 -10
- 6. Pittsburgh   35   4  -2  13  -6 -14
+ 6. Pittsburgh   36   3  -4  13  -9 -18
  7. NY Rangers   38   2   0  11  -5  -7
  8. Columbus     36   0  -3   8 -17 -10
-             👉🏻 287  44   2 101  11 -32 0.577
+             👉🏻 288  43   0 101   8 -36 0.575
 
 =======================================
            Central division            
@@ -175,13 +176,13 @@ $ nhl
  8. Florida      35   5   5  16   0   5
  9. Ottawa       35   5   2  13   7  12
 10. New Jersey   36   5  -2  13  -6 -10
-11. Pittsburgh   35   4  -2  13  -6 -14
-12. Boston       37   4   1  14   0   3
-13. Buffalo      35   3   4  12  -6   4
+11. Boston       37   4   1  14   0   3
+12. Buffalo      35   3   4  12  -6   4
+13. Pittsburgh   36   3  -4  13  -9 -18
 14. NY Rangers   38   2   0  11  -5  -7
-15. Toronto      35   0   0  11  -9  -5
+15. Toronto      36   1   0  12  -6  -5
 16. Columbus     36   0  -3   8 -17 -10
-             👉🏻 573  83  20 212  17   1 0.572
+             👉🏻 575  83  18 213  17  -3 0.572
 
 =======================================
           Western conference           
@@ -225,15 +226,15 @@ $ nhl
 14. Ottawa       35   5   2  13   7  12
 15. New Jersey   36   5  -2  13  -6 -10
 16. Edmonton     37   5   5  13  -2  13
-17. Pittsburgh   35   4  -2  13  -6 -14
-18. Los Angeles  35   4  -2  10  -4  -2
-19. Boston       37   4   1  14   0   3
-20. Buffalo      35   3   4  12  -6   4
+17. Los Angeles  35   4  -2  10  -4  -2
+18. Boston       37   4   1  14   0   3
+19. Buffalo      35   3   4  12  -6   4
+20. Pittsburgh   36   3  -4  13  -9 -18
 21. NY Rangers   38   2   0  11  -5  -7
-22. San Jose     36   1   0   9 -15  -5
-23. Utah         38   1   0  13   5   1
-24. Seattle      34   0  -4   9 -19 -12
-25. Toronto      35   0   0  11  -9  -5
+22. Toronto      36   1   0  12  -6  -5
+23. San Jose     36   1   0   9 -15  -5
+24. Utah         38   1   0  13   5   1
+25. Seattle      34   0  -4   9 -19 -12
 26. Columbus     36   0  -3   8 -17 -10
 27. Nashville    35  -1   4  11 -19   9
 28. Winnipeg     35  -2  -3  13  -4  -6
@@ -241,7 +242,7 @@ $ nhl
 30. St. Louis    38  -2   1  14 -36  -7
 31. Chicago      35  -3  -5  12 -13 -20
 32. Vancouver    36  -3   0  10 -19  -3
-             👉🏻1148 150  41 424   0  15 0.565
+             👉🏻1150 150  39 425   0  11 0.565
 
 =======================================
       Full league (last 10 games)      
@@ -267,25 +268,27 @@ $ nhl
 18. Boston       37   4   1  14   0   3
 19. St. Louis    38  -2   1  14 -36  -7
 20. NY Rangers   38   2   0  11  -5  -7
-21. San Jose     36   1   0   9 -15  -5
-22. Utah         38   1   0  13   5   1
-23. Toronto      35   0   0  11  -9  -5
+21. Toronto      36   1   0  12  -6  -5
+22. San Jose     36   1   0   9 -15  -5
+23. Utah         38   1   0  13   5   1
 24. Vancouver    36  -3   0  10 -19  -3
 25. Tampa Bay    36   7  -1  17  22   4
 26. New Jersey   36   5  -2  13  -6 -10
-27. Pittsburgh   35   4  -2  13  -6 -14
-28. Los Angeles  35   4  -2  10  -4  -2
-29. Columbus     36   0  -3   8 -17 -10
-30. Winnipeg     35  -2  -3  13  -4  -6
+27. Los Angeles  35   4  -2  10  -4  -2
+28. Columbus     36   0  -3   8 -17 -10
+29. Winnipeg     35  -2  -3  13  -4  -6
+30. Pittsburgh   36   3  -4  13  -9 -18
 31. Seattle      34   0  -4   9 -19 -12
 32. Chicago      35  -3  -5  12 -13 -20
-             👉🏻1148 150  41 424   0  15 0.565
+             👉🏻1150 150  39 425   0  11 0.565
 ```
+
 <!-- END:vanilla -->
 
 ### Division standings with `--division` or `-d`
 
 <!-- BEGIN:division -->
+
 ```text
 $ nhl -d
 
@@ -301,8 +304,8 @@ $ nhl -d
  5. Ottawa       35   5   2  13   7  12
  6. Boston       37   4   1  14   0   3
  7. Buffalo      35   3   4  12  -6   4
- 8. Toronto      35   0   0  11  -9  -5
-             👉🏻 286  39  18 111   6  33 0.568
+ 8. Toronto      36   1   0  12  -6  -5
+             👉🏻 287  40  18 112   9  33 0.570
 
 =======================================
          Metropolitan division         
@@ -313,10 +316,10 @@ $ nhl -d
  3. Washington   36   7   1  18  18  -1
  4. NY Islanders 36   6   3  13   2   3
  5. New Jersey   36   5  -2  13  -6 -10
- 6. Pittsburgh   35   4  -2  13  -6 -14
+ 6. Pittsburgh   36   3  -4  13  -9 -18
  7. NY Rangers   38   2   0  11  -5  -7
  8. Columbus     36   0  -3   8 -17 -10
-             👉🏻 287  44   2 101  11 -32 0.577
+             👉🏻 288  43   0 101   8 -36 0.575
 
 =======================================
            Central division            
@@ -371,13 +374,13 @@ $ nhl -c
  8. Florida      35   5   5  16   0   5
  9. Ottawa       35   5   2  13   7  12
 10. New Jersey   36   5  -2  13  -6 -10
-11. Pittsburgh   35   4  -2  13  -6 -14
-12. Boston       37   4   1  14   0   3
-13. Buffalo      35   3   4  12  -6   4
+11. Boston       37   4   1  14   0   3
+12. Buffalo      35   3   4  12  -6   4
+13. Pittsburgh   36   3  -4  13  -9 -18
 14. NY Rangers   38   2   0  11  -5  -7
-15. Toronto      35   0   0  11  -9  -5
+15. Toronto      36   1   0  12  -6  -5
 16. Columbus     36   0  -3   8 -17 -10
-             👉🏻 573  83  20 212  17   1 0.572
+             👉🏻 575  83  18 213  17  -3 0.572
 
 =======================================
           Western conference           
@@ -434,15 +437,15 @@ $ nhl -f
 14. Ottawa       35   5   2  13   7  12
 15. New Jersey   36   5  -2  13  -6 -10
 16. Edmonton     37   5   5  13  -2  13
-17. Pittsburgh   35   4  -2  13  -6 -14
-18. Los Angeles  35   4  -2  10  -4  -2
-19. Boston       37   4   1  14   0   3
-20. Buffalo      35   3   4  12  -6   4
+17. Los Angeles  35   4  -2  10  -4  -2
+18. Boston       37   4   1  14   0   3
+19. Buffalo      35   3   4  12  -6   4
+20. Pittsburgh   36   3  -4  13  -9 -18
 21. NY Rangers   38   2   0  11  -5  -7
-22. San Jose     36   1   0   9 -15  -5
-23. Utah         38   1   0  13   5   1
-24. Seattle      34   0  -4   9 -19 -12
-25. Toronto      35   0   0  11  -9  -5
+22. Toronto      36   1   0  12  -6  -5
+23. San Jose     36   1   0   9 -15  -5
+24. Utah         38   1   0  13   5   1
+25. Seattle      34   0  -4   9 -19 -12
 26. Columbus     36   0  -3   8 -17 -10
 27. Nashville    35  -1   4  11 -19   9
 28. Winnipeg     35  -2  -3  13  -4  -6
@@ -450,7 +453,7 @@ $ nhl -f
 30. St. Louis    38  -2   1  14 -36  -7
 31. Chicago      35  -3  -5  12 -13 -20
 32. Vancouver    36  -3   0  10 -19  -3
-             👉🏻1148 150  41 424   0  15 0.565
+             👉🏻1150 150  39 425   0  11 0.565
 ```
 
 <!-- END:full -->
@@ -486,26 +489,68 @@ $ nhl --l10
 18. Boston       37   4   1  14   0   3
 19. St. Louis    38  -2   1  14 -36  -7
 20. NY Rangers   38   2   0  11  -5  -7
-21. San Jose     36   1   0   9 -15  -5
-22. Utah         38   1   0  13   5   1
-23. Toronto      35   0   0  11  -9  -5
+21. Toronto      36   1   0  12  -6  -5
+22. San Jose     36   1   0   9 -15  -5
+23. Utah         38   1   0  13   5   1
 24. Vancouver    36  -3   0  10 -19  -3
 25. Tampa Bay    36   7  -1  17  22   4
 26. New Jersey   36   5  -2  13  -6 -10
-27. Pittsburgh   35   4  -2  13  -6 -14
-28. Los Angeles  35   4  -2  10  -4  -2
-29. Columbus     36   0  -3   8 -17 -10
-30. Winnipeg     35  -2  -3  13  -4  -6
+27. Los Angeles  35   4  -2  10  -4  -2
+28. Columbus     36   0  -3   8 -17 -10
+29. Winnipeg     35  -2  -3  13  -4  -6
+30. Pittsburgh   36   3  -4  13  -9 -18
 31. Seattle      34   0  -4   9 -19 -12
 32. Chicago      35  -3  -5  12 -13 -20
-             👉🏻1148 150  41 424   0  15 0.565
+             👉🏻1150 150  39 425   0  11 0.565
 ```
 
 <!-- END:last10 -->
 
-## Current schedule segment (7-days) with `--schedule` or `-s`
+### Playoff matchups with `--playoffs` or `-p`
 
-By default, shows the next 7 days of NHL games, including today, and broadcast networks.
+Playoff matchups are derived from the current standings on a ***wins minus losses** basis.
+
+Playoff matchups are followed by a list of proximate teams "on the outside, looking in."
+
+<!-- BEGIN:playoffs -->
+
+```text
+$ nhl -p
+
+
+===================================
+         Playoff Matchups          
+===================================
+Eastern Conference:
+
+[8-w] Florida (5) at Carolina (12)
+[3-2] Washington (7) at Philadelphia (8)
+[7-w] NY Islanders (6) at Detroit (8)
+[3-2] Montréal (7) at Tampa Bay (7)
+
+Outside looking-in: OTT (5) NJD (5) BOS (4) BUF (3) PIT (3) NYR (2) 
+
+Western Conference:
+
+[8-w] San Jose (1) at Colorado (24)
+[3-2] Minnesota (12) at Dallas (18)
+[7-w] Los Angeles (4) at Vegas (8)
+[3-2] Edmonton (5) at Anaheim (7)
+
+Outside looking-in: UTA (1) SEA (0) NSH (-1) WPG (-2) CGY (-2) STL (-2) 
+```
+
+<!-- END:playoffs -->
+
+## Schedules
+
+### Current schedule segment (7-days) with `--schedule` or `-s`
+
+The current schedule uses the following call to the NHL api:
+
+* https://api-web.nhle.com/v1/schedule/now
+
+Shows the next 7 days of NHL games (including today), strat times, and broadcast networks.
 
 <!-- BEGIN:schedule -->
 
@@ -517,26 +562,19 @@ $ nhl -s
              Upcoming league-wide schedule             
 =======================================================
 
-              2025-12-22 (MON)               
-=============================================
-STL 1 - 4 TBL  19:00   (TVAS, FDSNMW, The Spot)
-VAN 2 - 5 PHI  19:30   (NHLN, Prime, TVAS2, NBCSP)
-SEA 3 - 1 ANA  22:00   (TVAS, KHN/Prime, KING 5, Victory+, KONG, KCOP-13)
-CBJ 3 - 1 LAK  22:00   (TVAS2, FDSNOH, FDSNW)
-
               2025-12-23 (TUE)               
 =============================================
-PIT at TOR  16:00   (TNT, truTV, HBO MAX, SNO)
-DAL at DET  18:30   (TNT, truTV, HBO MAX, Victory+)
-NYR at WSH  19:00   (SN, MSG 2, MNMT2)
-MTL at BOS  19:00   (TSN2, RDS, NESN)
-BUF at OTT  19:00   (RDS2, TSN5, MSG-B)
-NJD at NYI  19:00   (MSGSN2, MSGSN)
-FLA at CAR  19:00   (FDSNSO, SCRIPPS)
-NSH at MIN  20:00   (ESPN+, HULU)
-PHI at CHI  21:00   (TNT, truTV, HBO MAX)
-UTA at COL  21:00   (Utah16, ALT)
-CGY at EDM  21:00   (SNW, SN360)
+PIT 3 - 6 TOR  16:00   (TNT, truTV, HBO MAX, SNO)
+DAL 3 - 2 DET  18:30   (TNT, truTV, HBO MAX, Victory+)
+NYR 2 - 3 WSH  19:00   (SN, MSG 2, MNMT2)
+MTL 2 - 2 BOS  19:00   (TSN2, RDS, NESN)
+BUF 2 - 2 OTT  19:00   (RDS2, TSN5, MSG-B)
+NJD 1 - 1 NYI  19:00   (MSGSN2, MSGSN)
+FLA 1 - 2 CAR  19:00   (FDSNSO, SCRIPPS)
+NSH 2 - 2 MIN  20:00   (ESPN+, HULU)
+PHI 0 - 0 CHI  21:00   (TNT, truTV, HBO MAX)
+UTA 0 - 0 COL  21:00   (Utah16, ALT)
+CGY 0 - 0 EDM  21:00   (SNW, SN360)
 SJS at VGK  22:00   (NBCSCA, SCRIPPS)
 SEA at LAK  22:00   (FDSNW, KHN/Prime, KONG)
 
@@ -575,13 +613,30 @@ NYI at CBJ  17:00   (FDSNOH, MSGSN)
 TOR at DET  19:00   (SNO, FDSNDET)
 PIT at CHI  19:00   (SN, TVAS, CHSN, SN-PIT)
 PHI at SEA  20:00   (NHLN, KHN/Prime, NBCSP, KONG)
+
+              2025-12-29 (MON)               
+=============================================
+CBJ at OTT  19:00   (TSN5, RDSI, FDSNOH)
+WSH at FLA  19:00   (TVAS, MNMT, SCRIPPS)
+NYR at CAR  19:00   (FDSNSO, MSGSN)
+EDM at WPG  19:30   (Prime)
+BUF at STL  20:00   (FDSNMW, MSG-B)
+LAK at COL  21:00   (FDSNW, ALT)
+NSH at UTA  21:00   (FDSNSO, Utah16)
+BOS at CGY  21:00   (SNW, TVAS, NESN)
+MIN at VGK  22:00   (FDSNNOX, FDSNWIX, SCRIPPS)
+SJS at ANA  22:00   (KTTV, Victory+, NBCSCA)
+VAN at SEA  22:00   (SNP, KHN/Prime, KONG)
 ```
 
 <!-- END:schedule -->
 
-## Schedule for a particular team with (`--schedule` or `-s`) and (`--team <TEAM>` or `-t <TEAM>`)
+### Schedule for a particular team with (`--schedule` or `-s`) and (`--team <TEAM>` or `-t <TEAM>`)
 
-Shows the full schedule for a particular team. The is specified by its common 3-letter code, e.g., "BOS", "NYR", "STL", etc.
+The full-season team-specific schedule uses the following call to the NHL api, showing
+the schedule for the Montreal Canadiens "MTL" and the 2025-2026 season.
+
+* https://api-web.nhle.com/v1/club-schedule-season/MTL/20252026
 
 <!-- BEGIN:teamschedule -->
 
@@ -628,7 +683,7 @@ $ nhl -s -t MTL
 34 Thu Dec 18 2025  CHI 1 - 4 MTL   
 35 Sat Dec 20 2025  PIT 0 - 4 MTL   
 36 Sun Dec 21 2025  MTL 3 - 4 PIT (SO)
-37 Tue Dec 23 2025  MTL at BOS  19:00  (TSN2, RDS, NESN)
+37 Tue Dec 23 2025  MTL 2 - 2 BOS  19:00 (In progress) (TSN2, RDS, NESN)
 38 Sun Dec 28 2025  MTL at TBL  17:00  (TSN2, RDS, The Spot)
 39 Tue Dec 30 2025  MTL at FLA  19:00  (TSN2, RDS, SCRIPPS)
 40 Thu Jan  1 2026  MTL at CAR  19:00  (TSN2, RDS, FDSNSO)
@@ -678,39 +733,7 @@ $ nhl -s -t MTL
 
 <!-- END:teamschedule -->
 
-## Playoff matchups with `--playoffs` or `-p`
 
-Displays the current playoff matchups.
-
-<!-- BEGIN:playoffs -->
-
-```text
-$ nhl -p
-
-
-===================================
-         Playoff Matchups          
-===================================
-Eastern Conference:
-
-[8-w] Florida (5) at Carolina (12)
-[3-2] Washington (7) at Philadelphia (8)
-[7-w] NY Islanders (6) at Detroit (8)
-[3-2] Montréal (7) at Tampa Bay (7)
-
-Outside looking-in: OTT (5) NJD (5) PIT (4) BOS (4) BUF (3) NYR (2) 
-
-Western Conference:
-
-[8-w] San Jose (1) at Colorado (24)
-[3-2] Minnesota (12) at Dallas (18)
-[7-w] Los Angeles (4) at Vegas (8)
-[3-2] Edmonton (5) at Anaheim (7)
-
-Outside looking-in: UTA (1) SEA (0) NSH (-1) WPG (-2) CGY (-2) STL (-2) 
-```
-
-<!-- END:playoffs -->
 ----
 
 ## Resources
