@@ -123,177 +123,177 @@ $ nhl
            Atlantic division           
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Tampa Bay    45  16  10  23  44  25
- 2. Detroit      48  12   3  20   1   3
- 3. Montréal     48  11   3  17   3   5
- 4. Buffalo      46  10   6  20  10  15
- 5. Toronto      46   7   6  17   4  10
- 6. Boston       47   7   3  19   9   9
- 7. Florida      45   6   1  21  -6  -6
- 8. Ottawa       46   3  -2  17  -2  -8
-             👉🏻 371  72  30 154  63  53 0.597
+ 1. Tampa Bay    48  18   9  25  49  24
+ 2. Detroit      50  14   5  21   4   8
+ 3. Montréal     50  13   3  18   5   4
+ 4. Buffalo      49  10   3  21  10   7
+ 5. Boston       50   8   6  21  10  18
+ 6. Toronto      49   7   4  17   1   2
+ 7. Florida      48   5  -1  22 -14 -17
+ 8. Ottawa       49   4   0  18  -1  -3
+             👉🏻 393  79  29 163  64  43 0.601
 
 =======================================
          Metropolitan division         
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Carolina     47  13   1  19  16  -2
- 2. NY Islanders 46   9   3  16   8   6
- 3. Pittsburgh   46   8   5  18   7  16
- 4. Philadelphia 46   6  -3  15  -5 -14
- 5. Washington   48   6  -1  21  17   2
- 6. New Jersey   47   3  -1  16 -19 -12
- 7. Columbus     47   2   1  13 -13   2
- 8. NY Rangers   48  -2  -4  13 -21 -16
-             👉🏻 375  45   1 131 -10 -18 0.560
+ 1. Carolina     50  16   5  22  28  15
+ 2. NY Islanders 49  10   3  18   8   5
+ 3. Pittsburgh   48   9   4  19   9  10
+ 4. Philadelphia 48   6  -3  16  -7 -16
+ 5. Washington   50   4  -3  21  11  -5
+ 6. New Jersey   50   4   0  17 -20  -9
+ 7. Columbus     49   2   1  13 -15  -2
+ 8. NY Rangers   51  -3  -5  14 -21 -17
+             👉🏻 395  48   2 140  -7 -19 0.561
 
 =======================================
            Central division            
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Colorado     45  29   5  30  79  18
- 2. Dallas       47  16  -2  23  28  -8
- 3. Minnesota    47  14   2  18  18  -1
- 4. Utah         47   3   3  17  14  10
- 5. Nashville    46   2   2  15 -22  -4
- 6. Chicago      46  -1   3  15 -16  -1
- 7. St. Louis    47  -3  -2  18 -44 -11
- 8. Winnipeg     45  -4  -2  16  -7  -3
-             👉🏻 370  56   9 152  50   0 0.576
+ 1. Colorado     47  29   3  31  78  15
+ 2. Dallas       50  15  -2  24  28  -3
+ 3. Minnesota    51  14   0  19  17  -4
+ 4. Utah         49   5   5  19  18  14
+ 5. Nashville    49   1   0  16 -25  -9
+ 6. Chicago      49  -2   2  16 -19   0
+ 7. Winnipeg     49  -3   2  18  -4   5
+ 8. St. Louis    50  -4  -2  18 -50 -13
+             👉🏻 394  55   8 161  43   5 0.570
 
 =======================================
            Pacific division            
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Vegas        45  11   2  16   9   3
- 2. Edmonton     47   7   2  18   2   4
- 3. Seattle      45   6   5  15  -6  12
- 4. San Jose     46   5   4  13 -18  -3
- 5. Los Angeles  46   3   0  12  -9  -4
- 6. Anaheim      46   1  -7  14 -16 -21
- 7. Calgary      46  -4  -2  15 -21 -10
- 8. Vancouver    47 -10  -6  10 -44 -22
-             👉🏻 368  19  -2 113 -103 -41 0.526
+ 1. Vegas        48  12   5  17  14  14
+ 2. Edmonton     51   7   2  20  11  12
+ 3. Anaheim      49   4  -1  15 -12  -9
+ 4. San Jose     49   4   2  14 -20  -4
+ 5. Los Angeles  49   4   2  13 -10  -5
+ 6. Seattle      48   3   0  15 -14  -1
+ 7. Calgary      49  -2  -1  17 -18  -5
+ 8. Vancouver    49 -12  -8  10 -51 -27
+             👉🏻 392  20   1 121 -100 -25 0.526
 
 =======================================
           Eastern conference           
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Tampa Bay    45  16  10  23  44  25
- 2. Carolina     47  13   1  19  16  -2
- 3. Detroit      48  12   3  20   1   3
- 4. Montréal     48  11   3  17   3   5
- 5. Buffalo      46  10   6  20  10  15
- 6. NY Islanders 46   9   3  16   8   6
- 7. Pittsburgh   46   8   5  18   7  16
- 8. Toronto      46   7   6  17   4  10
- 9. Boston       47   7   3  19   9   9
-10. Florida      45   6   1  21  -6  -6
-11. Philadelphia 46   6  -3  15  -5 -14
-12. Washington   48   6  -1  21  17   2
-13. Ottawa       46   3  -2  17  -2  -8
-14. New Jersey   47   3  -1  16 -19 -12
-15. Columbus     47   2   1  13 -13   2
-16. NY Rangers   48  -2  -4  13 -21 -16
-             👉🏻 746 117  31 285  53  35 0.578
+ 1. Tampa Bay    48  18   9  25  49  24
+ 2. Carolina     50  16   5  22  28  15
+ 3. Detroit      50  14   5  21   4   8
+ 4. Montréal     50  13   3  18   5   4
+ 5. Buffalo      49  10   3  21  10   7
+ 6. NY Islanders 49  10   3  18   8   5
+ 7. Pittsburgh   48   9   4  19   9  10
+ 8. Boston       50   8   6  21  10  18
+ 9. Toronto      49   7   4  17   1   2
+10. Philadelphia 48   6  -3  16  -7 -16
+11. Florida      48   5  -1  22 -14 -17
+12. Ottawa       49   4   0  18  -1  -3
+13. Washington   50   4  -3  21  11  -5
+14. New Jersey   50   4   0  17 -20  -9
+15. Columbus     49   2   1  13 -15  -2
+16. NY Rangers   51  -3  -5  14 -21 -17
+             👉🏻 788 127  31 303  57  24 0.581
 
 =======================================
           Western conference           
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Colorado     45  29   5  30  79  18
- 2. Dallas       47  16  -2  23  28  -8
- 3. Minnesota    47  14   2  18  18  -1
- 4. Vegas        45  11   2  16   9   3
- 5. Edmonton     47   7   2  18   2   4
- 6. Seattle      45   6   5  15  -6  12
- 7. San Jose     46   5   4  13 -18  -3
- 8. Los Angeles  46   3   0  12  -9  -4
- 9. Utah         47   3   3  17  14  10
-10. Nashville    46   2   2  15 -22  -4
-11. Anaheim      46   1  -7  14 -16 -21
-12. Chicago      46  -1   3  15 -16  -1
-13. St. Louis    47  -3  -2  18 -44 -11
-14. Winnipeg     45  -4  -2  16  -7  -3
-15. Calgary      46  -4  -2  15 -21 -10
-16. Vancouver    47 -10  -6  10 -44 -22
-             👉🏻 738  75   7 265 -53 -41 0.551
+ 1. Colorado     47  29   3  31  78  15
+ 2. Dallas       50  15  -2  24  28  -3
+ 3. Minnesota    51  14   0  19  17  -4
+ 4. Vegas        48  12   5  17  14  14
+ 5. Edmonton     51   7   2  20  11  12
+ 6. Utah         49   5   5  19  18  14
+ 7. Anaheim      49   4  -1  15 -12  -9
+ 8. San Jose     49   4   2  14 -20  -4
+ 9. Los Angeles  49   4   2  13 -10  -5
+10. Seattle      48   3   0  15 -14  -1
+11. Nashville    49   1   0  16 -25  -9
+12. Calgary      49  -2  -1  17 -18  -5
+13. Chicago      49  -2   2  16 -19   0
+14. Winnipeg     49  -3   2  18  -4   5
+15. St. Louis    50  -4  -2  18 -50 -13
+16. Vancouver    49 -12  -8  10 -51 -27
+             👉🏻 786  75   9 282 -57 -20 0.548
 
 =======================================
               Full league              
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Colorado     45  29   5  30  79  18
- 2. Tampa Bay    45  16  10  23  44  25
- 3. Dallas       47  16  -2  23  28  -8
- 4. Minnesota    47  14   2  18  18  -1
- 5. Carolina     47  13   1  19  16  -2
- 6. Detroit      48  12   3  20   1   3
- 7. Vegas        45  11   2  16   9   3
- 8. Montréal     48  11   3  17   3   5
- 9. Buffalo      46  10   6  20  10  15
-10. NY Islanders 46   9   3  16   8   6
-11. Pittsburgh   46   8   5  18   7  16
-12. Toronto      46   7   6  17   4  10
-13. Boston       47   7   3  19   9   9
-14. Edmonton     47   7   2  18   2   4
-15. Florida      45   6   1  21  -6  -6
-16. Seattle      45   6   5  15  -6  12
-17. Philadelphia 46   6  -3  15  -5 -14
-18. Washington   48   6  -1  21  17   2
-19. San Jose     46   5   4  13 -18  -3
-20. Ottawa       46   3  -2  17  -2  -8
-21. Los Angeles  46   3   0  12  -9  -4
-22. Utah         47   3   3  17  14  10
-23. New Jersey   47   3  -1  16 -19 -12
-24. Nashville    46   2   2  15 -22  -4
-25. Columbus     47   2   1  13 -13   2
-26. Anaheim      46   1  -7  14 -16 -21
-27. Chicago      46  -1   3  15 -16  -1
-28. NY Rangers   48  -2  -4  13 -21 -16
-29. St. Louis    47  -3  -2  18 -44 -11
-30. Winnipeg     45  -4  -2  16  -7  -3
-31. Calgary      46  -4  -2  15 -21 -10
-32. Vancouver    47 -10  -6  10 -44 -22
-             👉🏻1484 192  38 550   0  -6 0.565
+ 1. Colorado     47  29   3  31  78  15
+ 2. Tampa Bay    48  18   9  25  49  24
+ 3. Carolina     50  16   5  22  28  15
+ 4. Dallas       50  15  -2  24  28  -3
+ 5. Detroit      50  14   5  21   4   8
+ 6. Minnesota    51  14   0  19  17  -4
+ 7. Montréal     50  13   3  18   5   4
+ 8. Vegas        48  12   5  17  14  14
+ 9. Buffalo      49  10   3  21  10   7
+10. NY Islanders 49  10   3  18   8   5
+11. Pittsburgh   48   9   4  19   9  10
+12. Boston       50   8   6  21  10  18
+13. Toronto      49   7   4  17   1   2
+14. Edmonton     51   7   2  20  11  12
+15. Philadelphia 48   6  -3  16  -7 -16
+16. Florida      48   5  -1  22 -14 -17
+17. Utah         49   5   5  19  18  14
+18. Ottawa       49   4   0  18  -1  -3
+19. Anaheim      49   4  -1  15 -12  -9
+20. San Jose     49   4   2  14 -20  -4
+21. Los Angeles  49   4   2  13 -10  -5
+22. Washington   50   4  -3  21  11  -5
+23. New Jersey   50   4   0  17 -20  -9
+24. Seattle      48   3   0  15 -14  -1
+25. Columbus     49   2   1  13 -15  -2
+26. Nashville    49   1   0  16 -25  -9
+27. Calgary      49  -2  -1  17 -18  -5
+28. Chicago      49  -2   2  16 -19   0
+29. Winnipeg     49  -3   2  18  -4   5
+30. NY Rangers   51  -3  -5  14 -21 -17
+31. St. Louis    50  -4  -2  18 -50 -13
+32. Vancouver    49 -12  -8  10 -51 -27
+             👉🏻1574 202  40 585   0   4 0.564
 
 =======================================
       Full league (last 10 games)      
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Tampa Bay    45  16  10  23  44  25
- 2. Buffalo      46  10   6  20  10  15
- 3. Toronto      46   7   6  17   4  10
- 4. Colorado     45  29   5  30  79  18
- 5. Pittsburgh   46   8   5  18   7  16
- 6. Seattle      45   6   5  15  -6  12
- 7. San Jose     46   5   4  13 -18  -3
- 8. Detroit      48  12   3  20   1   3
- 9. Montréal     48  11   3  17   3   5
-10. NY Islanders 46   9   3  16   8   6
-11. Boston       47   7   3  19   9   9
-12. Utah         47   3   3  17  14  10
-13. Chicago      46  -1   3  15 -16  -1
-14. Minnesota    47  14   2  18  18  -1
-15. Vegas        45  11   2  16   9   3
-16. Edmonton     47   7   2  18   2   4
-17. Nashville    46   2   2  15 -22  -4
-18. Carolina     47  13   1  19  16  -2
-19. Florida      45   6   1  21  -6  -6
-20. Columbus     47   2   1  13 -13   2
-21. Los Angeles  46   3   0  12  -9  -4
-22. Washington   48   6  -1  21  17   2
-23. New Jersey   47   3  -1  16 -19 -12
-24. Dallas       47  16  -2  23  28  -8
-25. Ottawa       46   3  -2  17  -2  -8
-26. St. Louis    47  -3  -2  18 -44 -11
-27. Winnipeg     45  -4  -2  16  -7  -3
-28. Calgary      46  -4  -2  15 -21 -10
-29. Philadelphia 46   6  -3  15  -5 -14
-30. NY Rangers   48  -2  -4  13 -21 -16
-31. Vancouver    47 -10  -6  10 -44 -22
-32. Anaheim      46   1  -7  14 -16 -21
-             👉🏻1484 192  38 550   0  -6 0.565
+ 1. Tampa Bay    48  18   9  25  49  24
+ 2. Boston       50   8   6  21  10  18
+ 3. Carolina     50  16   5  22  28  15
+ 4. Detroit      50  14   5  21   4   8
+ 5. Vegas        48  12   5  17  14  14
+ 6. Utah         49   5   5  19  18  14
+ 7. Pittsburgh   48   9   4  19   9  10
+ 8. Toronto      49   7   4  17   1   2
+ 9. Colorado     47  29   3  31  78  15
+10. Montréal     50  13   3  18   5   4
+11. Buffalo      49  10   3  21  10   7
+12. NY Islanders 49  10   3  18   8   5
+13. Edmonton     51   7   2  20  11  12
+14. San Jose     49   4   2  14 -20  -4
+15. Los Angeles  49   4   2  13 -10  -5
+16. Chicago      49  -2   2  16 -19   0
+17. Winnipeg     49  -3   2  18  -4   5
+18. Columbus     49   2   1  13 -15  -2
+19. Minnesota    51  14   0  19  17  -4
+20. Ottawa       49   4   0  18  -1  -3
+21. New Jersey   50   4   0  17 -20  -9
+22. Seattle      48   3   0  15 -14  -1
+23. Nashville    49   1   0  16 -25  -9
+24. Florida      48   5  -1  22 -14 -17
+25. Anaheim      49   4  -1  15 -12  -9
+26. Calgary      49  -2  -1  17 -18  -5
+27. Dallas       50  15  -2  24  28  -3
+28. St. Louis    50  -4  -2  18 -50 -13
+29. Philadelphia 48   6  -3  16  -7 -16
+30. Washington   50   4  -3  21  11  -5
+31. NY Rangers   51  -3  -5  14 -21 -17
+32. Vancouver    49 -12  -8  10 -51 -27
+             👉🏻1574 202  40 585   0   4 0.564
 ```
 
 <!-- END:vanilla -->
@@ -310,57 +310,57 @@ $ nhl -d
            Atlantic division           
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Tampa Bay    45  16  10  23  44  25
- 2. Detroit      48  12   3  20   1   3
- 3. Montréal     48  11   3  17   3   5
- 4. Buffalo      46  10   6  20  10  15
- 5. Toronto      46   7   6  17   4  10
- 6. Boston       47   7   3  19   9   9
- 7. Florida      45   6   1  21  -6  -6
- 8. Ottawa       46   3  -2  17  -2  -8
-             👉🏻 371  72  30 154  63  53 0.597
+ 1. Tampa Bay    48  18   9  25  49  24
+ 2. Detroit      50  14   5  21   4   8
+ 3. Montréal     50  13   3  18   5   4
+ 4. Buffalo      49  10   3  21  10   7
+ 5. Boston       50   8   6  21  10  18
+ 6. Toronto      49   7   4  17   1   2
+ 7. Florida      48   5  -1  22 -14 -17
+ 8. Ottawa       49   4   0  18  -1  -3
+             👉🏻 393  79  29 163  64  43 0.601
 
 =======================================
          Metropolitan division         
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Carolina     47  13   1  19  16  -2
- 2. NY Islanders 46   9   3  16   8   6
- 3. Pittsburgh   46   8   5  18   7  16
- 4. Philadelphia 46   6  -3  15  -5 -14
- 5. Washington   48   6  -1  21  17   2
- 6. New Jersey   47   3  -1  16 -19 -12
- 7. Columbus     47   2   1  13 -13   2
- 8. NY Rangers   48  -2  -4  13 -21 -16
-             👉🏻 375  45   1 131 -10 -18 0.560
+ 1. Carolina     50  16   5  22  28  15
+ 2. NY Islanders 49  10   3  18   8   5
+ 3. Pittsburgh   48   9   4  19   9  10
+ 4. Philadelphia 48   6  -3  16  -7 -16
+ 5. Washington   50   4  -3  21  11  -5
+ 6. New Jersey   50   4   0  17 -20  -9
+ 7. Columbus     49   2   1  13 -15  -2
+ 8. NY Rangers   51  -3  -5  14 -21 -17
+             👉🏻 395  48   2 140  -7 -19 0.561
 
 =======================================
            Central division            
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Colorado     45  29   5  30  79  18
- 2. Dallas       47  16  -2  23  28  -8
- 3. Minnesota    47  14   2  18  18  -1
- 4. Utah         47   3   3  17  14  10
- 5. Nashville    46   2   2  15 -22  -4
- 6. Chicago      46  -1   3  15 -16  -1
- 7. St. Louis    47  -3  -2  18 -44 -11
- 8. Winnipeg     45  -4  -2  16  -7  -3
-             👉🏻 370  56   9 152  50   0 0.576
+ 1. Colorado     47  29   3  31  78  15
+ 2. Dallas       50  15  -2  24  28  -3
+ 3. Minnesota    51  14   0  19  17  -4
+ 4. Utah         49   5   5  19  18  14
+ 5. Nashville    49   1   0  16 -25  -9
+ 6. Chicago      49  -2   2  16 -19   0
+ 7. Winnipeg     49  -3   2  18  -4   5
+ 8. St. Louis    50  -4  -2  18 -50 -13
+             👉🏻 394  55   8 161  43   5 0.570
 
 =======================================
            Pacific division            
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Vegas        45  11   2  16   9   3
- 2. Edmonton     47   7   2  18   2   4
- 3. Seattle      45   6   5  15  -6  12
- 4. San Jose     46   5   4  13 -18  -3
- 5. Los Angeles  46   3   0  12  -9  -4
- 6. Anaheim      46   1  -7  14 -16 -21
- 7. Calgary      46  -4  -2  15 -21 -10
- 8. Vancouver    47 -10  -6  10 -44 -22
-             👉🏻 368  19  -2 113 -103 -41 0.526
+ 1. Vegas        48  12   5  17  14  14
+ 2. Edmonton     51   7   2  20  11  12
+ 3. Anaheim      49   4  -1  15 -12  -9
+ 4. San Jose     49   4   2  14 -20  -4
+ 5. Los Angeles  49   4   2  13 -10  -5
+ 6. Seattle      48   3   0  15 -14  -1
+ 7. Calgary      49  -2  -1  17 -18  -5
+ 8. Vancouver    49 -12  -8  10 -51 -27
+             👉🏻 392  20   1 121 -100 -25 0.526
 ```
 
 <!-- END:division -->
@@ -377,45 +377,45 @@ $ nhl -c
           Eastern conference           
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Tampa Bay    45  16  10  23  44  25
- 2. Carolina     47  13   1  19  16  -2
- 3. Detroit      48  12   3  20   1   3
- 4. Montréal     48  11   3  17   3   5
- 5. Buffalo      46  10   6  20  10  15
- 6. NY Islanders 46   9   3  16   8   6
- 7. Pittsburgh   46   8   5  18   7  16
- 8. Toronto      46   7   6  17   4  10
- 9. Boston       47   7   3  19   9   9
-10. Florida      45   6   1  21  -6  -6
-11. Philadelphia 46   6  -3  15  -5 -14
-12. Washington   48   6  -1  21  17   2
-13. Ottawa       46   3  -2  17  -2  -8
-14. New Jersey   47   3  -1  16 -19 -12
-15. Columbus     47   2   1  13 -13   2
-16. NY Rangers   48  -2  -4  13 -21 -16
-             👉🏻 746 117  31 285  53  35 0.578
+ 1. Tampa Bay    48  18   9  25  49  24
+ 2. Carolina     50  16   5  22  28  15
+ 3. Detroit      50  14   5  21   4   8
+ 4. Montréal     50  13   3  18   5   4
+ 5. Buffalo      49  10   3  21  10   7
+ 6. NY Islanders 49  10   3  18   8   5
+ 7. Pittsburgh   48   9   4  19   9  10
+ 8. Boston       50   8   6  21  10  18
+ 9. Toronto      49   7   4  17   1   2
+10. Philadelphia 48   6  -3  16  -7 -16
+11. Florida      48   5  -1  22 -14 -17
+12. Ottawa       49   4   0  18  -1  -3
+13. Washington   50   4  -3  21  11  -5
+14. New Jersey   50   4   0  17 -20  -9
+15. Columbus     49   2   1  13 -15  -2
+16. NY Rangers   51  -3  -5  14 -21 -17
+             👉🏻 788 127  31 303  57  24 0.581
 
 =======================================
           Western conference           
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Colorado     45  29   5  30  79  18
- 2. Dallas       47  16  -2  23  28  -8
- 3. Minnesota    47  14   2  18  18  -1
- 4. Vegas        45  11   2  16   9   3
- 5. Edmonton     47   7   2  18   2   4
- 6. Seattle      45   6   5  15  -6  12
- 7. San Jose     46   5   4  13 -18  -3
- 8. Los Angeles  46   3   0  12  -9  -4
- 9. Utah         47   3   3  17  14  10
-10. Nashville    46   2   2  15 -22  -4
-11. Anaheim      46   1  -7  14 -16 -21
-12. Chicago      46  -1   3  15 -16  -1
-13. St. Louis    47  -3  -2  18 -44 -11
-14. Winnipeg     45  -4  -2  16  -7  -3
-15. Calgary      46  -4  -2  15 -21 -10
-16. Vancouver    47 -10  -6  10 -44 -22
-             👉🏻 738  75   7 265 -53 -41 0.551
+ 1. Colorado     47  29   3  31  78  15
+ 2. Dallas       50  15  -2  24  28  -3
+ 3. Minnesota    51  14   0  19  17  -4
+ 4. Vegas        48  12   5  17  14  14
+ 5. Edmonton     51   7   2  20  11  12
+ 6. Utah         49   5   5  19  18  14
+ 7. Anaheim      49   4  -1  15 -12  -9
+ 8. San Jose     49   4   2  14 -20  -4
+ 9. Los Angeles  49   4   2  13 -10  -5
+10. Seattle      48   3   0  15 -14  -1
+11. Nashville    49   1   0  16 -25  -9
+12. Calgary      49  -2  -1  17 -18  -5
+13. Chicago      49  -2   2  16 -19   0
+14. Winnipeg     49  -3   2  18  -4   5
+15. St. Louis    50  -4  -2  18 -50 -13
+16. Vancouver    49 -12  -8  10 -51 -27
+             👉🏻 786  75   9 282 -57 -20 0.548
 ```
 
 <!-- END:conference -->
@@ -434,39 +434,39 @@ $ nhl -f
               Full league              
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Colorado     45  29   5  30  79  18
- 2. Tampa Bay    45  16  10  23  44  25
- 3. Dallas       47  16  -2  23  28  -8
- 4. Minnesota    47  14   2  18  18  -1
- 5. Carolina     47  13   1  19  16  -2
- 6. Detroit      48  12   3  20   1   3
- 7. Vegas        45  11   2  16   9   3
- 8. Montréal     48  11   3  17   3   5
- 9. Buffalo      46  10   6  20  10  15
-10. NY Islanders 46   9   3  16   8   6
-11. Pittsburgh   46   8   5  18   7  16
-12. Toronto      46   7   6  17   4  10
-13. Boston       47   7   3  19   9   9
-14. Edmonton     47   7   2  18   2   4
-15. Florida      45   6   1  21  -6  -6
-16. Seattle      45   6   5  15  -6  12
-17. Philadelphia 46   6  -3  15  -5 -14
-18. Washington   48   6  -1  21  17   2
-19. San Jose     46   5   4  13 -18  -3
-20. Ottawa       46   3  -2  17  -2  -8
-21. Los Angeles  46   3   0  12  -9  -4
-22. Utah         47   3   3  17  14  10
-23. New Jersey   47   3  -1  16 -19 -12
-24. Nashville    46   2   2  15 -22  -4
-25. Columbus     47   2   1  13 -13   2
-26. Anaheim      46   1  -7  14 -16 -21
-27. Chicago      46  -1   3  15 -16  -1
-28. NY Rangers   48  -2  -4  13 -21 -16
-29. St. Louis    47  -3  -2  18 -44 -11
-30. Winnipeg     45  -4  -2  16  -7  -3
-31. Calgary      46  -4  -2  15 -21 -10
-32. Vancouver    47 -10  -6  10 -44 -22
-             👉🏻1484 192  38 550   0  -6 0.565
+ 1. Colorado     47  29   3  31  78  15
+ 2. Tampa Bay    48  18   9  25  49  24
+ 3. Carolina     50  16   5  22  28  15
+ 4. Dallas       50  15  -2  24  28  -3
+ 5. Detroit      50  14   5  21   4   8
+ 6. Minnesota    51  14   0  19  17  -4
+ 7. Montréal     50  13   3  18   5   4
+ 8. Vegas        48  12   5  17  14  14
+ 9. Buffalo      49  10   3  21  10   7
+10. NY Islanders 49  10   3  18   8   5
+11. Pittsburgh   48   9   4  19   9  10
+12. Boston       50   8   6  21  10  18
+13. Toronto      49   7   4  17   1   2
+14. Edmonton     51   7   2  20  11  12
+15. Philadelphia 48   6  -3  16  -7 -16
+16. Florida      48   5  -1  22 -14 -17
+17. Utah         49   5   5  19  18  14
+18. Ottawa       49   4   0  18  -1  -3
+19. Anaheim      49   4  -1  15 -12  -9
+20. San Jose     49   4   2  14 -20  -4
+21. Los Angeles  49   4   2  13 -10  -5
+22. Washington   50   4  -3  21  11  -5
+23. New Jersey   50   4   0  17 -20  -9
+24. Seattle      48   3   0  15 -14  -1
+25. Columbus     49   2   1  13 -15  -2
+26. Nashville    49   1   0  16 -25  -9
+27. Calgary      49  -2  -1  17 -18  -5
+28. Chicago      49  -2   2  16 -19   0
+29. Winnipeg     49  -3   2  18  -4   5
+30. NY Rangers   51  -3  -5  14 -21 -17
+31. St. Louis    50  -4  -2  18 -50 -13
+32. Vancouver    49 -12  -8  10 -51 -27
+             👉🏻1574 202  40 585   0   4 0.564
 ```
 
 <!-- END:full -->
@@ -482,39 +482,39 @@ $ nhl --l10
       Full league (last 10 games)      
 =======================================
                  GP +/- L10  RW  GD L10
- 1. Tampa Bay    45  16  10  23  44  25
- 2. Buffalo      46  10   6  20  10  15
- 3. Toronto      46   7   6  17   4  10
- 4. Colorado     45  29   5  30  79  18
- 5. Pittsburgh   46   8   5  18   7  16
- 6. Seattle      45   6   5  15  -6  12
- 7. San Jose     46   5   4  13 -18  -3
- 8. Detroit      48  12   3  20   1   3
- 9. Montréal     48  11   3  17   3   5
-10. NY Islanders 46   9   3  16   8   6
-11. Boston       47   7   3  19   9   9
-12. Utah         47   3   3  17  14  10
-13. Chicago      46  -1   3  15 -16  -1
-14. Minnesota    47  14   2  18  18  -1
-15. Vegas        45  11   2  16   9   3
-16. Edmonton     47   7   2  18   2   4
-17. Nashville    46   2   2  15 -22  -4
-18. Carolina     47  13   1  19  16  -2
-19. Florida      45   6   1  21  -6  -6
-20. Columbus     47   2   1  13 -13   2
-21. Los Angeles  46   3   0  12  -9  -4
-22. Washington   48   6  -1  21  17   2
-23. New Jersey   47   3  -1  16 -19 -12
-24. Dallas       47  16  -2  23  28  -8
-25. Ottawa       46   3  -2  17  -2  -8
-26. St. Louis    47  -3  -2  18 -44 -11
-27. Winnipeg     45  -4  -2  16  -7  -3
-28. Calgary      46  -4  -2  15 -21 -10
-29. Philadelphia 46   6  -3  15  -5 -14
-30. NY Rangers   48  -2  -4  13 -21 -16
-31. Vancouver    47 -10  -6  10 -44 -22
-32. Anaheim      46   1  -7  14 -16 -21
-             👉🏻1484 192  38 550   0  -6 0.565
+ 1. Tampa Bay    48  18   9  25  49  24
+ 2. Boston       50   8   6  21  10  18
+ 3. Carolina     50  16   5  22  28  15
+ 4. Detroit      50  14   5  21   4   8
+ 5. Vegas        48  12   5  17  14  14
+ 6. Utah         49   5   5  19  18  14
+ 7. Pittsburgh   48   9   4  19   9  10
+ 8. Toronto      49   7   4  17   1   2
+ 9. Colorado     47  29   3  31  78  15
+10. Montréal     50  13   3  18   5   4
+11. Buffalo      49  10   3  21  10   7
+12. NY Islanders 49  10   3  18   8   5
+13. Edmonton     51   7   2  20  11  12
+14. San Jose     49   4   2  14 -20  -4
+15. Los Angeles  49   4   2  13 -10  -5
+16. Chicago      49  -2   2  16 -19   0
+17. Winnipeg     49  -3   2  18  -4   5
+18. Columbus     49   2   1  13 -15  -2
+19. Minnesota    51  14   0  19  17  -4
+20. Ottawa       49   4   0  18  -1  -3
+21. New Jersey   50   4   0  17 -20  -9
+22. Seattle      48   3   0  15 -14  -1
+23. Nashville    49   1   0  16 -25  -9
+24. Florida      48   5  -1  22 -14 -17
+25. Anaheim      49   4  -1  15 -12  -9
+26. Calgary      49  -2  -1  17 -18  -5
+27. Dallas       50  15  -2  24  28  -3
+28. St. Louis    50  -4  -2  18 -50 -13
+29. Philadelphia 48   6  -3  16  -7 -16
+30. Washington   50   4  -3  21  11  -5
+31. NY Rangers   51  -3  -5  14 -21 -17
+32. Vancouver    49 -12  -8  10 -51 -27
+             👉🏻1574 202  40 585   0   4 0.564
 ```
 
 <!-- END:last10 -->
@@ -536,21 +536,21 @@ $ nhl -p
 ===================================
 Eastern Conference:
 
-[8-w] Toronto (7) at Tampa Bay (16)
-[7-w] Buffalo (10) at Carolina (13)
-[3-2] Montréal (11) at Detroit (12)
-[3-2] Pittsburgh (8) at NY Islanders (9)
+[8-w] Boston (8) at Tampa Bay (18)
+[7-w] Buffalo (10) at Carolina (16)
+[3-2] Montréal (13) at Detroit (14)
+[3-2] Pittsburgh (9) at NY Islanders (10)
 
-Outside looking-in: BOS (7) FLA (6) PHI (6) WSH (6) 
+Outside looking-in: TOR (7) PHI (6) FLA (5) 
 
 Western Conference:
 
-[8-w] Los Angeles (3) at Colorado (29)
-[3-2] Minnesota (14) at Dallas (16)
-[7-w] San Jose (5) at Vegas (11)
-[3-2] Seattle (6) at Edmonton (7)
+[8-w] San Jose (4) at Colorado (29)
+[3-2] Minnesota (14) at Dallas (15)
+[7-w] Utah (5) at Vegas (12)
+[3-2] Anaheim (4) at Edmonton (7)
 
-Outside looking-in: UTA (3) NSH (2) ANA (1) 
+Outside looking-in: LAK (4) SEA (3) NSH (1) 
 ```
 
 <!-- END:playoffs -->
@@ -578,73 +578,6 @@ $ nhl -s
              Upcoming league-wide schedule             
 =======================================================
 
-              2026-01-15 (THU)               
-=============================================
-MTL 3 - 5 BUF  19:00   (TSN2, RDS, MSG-B)
-PHI 3 - 6 PIT  19:00   (ESPN, SN)
-SJS 3 - 2 WSH  19:00   (NBCSCA, MNMT)
-VAN 1 - 4 CBJ  19:00   (SNP, FDSNOH)
-SEA 2 - 3 BOS  20:00   (KHN/Prime, KING 5, NESN, KONG)
-WPG 6 - 1 MIN  20:00   (TSN3, FDSNNO, FDSNWIX)
-CGY 2 - 1 CHI  20:30   (SNW, CHSN)
-DAL 0 - 0 UTA  21:00   (Utah16, Victory+)
-NYI 0 - 0 EDM  21:00   (SN1, TVAS, MSGSN)
-TOR 3 - 1 VGK  21:30   (ESPN, TSN4)
-
-              2026-01-16 (FRI)               
-=============================================
-SJS at DET  19:00   (SN, NHLN, FDSNDET, NBCSCA)
-FLA at CAR  19:00   (SNO, TVAS, FDSNSO, SCRIPPS)
-TBL at STL  20:00   (FDSNMW, The Spot)
-NSH at COL  21:00   (SNE (JIP), SN360, TVAS, FDSNSO, ALT, KTVD)
-ANA at LAK  22:30   (SNE (JIP), SN, FDSNW, Victory+, KCOP-13)
-
-              2026-01-17 (SAT)               
-=============================================
-MIN at BUF  12:30   (NHLN, FDSNNO, MSG-B, FDSNWI)
-NYR at PHI  13:00   (NBCSP, MSG)
-NYI at CGY  15:00   (CBC, SN, TVAS, MSGSN)
-SEA at UTA  17:00   (KHN/Prime, Utah16, KONG)
-MTL at OTT  19:00   (CITY, SNE, TVAS)
-CAR at NJD  19:00   (FDSNSO, MSGSN)
-CBJ at PIT  19:00   (FDSNOH, SN-PIT)
-FLA at WSH  19:00   (MNMT, SCRIPPS)
-TOR at WPG  19:00   (SN, CBC, NHLN)
-BOS at CHI  20:00   (CHSN, NESN)
-EDM at VAN  22:00   (CBC, CITY, SN, TVAS)
-NSH at VGK  22:00   (FDSNSO, SCRIPPS)
-LAK at ANA  22:00   (FDSNW, Victory+)
-
-              2026-01-18 (SUN)               
-=============================================
-TBL at DAL  14:00   (NHLN, SN, TVAS, The Spot, Victory+)
-OTT at DET  17:00   (RDS2, TSN5, FDSNDET)
-STL at EDM  20:00   (SN, TVAS, FDSNMW)
-
-              2026-01-19 (MON)               
-=============================================
-BUF at CAR  13:30   (TNT, truTV, HBO MAX)
-WSH at COL  16:00   (TNT, truTV, HBO MAX, MNMT)
-PIT at SEA  17:00   (TVAS, KHN/Prime, SN-PIT, KONG)
-SJS at FLA  18:00   (NBCSCA, SCRIPPS)
-MIN at TOR  19:30   (Prime, FDSNNO, FDSNWI)
-PHI at VGK  20:00   (NBCSP+, SCRIPPS)
-WPG at CHI  20:30   (TVAS, TSN3, CHSN)
-NJD at CGY  21:00   (SNW, MSGSN)
-NYI at VAN  22:00   (SNP, MSGSN2)
-NYR at ANA  22:00   (Victory+, MSG, KCOP-13)
-
-              2026-01-20 (TUE)               
-=============================================
-MIN at MTL  19:00   (TSN2, RDS, FDSNNO, FDSNWI)
-SJS at TBL  19:00   (SN, The Spot, NBCSCA)
-OTT at CBJ  19:00   (RDS2, TSN5, FDSNOH)
-BOS at DAL  19:30   (TNT, HBO MAX, SNE, NESN)
-BUF at NSH  20:00   (FDSNSO, MSG-B)
-STL at WPG  20:00   (TSN3, FDSNMW)
-NJD at EDM  22:00   (TNT, truTV, HBO MAX, SNW, TVAS)
-NYR at LAK  22:00   (SN, FDSNW, MSG)
-
               2026-01-21 (WED)               
 =============================================
 DET at TOR  19:00   (TNT, truTV, HBO MAX, SN, TVAS)
@@ -653,6 +586,70 @@ PHI at UTA  21:00   (Utah16, NBCSP)
 PIT at CGY  21:30   (SNW, SN1, TVAS, SN-PIT)
 NYI at SEA  21:30   (TNT, truTV, HBO MAX)
 WSH at VAN  22:00   (SNP, MNMT)
+
+              2026-01-22 (THU)               
+=============================================
+VGK at BOS  19:00   (SN, NESN, SCRIPPS)
+BUF at MTL  19:00   (TSN2, RDS, MSG-B)
+CHI at CAR  19:00   (ESPN+, HULU, SN1)
+DAL at CBJ  19:00   (FDSNOH, Victory+)
+OTT at NSH  20:00   (RDS2, TSN5, FDSNSO)
+FLA at WPG  20:00   (TSN3, SCRIPPS)
+PIT at EDM  21:00   (SNW, TVAS, SN-PIT)
+DET at MIN  21:30   (ESPN, SNE, SN1)
+
+              2026-01-23 (FRI)               
+=============================================
+VGK at TOR  19:00   (SN, TVAS, SCRIPPS)
+TBL at CHI  19:00   (ESPN)
+STL at DAL  20:00   (FDSNMW, Victory+)
+PHI at COL  21:00   (NBCSP, ALT2)
+WSH at CGY  21:00   (SN1, MNMT)
+NJD at VAN  22:00   (SNP, MSGSN)
+NYR at SJS  22:00   (SNE, TVAS, NBCSCA, MSG)
+ANA at SEA  22:00   (KHN/Prime, Victory+, KONG, KCOP-13)
+
+              2026-01-24 (SAT)               
+=============================================
+BUF at NYI  13:00   (SN, MSG-B, MSGSN)
+UTA at NSH  15:30   (SN, SN1, FDSNSO, Utah16)
+MTL at BOS  19:00   (SN, CBC, NHLN, TVAS, NESN)
+CAR at OTT  19:00   (CITY, SN1, FDSNSO)
+TBL at CBJ  19:00   (The Spot, FDSNOH)
+DET at WPG  19:00   (SNW, FDSNDET)
+LAK at STL  20:00   (FDSNMW, FDSNW, KCAL)
+FLA at MIN  21:00   (FDSNNO, FDSNWI, SCRIPPS)
+WSH at EDM  22:00   (CBC, CITY, SN, TVAS2, MNMT)
+
+              2026-01-25 (SUN)               
+=============================================
+COL at TOR  13:30   (NHLN, TVAS, TSN4, ALT)
+NJD at SEA  15:00   (SN, KHN/Prime, MSGSN, KONG)
+VGK at OTT  17:00   (RDS2, TSN5, SCRIPPS)
+PIT at VAN  18:00   (SN, TVAS, SN-PIT)
+FLA at CHI  19:00   (NHLN, SN1, CHSN, SCRIPPS)
+ANA at CGY  20:00   (SNE (JIP), SNO (JIP), SNW, SNP (JIP), Victory+, KCOP-13)
+
+              2026-01-26 (MON)               
+=============================================
+UTA at TBL  19:00   (The Spot, Utah16)
+BOS at NYR  19:00   (NHLN, TVAS, NESN, MSG)
+NYI at PHI  19:00   (NBCSP, MSGSN)
+LAK at CBJ  19:00   (FDSNOH, FDSNW)
+ANA at EDM  20:30   (Prime, Victory+, KCOP-13)
+
+              2026-01-27 (TUE)               
+=============================================
+NSH at BOS  19:00   (SN, FDSNSO, NESN)
+BUF at TOR  19:00   (TSN4, MSG-B)
+VGK at MTL  19:00   (TSN2, RDS, SCRIPPS)
+LAK at DET  19:00   (SN, FDSNDETX, FDSNW)
+UTA at FLA  19:00   (Utah16, SCRIPPS)
+WPG at NJD  19:00   (TSN3, MSGSN)
+DAL at STL  20:00   (ESPN+, HULU)
+CHI at MIN  20:00   (CHSN, FDSNNO, FDSNWIX)
+SJS at VAN  22:00   (SNP, NBCSCA)
+WSH at SEA  22:00   (SN, TVAS, KHN/Prime, MNMT, KONG)
 ```
 
 <!-- END:schedule -->
@@ -721,8 +718,8 @@ $ nhl -s -t MTL
 46 Mon Jan 12 2026  VAN 3 - 6 MTL   
 47 Tue Jan 13 2026  MTL 2 - 3 WSH (OT)
 48 Thu Jan 15 2026  MTL 3 - 5 BUF   
-49 Sat Jan 17 2026  MTL at OTT  19:00  (CITY, SNE, TVAS)
-50 Tue Jan 20 2026  MIN at MTL  19:00  (TSN2, RDS, FDSNNO, FDSNWI)
+49 Sat Jan 17 2026  MTL 6 - 5 OTT (OT)
+50 Tue Jan 20 2026  MIN 3 - 4 MTL   
 51 Thu Jan 22 2026  BUF at MTL  19:00  (TSN2, RDS, MSG-B)
 52 Sat Jan 24 2026  MTL at BOS  19:00  (CBC, SNE, SNO, SNP, NHLN, TVAS, NESN)
 53 Tue Jan 27 2026  VGK at MTL  19:00  (TSN2, RDS, SCRIPPS)
