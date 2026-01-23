@@ -282,6 +282,33 @@ pub fn schedule() {
                     }
                     println!();
                     continue;
+                }
+                if game.game_state == "CRIT" {
+                    print!(
+                    "{} {} - {} {}",
+                    game.away_team.abbrev,
+                    game.away_team.score.unwrap_or(0),
+                    game.home_team.score.unwrap_or(0),
+                    game.home_team.abbrev,
+                    );
+                    print!("  {} ", dt.format("%H:%M").to_string());
+                    if game.tv_broadcasts.len() > 0 {
+                        let mut networks = Vec::new();
+                        for broadcast in game.tv_broadcasts {
+                            networks.push(broadcast.network);
+                        }
+                        if game.neutral_site {
+                            print!(" ✨");
+                        }
+                        let period = match &game.period_descriptor.period_type {
+                            Some(pt) => pt.to_string(),
+                            None => "In progress".to_string(),
+                        };
+                        let networks: Vec<String> = networks.into_iter().unique().collect();
+                        print!("  ({}) ({})", period, networks.join(", "))
+                    }
+                    println!();
+                    continue;
                 } else {
                     print!(
                         "{} {} - {} {}",
@@ -290,21 +317,40 @@ pub fn schedule() {
                         game.home_team.score.unwrap_or(0),
                         game.home_team.abbrev
                     );
+                    if game.game_outcome.is_some() {
+                        let outcome = match &game.game_outcome {
+                            Some(outcome) => {
+                                if outcome.last_period_type == "OT" || outcome.last_period_type == "SO" {
+                                    format!("({})", outcome.last_period_type)
+                                } else {
+                                    "  ".to_string()
+                                }
+                            },
+                            None => {
+                                // eprintln!("No game outcome for completed game");
+                                // continue;
+                                "  ".to_string()
+                            }
+                        };
+                        print!(" {}", outcome);
+                    }
                 }
+
                 if game.neutral_site {
                     print!(" ✨");
                 }
+                if game.game_state != "FINAL" {
+                    let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
+                    dt = dt.with_timezone(&east_timezone);
+                    print!("  {} ", dt.format("%H:%M").to_string());
 
-                let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
-                dt = dt.with_timezone(&east_timezone);
-                print!("  {} ", dt.format("%H:%M").to_string());
-
-                if game.tv_broadcasts.len() > 0 {
-                    let mut networks = Vec::new();
-                    for broadcast in game.tv_broadcasts {
-                        networks.push(broadcast.network);
+                    if game.tv_broadcasts.len() > 0 {
+                        let mut networks = Vec::new();
+                        for broadcast in game.tv_broadcasts {
+                            networks.push(broadcast.network);
+                        }
+                        print!("  ({})", networks.join(", "));
                     }
-                    print!("  ({})", networks.join(", "));
                 }
                 println!();
             }
