@@ -339,7 +339,7 @@ pub fn schedule() {
                 if game.neutral_site {
                     print!(" ✨");
                 }
-                if game.game_state != "FINAL" {
+                if game.game_state != "FINAL" && game.game_state != "OFF" {
                     let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
                     dt = dt.with_timezone(&east_timezone);
                     print!("  {} ", dt.format("%H:%M").to_string());
