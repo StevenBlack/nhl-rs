@@ -233,6 +233,8 @@ pub fn schedule() {
             println!("No games");
         } else {
             for game in date.games {
+                let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
+                dt = dt.with_timezone(&east_timezone);
                 if game.game_state == "FUT" {
                     print!("{} at {}", game.away_team.abbrev, game.home_team.abbrev);
                     if game.neutral_site {
@@ -254,13 +256,44 @@ pub fn schedule() {
                     println!();
                     continue;
                 }
-                print!(
+                if game.game_state == "LIVE" {
+                    print!(
                     "{} {} - {} {}",
                     game.away_team.abbrev,
                     game.away_team.score.unwrap_or(0),
                     game.home_team.score.unwrap_or(0),
-                    game.home_team.abbrev
-                );
+                    game.home_team.abbrev,
+                    );
+                    print!("  {} ", dt.format("%H:%M").to_string());
+                    if game.tv_broadcasts.len() > 0 {
+                        let mut networks = Vec::new();
+                        for broadcast in game.tv_broadcasts {
+                            networks.push(broadcast.network);
+                        }
+                        if game.neutral_site {
+                            print!(" ✨");
+                        }
+                        let period = match &game.period_descriptor.number {
+                            Some(pt) => pt.to_string(),
+                            None => "In progress".to_string(),
+                        };
+                        let networks: Vec<String> = networks.into_iter().unique().collect();
+                        print!("  ({}) ({})", period, networks.join(", "))
+                    }
+                    println!();
+                    continue;
+                } else {
+                    print!(
+                        "{} {} - {} {}",
+                        game.away_team.abbrev,
+                        game.away_team.score.unwrap_or(0),
+                        game.home_team.score.unwrap_or(0),
+                        game.home_team.abbrev
+                    );
+                }
+                if game.neutral_site {
+                    print!(" ✨");
+                }
 
                 let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
                 dt = dt.with_timezone(&east_timezone);
