@@ -1,5 +1,7 @@
 use serde::{Deserialize, Serialize};
 use std::{fmt};
+use std::collections::HashMap;
+
 
 // constant values
 const STANDINGS_URL: &str = "https://api-web.nhle.com/v1/standings/now";
@@ -320,6 +322,7 @@ pub fn standings(args: crate::Args) {
 
         let mut idx = 0;
         let mut conf_count = 0;
+        let mut div_thirds: HashMap<String, i32> = HashMap::new();
         for conf in [conf1, conf2] {
             println!("{} Conference:\n", CONFERENCES[conf_count]);
             conf_count += 1;
@@ -334,6 +337,7 @@ pub fn standings(args: crate::Args) {
             for mut div in [div1, div2] {
                 // division winners
                 firsts.push(div.remove(0));
+                div_thirds.insert(div[1].division_name.clone(), div[1].wins - div[1].losses);
                 // next 2
                 playoffmatchups.push(Playoffmatchup {
                     lbl: "[3-2]".to_string(),
@@ -389,7 +393,7 @@ pub fn standings(args: crate::Args) {
             // print teams within 3 of the final wildcard
             let mut outsiders = false;
             for wc in wildcards {
-                if wc.wins - wc.losses >= lastwc - 3 {
+                if wc.wins - wc.losses >= lastwc - 3 || wc.wins - wc.losses >= (div_thirds.get(&wc.division_name).unwrap() - 3) {
                     if !outsiders {
                         print!("Outside looking-in: ");
                         outsiders = true;
