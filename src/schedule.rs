@@ -1,3 +1,4 @@
+//! Schedule module for this NHL CLI.
 use std::u8;
 
 use chrono::DateTime;

@@ -1,10 +1,13 @@
+//! Standings module for this NHL CLI.
 use serde::{Deserialize, Serialize};
 use std::{fmt};
 use std::collections::HashMap;
 
 
-// constant values
+/// Constant URL for fetching standings data.
 const STANDINGS_URL: &str = "https://api-web.nhle.com/v1/standings/now";
+
+/// Constant values for display widths.
 const TEAM_NAME_WIDTH: usize = 15;
 const PLACE_NAME_WIDTH: usize = 12;
 const GP_WIDTH: usize = 2;
@@ -12,7 +15,10 @@ const PLUS_MINUS_WIDTH: usize = 3;
 const GOAL_DIFFERENTIAL_WIDTH: usize = 3;
 const PANEL_WIDTH: usize = 39;
 
+/// Conference names as they appear in the API.
 static CONFERENCES: &[&str] = &["Eastern", "Western"];
+
+/// Division names as they appear in the API.
 static DIVISIONS: &[(&str, &str)] = &[
     ("Eastern", "Atlantic"),
     ("Eastern", "Metropolitan"),
@@ -20,15 +26,17 @@ static DIVISIONS: &[(&str, &str)] = &[
     ("Western", "Pacific"),
 ];
 
-// standings data structures
+/// Standings-related data structures.
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct StandingsRoot {
     pub standings: Standings,
 }
 
+/// Standings are a vector of individual team standings.
 type Standings = Vec<Standing>;
 
+/// Standing is a single team's standing record.
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Standing {
@@ -128,6 +136,7 @@ pub struct Standing {
     pub wins: i32,
 }
 
+/// Display implementation for Standing.
 impl fmt::Display for Standing {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         // Customize so only `x` and `y` are denoted.
@@ -148,6 +157,7 @@ impl fmt::Display for Standing {
     }
 }
 
+/// Display implementation for the team common name.
 impl fmt::Display for TeamCommonName {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let team_name_width = TEAM_NAME_WIDTH;
@@ -155,6 +165,7 @@ impl fmt::Display for TeamCommonName {
     }
 }
 
+/// Display implementation for the place name.
 impl fmt::Display for PlaceName {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let place_name_width = PLACE_NAME_WIDTH;
@@ -162,6 +173,7 @@ impl fmt::Display for PlaceName {
     }
 }
 
+/// English and French names for places.
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PlaceName {
@@ -169,6 +181,8 @@ pub struct PlaceName {
     pub fr: Option<String>,
 }
 
+
+/// English and French names for teams.
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct TeamName {
@@ -176,6 +190,8 @@ pub struct TeamName {
     pub fr: String,
 }
 
+
+/// English and French names for team common names.
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct TeamCommonName {
@@ -183,13 +199,15 @@ pub struct TeamCommonName {
     pub fr: Option<String>,
 }
 
+
+/// Standard team abbreviations.
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct TeamAbbrev {
     pub default: String,
 }
 
-// playoff structures
+/// Playoff matchup struct.
 #[derive(Debug)]
 struct Playoffmatchup {
     lbl: String,
@@ -197,12 +215,15 @@ struct Playoffmatchup {
     away: Standing,
 }
 
+/// Playoffmatchups is a vector of Playoffmatchup.
 type Playoffmatchups = Vec<Playoffmatchup>;
 
+/// Trait for custom display formatting.
 trait CustomDisplay {
     fn custom_display(&self) -> String;
 }
 
+/// Custom display implementation for Playoffmatchups.
 impl CustomDisplay for Playoffmatchups {
     fn custom_display(&self) -> String {
         let mut result = String::new();
@@ -221,6 +242,8 @@ impl CustomDisplay for Playoffmatchups {
     }
 }
 
+
+/// Cumulator struct for aggregating stats.
 struct Cumulator {
     wl: i32,
     rw: i32,
@@ -245,6 +268,7 @@ impl Default for Cumulator {
     }
 }
 
+/// Display implementation for Cumulator.
 impl fmt::Display for Cumulator {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(
@@ -298,10 +322,12 @@ fn get_data() -> StandingsRoot {
     read_json_from_api()
 }
 
+/// Main function to display standings based on command line arguments.
 pub fn standings(args: crate::Args) {
     let mut root = get_data();
 
-    // sort the standings just the way I like it
+    // Sort the standings by wins-losses, games played, regulation wins,
+    // and goal differential
     root.standings.sort_unstable_by_key(|item| {
         (
             -(item.wins - item.losses),
@@ -434,6 +460,7 @@ pub fn standings(args: crate::Args) {
         return;
     }
 
+    /// Display standings by division.
     fn bydivision(r: &StandingsRoot) {
         for division in DIVISIONS {
             let mut cumulator = Cumulator::new();
@@ -451,6 +478,7 @@ pub fn standings(args: crate::Args) {
         }
     }
 
+    /// Display standings by conference.
     fn byconference(r: &StandingsRoot) {
         for conference in CONFERENCES {
             let mut cumulator = Cumulator::new();
@@ -468,6 +496,7 @@ pub fn standings(args: crate::Args) {
         }
     }
 
+    /// Display full league standings.
     fn fullleague(r: &StandingsRoot) {
         standings_header("Full league");
         let mut cumulator = Cumulator::new();
@@ -480,6 +509,7 @@ pub fn standings(args: crate::Args) {
         println!("{}", cumulator);
     }
 
+    /// Display full league standings by last 10 games.
     fn last10(r: &StandingsRoot) {
         // sort the standings by the last 10 games
         let mut st = r.standings.clone();
@@ -509,6 +539,7 @@ pub fn standings(args: crate::Args) {
     last10(&root);
 }
 
+/// Function to print the standings header.
 fn standings_header(title: &str) {
     let panel_width = PANEL_WIDTH;
     println!();
@@ -521,6 +552,7 @@ fn standings_header(title: &str) {
     );
 }
 
+/// Function to print the playoff header.
 fn playoff_header() {
     let panel_width = 35;
     println!();

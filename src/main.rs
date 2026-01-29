@@ -1,32 +1,36 @@
+//! A command line tool to display NHL standings and schedules.
 use clap::Parser;
+
+/// Structure for storing the command line arguments.
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
-    /// display the playoffs picture
+    /// Display the playoffs picture.
     #[arg(short, long)]
     playoffs: bool,
 
-    /// display the league proximate schedule
+    /// Display the schedule.
     #[arg(short, long)]
     schedule: bool,
 
-    /// used with --schedule to display just one team's full schedule
+    /// Used with --schedule to display just one team's full schedule.
     #[arg(short, long)]
     team: Option<String>,
 
-    /// display just division standings
+    /// Display just division standings, starting with divisions in
+    /// the Eastern Conference, then the Western Conference.
     #[arg(short, long)]
     division: bool,
 
-    /// display just conference standings
+    /// Display just conference standings.
     #[arg(short, long)]
     conference: bool,
 
-    /// display just the full league standings
+    /// Display just the full league standings.
     #[arg(short, long)]
     full: bool,
 
-    /// display full league standings by last 10 games
+    /// Display full league standings by last 10 games.
     #[arg(long)]
     l10: bool,
 }
