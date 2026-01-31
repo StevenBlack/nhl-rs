@@ -238,9 +238,7 @@ pub fn schedule() {
                 dt = dt.with_timezone(&east_timezone);
                 if game.game_state == "FUT" {
                     print!("{} at {}", game.away_team.abbrev, game.home_team.abbrev);
-                    if game.neutral_site {
-                        print!(" ✨");
-                    }
+                    print!("{}", neutral_site_marker(game.neutral_site));
                     let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
                     dt = dt.with_timezone(&east_timezone);
                     print!("  {} ", dt.format("%H:%M").to_string());
@@ -271,9 +269,7 @@ pub fn schedule() {
                         for broadcast in game.tv_broadcasts {
                             networks.push(broadcast.network);
                         }
-                        if game.neutral_site {
-                            print!(" ✨");
-                        }
+                        print!("{}", neutral_site_marker(game.neutral_site));
                         let period = match &game.period_descriptor.number {
                             Some(pt) => pt.to_string(),
                             None => "In progress".to_string(),
@@ -298,9 +294,7 @@ pub fn schedule() {
                         for broadcast in game.tv_broadcasts {
                             networks.push(broadcast.network);
                         }
-                        if game.neutral_site {
-                            print!(" ✨");
-                        }
+                        print!("{}", neutral_site_marker(game.neutral_site));
                         let period = match &game.period_descriptor.period_type {
                             Some(pt) => pt.to_string(),
                             None => "In progress".to_string(),
@@ -336,10 +330,7 @@ pub fn schedule() {
                         print!(" {}", outcome);
                     }
                 }
-
-                if game.neutral_site {
-                    print!(" ✨");
-                }
+                print!("{}", neutral_site_marker(game.neutral_site));
                 if game.game_state != "FINAL" && game.game_state != "OFF" {
                     let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
                     dt = dt.with_timezone(&east_timezone);
@@ -375,6 +366,14 @@ fn schedule_day_header(title: &str, day: &str) {
     let together = format!("{title} ({day})");
     println!("{:^width$}", together);
     println!("{}", "=".repeat(width));
+}
+
+fn neutral_site_marker(ns: bool) -> String {
+    if ns {
+        " *".to_string()
+    } else {
+        "".to_string()
+    }
 }
 
 // Add ANSI constants and a small helper to color the leading team's abbrev.
@@ -426,9 +425,7 @@ pub fn team_schedule(args: crate::Args) {
                 for broadcast in game.tv_broadcasts {
                     networks.push(broadcast.network);
                 }
-                if game.neutral_site {
-                    print!(" ✨");
-                }
+                print!("{}", neutral_site_marker(game.neutral_site));
                 let networks: Vec<String> = networks.into_iter().unique().collect();
                 print!(" ({})", networks.join(", "))
             }
@@ -444,9 +441,7 @@ pub fn team_schedule(args: crate::Args) {
                 for broadcast in game.tv_broadcasts {
                     networks.push(broadcast.network);
                 }
-                if game.neutral_site {
-                    print!(" ✨");
-                }
+                print!("{}", neutral_site_marker(game.neutral_site));
                 let networks: Vec<String> = networks.into_iter().unique().collect();
                 print!("  ({}) Pre game", networks.join(", "))
             }
@@ -467,9 +462,7 @@ pub fn team_schedule(args: crate::Args) {
                 for broadcast in game.tv_broadcasts {
                     networks.push(broadcast.network);
                 }
-                if game.neutral_site {
-                    print!(" ✨");
-                }
+                print!("{}", neutral_site_marker(game.neutral_site));
                 let networks: Vec<String> = networks.into_iter().unique().collect();
                 print!("(In progress) ({})", networks.join(", "))
             }
@@ -502,9 +495,9 @@ pub fn team_schedule(args: crate::Args) {
             home_abbrev,
             game_outcome
         );
-        if game.neutral_site {
-            print!(" ✨");
-        }
+        print!("{}", neutral_site_marker(game.neutral_site));
         println!();
     }
 }
+
+
