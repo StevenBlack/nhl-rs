@@ -334,9 +334,9 @@ pub fn schedule() {
                 if game.game_state != "FINAL" && game.game_state != "OFF" {
                     let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
                     dt = dt.with_timezone(&east_timezone);
-                    print!("  {} ", dt.format("%H:%M").to_string());
+                    print!("  {} ", dt.format("%H:%M"));
 
-                    if game.tv_broadcasts.len() > 0 {
+                    if !game.tv_broadcasts.is_empty() {
                         let mut networks = Vec::new();
                         for broadcast in game.tv_broadcasts {
                             networks.push(broadcast.network);
@@ -354,7 +354,7 @@ fn schedule_header(title: &str) {
     let width = PANEL_WIDTH;
     println!();
     println!("{}", "=".repeat(width));
-    let together = format!("{title}");
+    let together = title.to_string();
     println!("{:^width$}", together);
     println!("{}", "=".repeat(width));
 }
@@ -419,7 +419,7 @@ pub fn team_schedule(args: crate::Args) {
         // Future game
         if game.game_state == "FUT" {
             print!("{} at {}", game.away_team.abbrev, game.home_team.abbrev);
-            print!("  {} ", dt.format("%H:%M").to_string());
+            print!("  {} ", dt.format("%H:%M"));
             if game.tv_broadcasts.len() > 0 {
                 let mut networks = Vec::new();
                 for broadcast in game.tv_broadcasts {
@@ -435,7 +435,7 @@ pub fn team_schedule(args: crate::Args) {
         // Pre game
         if game.game_state == "PRE" {
             print!("{} at {}  ", game.away_team.abbrev, game.home_team.abbrev);
-            print!("{} ", dt.format("%H:%M").to_string());
+            print!("{} ", dt.format("%H:%M"));
             if game.tv_broadcasts.len() > 0 {
                 let mut networks = Vec::new();
                 for broadcast in game.tv_broadcasts {

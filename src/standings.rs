@@ -244,6 +244,7 @@ impl CustomDisplay for Playoffmatchups {
 
 
 /// Cumulator struct for aggregating stats.
+#[derive(Default, Debug)]
 struct Cumulator {
     wl: i32,
     rw: i32,
@@ -252,20 +253,6 @@ struct Cumulator {
     points: i32,
     goal_diff: i32,
     goal_diff_10: i32,
-}
-
-impl Default for Cumulator {
-    fn default() -> Self {
-        Cumulator {
-            wl: 0,
-            rw: 0,
-            l10: 0,
-            games: 0,
-            points: 0,
-            goal_diff: 0,
-            goal_diff_10: 0,
-        }
-    }
 }
 
 /// Display implementation for Cumulator.
@@ -302,11 +289,11 @@ impl Cumulator {
     fn absorb(&mut self, s: &&Standing) -> () {
         self.wl = self.wl + s.wins - s.losses;
         self.l10 = self.l10 + s.l10wins - s.l10losses;
-        self.rw = self.rw + s.regulation_wins;
-        self.games = self.games + s.games_played;
-        self.points = self.points + s.points;
-        self.goal_diff = self.goal_diff + s.goal_differential;
-        self.goal_diff_10 = self.goal_diff_10 + s.l10goal_differential;
+        self.rw += s.regulation_wins;
+        self.games += s.games_played;
+        self.points += s.points;
+        self.goal_diff += s.goal_differential;
+        self.goal_diff_10 += s.l10goal_differential;
         ()
     }
 }
@@ -434,7 +421,7 @@ pub fn standings(args: crate::Args) {
             println!();
             println!();
 
-            idx = idx + 2;
+            idx += 2;
         }
         return;
     }
@@ -472,7 +459,7 @@ pub fn standings(args: crate::Args) {
                 }
                 cumulator.absorb(&standing);
                 println!("{:>2}. {}", idx, standing);
-                idx = idx + 1;
+                idx += 1;
             }
             println!("{}", cumulator);
         }
@@ -490,7 +477,7 @@ pub fn standings(args: crate::Args) {
                 }
                 cumulator.absorb(&standing);
                 println!("{:>2}. {}", idx, standing);
-                idx = idx + 1;
+                idx += 1;
             }
             println!("{}", cumulator);
         }
@@ -504,7 +491,7 @@ pub fn standings(args: crate::Args) {
         for standing in &r.standings {
             cumulator.absorb(&standing);
             println!("{:>2}. {}", idx, standing);
-            idx = idx + 1;
+            idx += 1;
         }
         println!("{}", cumulator);
     }
@@ -527,7 +514,7 @@ pub fn standings(args: crate::Args) {
         for standing in &st {
             cumulator.absorb(&standing);
             println!("{:>2}. {}", idx, standing);
-            idx = idx + 1;
+            idx += 1;
         }
         println!("{}", cumulator);
     }
