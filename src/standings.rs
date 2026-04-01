@@ -534,8 +534,7 @@ fn standings_header(title: &str) {
     println!("{:^panel_width$}", title);
     println!("{}", "=".repeat(panel_width));
     println!(
-        "{:>19} {} {}  {}  {} {}",
-        "GP", "+/-", "L10", "RW", "GD", "L10"
+        "{:>19} +/- L10  RW  GD L10", "GP"
     );
 }
 
