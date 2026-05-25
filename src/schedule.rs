@@ -1,6 +1,4 @@
 //! Schedule module for this NHL CLI.
-use std::u8;
-
 use chrono::DateTime;
 use chrono::prelude::*;
 use itertools::Itertools;
@@ -264,7 +262,7 @@ pub fn schedule() {
                     game.home_team.abbrev,
                     );
                     print!("  {} ", dt.format("%H:%M").to_string());
-                    if game.tv_broadcasts.len() > 0 {
+                    if !game.tv_broadcasts.is_empty() {
                         let mut networks = Vec::new();
                         for broadcast in game.tv_broadcasts {
                             networks.push(broadcast.network);
@@ -289,7 +287,7 @@ pub fn schedule() {
                     game.home_team.abbrev,
                     );
                     print!("  {} ", dt.format("%H:%M").to_string());
-                    if game.tv_broadcasts.len() > 0 {
+                    if !game.tv_broadcasts.is_empty() {
                         let mut networks = Vec::new();
                         for broadcast in game.tv_broadcasts {
                             networks.push(broadcast.network);
@@ -415,12 +413,12 @@ pub fn team_schedule(args: crate::Args) {
         game_number += 1;
         let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
         dt = dt.with_timezone(&east_timezone);
-        print!("{:>2} {}  ", game_number,dt.format("%a %b %e %Y").to_string());
+        print!("{:>2} {}  ", game_number,dt.format("%a %b %e %Y"));
         // Future game
         if game.game_state == "FUT" {
             print!("{} at {}", game.away_team.abbrev, game.home_team.abbrev);
             print!("  {} ", dt.format("%H:%M"));
-            if game.tv_broadcasts.len() > 0 {
+            if !game.tv_broadcasts.is_empty() {
                 let mut networks = Vec::new();
                 for broadcast in game.tv_broadcasts {
                     networks.push(broadcast.network);
@@ -436,7 +434,7 @@ pub fn team_schedule(args: crate::Args) {
         if game.game_state == "PRE" {
             print!("{} at {}  ", game.away_team.abbrev, game.home_team.abbrev);
             print!("{} ", dt.format("%H:%M"));
-            if game.tv_broadcasts.len() > 0 {
+            if !game.tv_broadcasts.is_empty() {
                 let mut networks = Vec::new();
                 for broadcast in game.tv_broadcasts {
                     networks.push(broadcast.network);
@@ -456,8 +454,8 @@ pub fn team_schedule(args: crate::Args) {
               game.home_team.score.unwrap_or(0),
               game.home_team.abbrev,
             );
-            print!("  {} ", dt.format("%H:%M").to_string());
-            if game.tv_broadcasts.len() > 0 {
+            print!("  {} ", dt.format("%H:%M"));
+            if !game.tv_broadcasts.is_empty() {
                 let mut networks = Vec::new();
                 for broadcast in game.tv_broadcasts {
                     networks.push(broadcast.network);

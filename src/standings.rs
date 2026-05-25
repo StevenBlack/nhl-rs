@@ -286,7 +286,7 @@ impl Cumulator {
         }
     }
 
-    fn absorb(&mut self, s: &&Standing) -> () {
+    fn absorb(&mut self, s: &&Standing) {
         self.wl = self.wl + s.wins - s.losses;
         self.l10 = self.l10 + s.l10wins - s.l10losses;
         self.rw += s.regulation_wins;
@@ -294,7 +294,6 @@ impl Cumulator {
         self.points += s.points;
         self.goal_diff += s.goal_differential;
         self.goal_diff_10 += s.l10goal_differential;
-        ()
     }
 }
 
@@ -454,7 +453,7 @@ pub fn standings(args: crate::Args) {
             standings_header(format!("{} division", division.1).as_str());
             let mut idx = 1;
             for standing in &r.standings {
-                if standing.division_name != division.1.to_string() {
+                if standing.division_name != division.1 {
                     continue;
                 }
                 cumulator.absorb(&standing);
