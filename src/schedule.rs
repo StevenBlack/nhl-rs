@@ -1,6 +1,6 @@
 //! Schedule module for this NHL CLI.
-use chrono::DateTime;
 use chrono::prelude::*;
+use chrono::DateTime;
 use itertools::Itertools;
 use serde::{Deserialize, Serialize};
 
@@ -207,9 +207,12 @@ pub fn read_json_from_api() -> ScheduleRoot {
 }
 
 pub fn read_team_json_from_api(args: crate::Args) -> TeamScheduleRoot {
-    let response = reqwest::blocking::get(TEAM_SCHEDULE_URL.replace("TTT", &args.team.clone().unwrap())).unwrap();
+    let response =
+        reqwest::blocking::get(TEAM_SCHEDULE_URL.replace("TTT", &args.team.clone().unwrap()))
+            .unwrap();
     let data = response.text().unwrap();
-    let obj: TeamScheduleRoot = serde_json::from_str(&data).expect("Unable to parse team schedule JSON");
+    let obj: TeamScheduleRoot =
+        serde_json::from_str(&data).expect("Unable to parse team schedule JSON");
     obj
 }
 
@@ -218,7 +221,6 @@ fn get_data() -> ScheduleRoot {
 }
 
 fn get_team_data(args: crate::Args) -> TeamScheduleRoot {
-
     read_team_json_from_api(args)
 }
 
@@ -255,11 +257,11 @@ pub fn schedule() {
                 }
                 if game.game_state == "LIVE" {
                     print!(
-                    "{} {} - {} {}",
-                    game.away_team.abbrev,
-                    game.away_team.score.unwrap_or(0),
-                    game.home_team.score.unwrap_or(0),
-                    game.home_team.abbrev,
+                        "{} {} - {} {}",
+                        game.away_team.abbrev,
+                        game.away_team.score.unwrap_or(0),
+                        game.home_team.score.unwrap_or(0),
+                        game.home_team.abbrev,
                     );
                     print!("  {} ", dt.format("%H:%M").to_string());
                     if !game.tv_broadcasts.is_empty() {
@@ -280,11 +282,11 @@ pub fn schedule() {
                 }
                 if game.game_state == "CRIT" {
                     print!(
-                    "{} {} - {} {}",
-                    game.away_team.abbrev,
-                    game.away_team.score.unwrap_or(0),
-                    game.home_team.score.unwrap_or(0),
-                    game.home_team.abbrev,
+                        "{} {} - {} {}",
+                        game.away_team.abbrev,
+                        game.away_team.score.unwrap_or(0),
+                        game.home_team.score.unwrap_or(0),
+                        game.home_team.abbrev,
                     );
                     print!("  {} ", dt.format("%H:%M").to_string());
                     if !game.tv_broadcasts.is_empty() {
@@ -313,12 +315,14 @@ pub fn schedule() {
                     if game.game_outcome.is_some() {
                         let outcome = match &game.game_outcome {
                             Some(outcome) => {
-                                if outcome.last_period_type == "OT" || outcome.last_period_type == "SO" {
+                                if outcome.last_period_type == "OT"
+                                    || outcome.last_period_type == "SO"
+                                {
                                     format!("({})", outcome.last_period_type)
                                 } else {
                                     "  ".to_string()
                                 }
-                            },
+                            }
                             None => {
                                 // eprintln!("No game outcome for completed game");
                                 // continue;
@@ -389,17 +393,22 @@ fn color_abbrev(abbrev: &str, score: i64, opponent_score: i64) -> String {
 pub fn team_schedule(args: crate::Args) {
     let team = match &args.team {
         Some(t) => t.trim().to_uppercase(),
-        None => { eprintln!("No team supplied"); return; }
+        None => {
+            eprintln!("No team supplied");
+            return;
+        }
     };
     let valid_teams = [
-        "FLA","TBL","TOR","OTT","MTL","DET","BOS","BUF",
-        "WSH","CAR","NJD","CBJ","NYR","NYI","PIT","PHI",
-        "WPG","DAL","COL","MIN","STL","CHI","NSH","ARI",
-        "VGK","LAK","EDM","CGY","VAN","ANA","SEA","SJS",
-        "UTA"
+        "FLA", "TBL", "TOR", "OTT", "MTL", "DET", "BOS", "BUF", "WSH", "CAR", "NJD", "CBJ", "NYR",
+        "NYI", "PIT", "PHI", "WPG", "DAL", "COL", "MIN", "STL", "CHI", "NSH", "ARI", "VGK", "LAK",
+        "EDM", "CGY", "VAN", "ANA", "SEA", "SJS", "UTA",
     ];
     if !valid_teams.contains(&team.as_str()) {
-        eprintln!("Invalid team code '{}'. Expected one of: {}", team, valid_teams.join(", "));
+        eprintln!(
+            "Invalid team code '{}'. Expected one of: {}",
+            team,
+            valid_teams.join(", ")
+        );
         return;
     }
     let root = get_team_data(args);
@@ -413,7 +422,7 @@ pub fn team_schedule(args: crate::Args) {
         game_number += 1;
         let mut dt = DateTime::parse_from_rfc3339(&game.start_time_utc).unwrap();
         dt = dt.with_timezone(&east_timezone);
-        print!("{:>2} {}  ", game_number,dt.format("%a %b %e %Y"));
+        print!("{:>2} {}  ", game_number, dt.format("%a %b %e %Y"));
         // Future game
         if game.game_state == "FUT" {
             print!("{} at {}", game.away_team.abbrev, game.home_team.abbrev);
@@ -448,11 +457,11 @@ pub fn team_schedule(args: crate::Args) {
         }
         if game.game_state == "LIVE" {
             print!(
-              "{} {} - {} {}",
-              game.away_team.abbrev,
-              game.away_team.score.unwrap_or(0),
-              game.home_team.score.unwrap_or(0),
-              game.home_team.abbrev,
+                "{} {} - {} {}",
+                game.away_team.abbrev,
+                game.away_team.score.unwrap_or(0),
+                game.home_team.score.unwrap_or(0),
+                game.home_team.abbrev,
             );
             print!("  {} ", dt.format("%H:%M"));
             if !game.tv_broadcasts.is_empty() {
@@ -474,7 +483,7 @@ pub fn team_schedule(args: crate::Args) {
                 } else {
                     "  ".to_string()
                 }
-            },
+            }
             None => {
                 // eprintln!("No game outcome for completed game");
                 // continue;
@@ -487,15 +496,9 @@ pub fn team_schedule(args: crate::Args) {
         let home_abbrev = color_abbrev(&game.home_team.abbrev, home_score, away_score);
         print!(
             "{} {} - {} {} {}",
-            away_abbrev,
-            away_score,
-            home_score,
-            home_abbrev,
-            game_outcome
+            away_abbrev, away_score, home_score, home_abbrev, game_outcome
         );
         print!("{}", neutral_site_marker(game.neutral_site));
         println!();
     }
 }
-
-

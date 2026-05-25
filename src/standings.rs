@@ -1,8 +1,7 @@
 //! Standings module for this NHL CLI.
 use serde::{Deserialize, Serialize};
-use std::{fmt};
 use std::collections::HashMap;
-
+use std::fmt;
 
 /// Constant URL for fetching standings data.
 const STANDINGS_URL: &str = "https://api-web.nhle.com/v1/standings/now";
@@ -181,7 +180,6 @@ pub struct PlaceName {
     pub fr: Option<String>,
 }
 
-
 /// English and French names for teams.
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -190,7 +188,6 @@ pub struct TeamName {
     pub fr: String,
 }
 
-
 /// English and French names for team common names.
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -198,7 +195,6 @@ pub struct TeamCommonName {
     pub default: String,
     pub fr: Option<String>,
 }
-
 
 /// Standard team abbreviations.
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -241,7 +237,6 @@ impl CustomDisplay for Playoffmatchups {
         result
     }
 }
-
 
 /// Cumulator struct for aggregating stats.
 #[derive(Default, Debug)]
@@ -405,7 +400,9 @@ pub fn standings(args: crate::Args) {
             // print teams within 3 of the final wildcard
             let mut outsiders = false;
             for wc in wildcards {
-                if wc.wins - wc.losses >= lastwc - 3 || wc.wins - wc.losses >= (div_thirds.get(&wc.division_name).unwrap() - 3) {
+                if wc.wins - wc.losses >= lastwc - 3
+                    || wc.wins - wc.losses >= (div_thirds.get(&wc.division_name).unwrap() - 3)
+                {
                     if !outsiders {
                         print!("Outside looking-in: ");
                         outsiders = true;
@@ -532,9 +529,7 @@ fn standings_header(title: &str) {
     println!("{}", "=".repeat(panel_width));
     println!("{:^panel_width$}", title);
     println!("{}", "=".repeat(panel_width));
-    println!(
-        "{:>19} +/- L10  RW  GD L10", "GP"
-    );
+    println!("{:>19} +/- L10  RW  GD L10", "GP");
 }
 
 /// Function to print the playoff header.
