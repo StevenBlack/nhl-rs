@@ -6,7 +6,7 @@ use serde::{Deserialize, Serialize};
 
 // constant values
 const SCHEDULE_URL: &str = "https://api-web.nhle.com/v1/schedule/now";
-const TEAM_SCHEDULE_URL: &str = "https://api-web.nhle.com/v1/club-schedule-season/TTT/20252026";
+const TEAM_SCHEDULE_URL: &str = "https://api-web.nhle.com/v1/club-schedule-season/TTT/SSSSSSSS";
 const PANEL_WIDTH: usize = 55;
 
 // schedule-related data structures
@@ -208,7 +208,7 @@ pub fn read_json_from_api() -> ScheduleRoot {
 
 pub fn read_team_json_from_api(args: crate::Args) -> TeamScheduleRoot {
     let response =
-        reqwest::blocking::get(TEAM_SCHEDULE_URL.replace("TTT", &args.team.clone().unwrap()))
+        reqwest::blocking::get(TEAM_SCHEDULE_URL.replace("TTT", &args.team.clone().unwrap()).replace("SSSSSSSS", &args.season.clone()))
             .unwrap();
     let data = response.text().unwrap();
     let obj: TeamScheduleRoot =

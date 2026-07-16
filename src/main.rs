@@ -33,6 +33,11 @@ struct Args {
     /// Display full league standings by last 10 games.
     #[arg(long)]
     l10: bool,
+
+    /// Display for the season
+    #[arg(long, default_value = "20262027")]
+    season: String,
+
 }
 
 mod schedule;
