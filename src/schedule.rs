@@ -433,6 +433,10 @@ pub fn team_schedule(args: crate::Args) {
         return;
     }
     let root = get_team_data(args);
+    if root.games.is_empty() {
+        eprintln!("No games found for team '{}'", team);
+        return;
+    }
     let east_timezone = FixedOffset::west_opt(5 * 3600).unwrap();
     let mut game_number: u8 = 0;
     schedule_header(format!("{} season schedule", &team).as_str());
