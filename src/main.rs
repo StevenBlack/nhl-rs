@@ -34,7 +34,7 @@ struct Args {
     #[arg(long)]
     l10: bool,
 
-    /// Display for the season
+    /// Display the schedule for the season (YYYYYYYY)
     #[arg(long, default_value = "20262027")]
     season: String,
 
