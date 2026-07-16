@@ -207,13 +207,34 @@ pub fn read_json_from_api() -> ScheduleRoot {
 }
 
 pub fn read_team_json_from_api(args: crate::Args) -> TeamScheduleRoot {
-    let response =
-        reqwest::blocking::get(TEAM_SCHEDULE_URL.replace("TTT", &args.team.clone().unwrap()).replace("SSSSSSSS", &args.season.clone()))
-            .unwrap();
-    let data = response.text().unwrap();
-    let obj: TeamScheduleRoot =
-        serde_json::from_str(&data).expect("Unable to parse team schedule JSON");
-    obj
+    let url = TEAM_SCHEDULE_URL
+        .replace("TTT", &args.team.clone().unwrap())
+        .replace("SSSSSSSS", &args.season.clone());
+    let response = match reqwest::blocking::get(&url) {
+        Ok(r) => r,
+        Err(e) => {
+            eprintln!("Request failed: {e}");
+            return TeamScheduleRoot::default();
+        }
+    };
+    if !response.status().is_success() {
+        eprintln!("Request returned {}: {}", response.status(), url);
+        return TeamScheduleRoot::default();
+    }
+    let data = match response.text() {
+        Ok(t) => t,
+        Err(e) => {
+            eprintln!("Failed to read response body: {e}");
+            return TeamScheduleRoot::default();
+        }
+    };
+    match serde_json::from_str::<TeamScheduleRoot>(&data) {
+        Ok(obj) => obj,
+        Err(e) => {
+            eprintln!("Unable to parse team schedule JSON: {e}");
+            TeamScheduleRoot::default()
+        }
+    }
 }
 
 fn get_data() -> ScheduleRoot {
