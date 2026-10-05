@@ -256,7 +256,7 @@ impl fmt::Display for Cumulator {
         write!(
             f,
             "{:>15}{:4}{:4}{:4} {:3} {:3} {:3} {:.3}",
-            "👉🏻",
+            "Total",
             self.games,
             self.wl,
             self.l10,
