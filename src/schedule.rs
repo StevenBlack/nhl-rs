@@ -245,7 +245,9 @@ fn get_team_data(args: crate::Args) -> TeamScheduleRoot {
     read_team_json_from_api(args)
 }
 
-pub fn schedule(show_id: bool) {
+pub fn schedule(args: crate::Args) {
+    let show_id = args.id;
+    let show_url = args.url;
     let root = get_data();
     let east_timezone = FixedOffset::west_opt(5 * 3600).unwrap();
     schedule_header("Upcoming league-wide schedule");
@@ -273,7 +275,7 @@ pub fn schedule(show_id: bool) {
                         let networks: Vec<String> = networks.into_iter().unique().collect();
                         print!("  ({})", networks.join(", "))
                     }
-                    print!("{}", id_suffix(show_id, game.id));
+                    print!("{}", game_suffix(show_id, show_url, game.id));
                     println!();
                     continue;
                 }
@@ -299,7 +301,7 @@ pub fn schedule(show_id: bool) {
                         let networks: Vec<String> = networks.into_iter().unique().collect();
                         print!("  ({}) ({})", period, networks.join(", "))
                     }
-                    print!("{}", id_suffix(show_id, game.id));
+                    print!("{}", game_suffix(show_id, show_url, game.id));
                     println!();
                     continue;
                 }
@@ -325,7 +327,7 @@ pub fn schedule(show_id: bool) {
                         let networks: Vec<String> = networks.into_iter().unique().collect();
                         print!("  ({}) ({})", period, networks.join(", "))
                     }
-                    print!("{}", id_suffix(show_id, game.id));
+                    print!("{}", game_suffix(show_id, show_url, game.id));
                     println!();
                     continue;
                 } else {
@@ -370,7 +372,7 @@ pub fn schedule(show_id: bool) {
                         print!("  ({})", networks.join(", "));
                     }
                 }
-                print!("{}", id_suffix(show_id, game.id));
+                print!("{}", game_suffix(show_id, show_url, game.id));
                 println!();
             }
         }
@@ -395,12 +397,15 @@ fn schedule_day_header(title: &str, day: &str) {
     println!("{}", "=".repeat(width));
 }
 
-fn id_suffix(show_id: bool, id: i64) -> String {
+fn game_suffix(show_id: bool, show_url: bool, id: i64) -> String {
+    let mut out = String::new();
     if show_id {
-        format!("  {:06}", id % 1_000_000)
-    } else {
-        "".to_string()
+        out.push_str(&format!("  {:06}", id % 1_000_000));
     }
+    if show_url {
+        out.push_str(&format!("  https://www.nhl.com/gamecenter/{}", id));
+    }
+    out
 }
 
 fn neutral_site_marker(ns: bool) -> String {
@@ -445,6 +450,7 @@ pub fn team_schedule(args: crate::Args) {
         return;
     }
     let show_id = args.id;
+    let show_url = args.url;
     let root = get_team_data(args);
     if root.games.is_empty() {
         eprintln!("No games found for team '{}'", team);
@@ -474,7 +480,7 @@ pub fn team_schedule(args: crate::Args) {
                 let networks: Vec<String> = networks.into_iter().unique().collect();
                 print!(" ({})", networks.join(", "))
             }
-            print!("{}", id_suffix(show_id, game.id));
+            print!("{}", game_suffix(show_id, show_url, game.id));
             println!();
             continue;
         }
@@ -491,7 +497,7 @@ pub fn team_schedule(args: crate::Args) {
                 let networks: Vec<String> = networks.into_iter().unique().collect();
                 print!("  ({}) Pre game", networks.join(", "))
             }
-            print!("{}", id_suffix(show_id, game.id));
+            print!("{}", game_suffix(show_id, show_url, game.id));
             println!();
             continue;
         }
@@ -513,7 +519,7 @@ pub fn team_schedule(args: crate::Args) {
                 let networks: Vec<String> = networks.into_iter().unique().collect();
                 print!("(In progress) ({})", networks.join(", "))
             }
-            print!("{}", id_suffix(show_id, game.id));
+            print!("{}", game_suffix(show_id, show_url, game.id));
             println!();
             continue;
         }
@@ -540,7 +546,7 @@ pub fn team_schedule(args: crate::Args) {
             away_abbrev, away_score, home_score, home_abbrev, game_outcome
         );
         print!("{}", neutral_site_marker(game.neutral_site));
-        print!("{}", id_suffix(show_id, game.id));
+        print!("{}", game_suffix(show_id, show_url, game.id));
         println!();
     }
 }

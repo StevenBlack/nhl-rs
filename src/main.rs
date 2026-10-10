@@ -17,6 +17,10 @@ struct Args {
     #[arg(short, long)]
     id: bool,
 
+    /// Display the schedule game URL
+    #[arg(short, long)]
+    url: bool,
+
     /// Used with --schedule to display just one team's full schedule.
     #[arg(short, long)]
     team: Option<String>,
@@ -55,7 +59,7 @@ fn main() {
             schedule::team_schedule(args);
             return;
         }
-        schedule::schedule(args.id);
+        schedule::schedule(args);
         return;
     }
     standings::standings(args);
