@@ -13,11 +13,11 @@ struct Args {
     #[arg(short, long)]
     schedule: bool,
 
-    /// Display the schedule game id
+    /// Used with --schedule to display the schedule game id
     #[arg(short, long)]
     id: bool,
 
-    /// Display the schedule game URL
+    /// Used with --schedule to display the schedule gamecenter URL
     #[arg(short, long)]
     url: bool,
 
